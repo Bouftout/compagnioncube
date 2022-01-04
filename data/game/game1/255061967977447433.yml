@@ -1,0 +1,36 @@
+un: {
+un: 6059
+stat: ATK
+morte: non
+}
+deux: {
+deux: 2317
+stat: DEF
+morte: non
+}
+trois: {
+trois: 8163
+stat: ATK
+morte: non
+}
+quatre: {
+quatre: 4409
+stat: DEF
+morte: non
+}
+cinq: {
+cinq: 7058
+stat: DEF
+morte: non
+}
+six: {
+six: 2134
+stat: ATK
+}
+sept: {
+sept: 4854
+stat: DEF
+morte: non
+}
+pv: 2000
+epv: 2000

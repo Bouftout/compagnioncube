@@ -1,0 +1,319 @@
+
+        if(message.content == `Quel est ton nom ?` ||message.content == `Ton nom` || message.content == `quel est ton nom ?`) {
+      let Tonnom = `Mon nom est: ${client.user.tag}`
+            message.channel.startTyping();
+            setTimeout(() => {
+              message.channel.send(Tonnom).catch(console.error);
+              message.channel.stopTyping();
+              setTimeout(() => {
+                message.channel.startTyping();
+              }, 1600);
+              setTimeout(() => {
+                message.channel.stopTyping();
+                message.channel.send("Pour continuer:(*Et le mien ?*)")
+              }, 2 * 1000);
+            }, Math.random() * Tonnom.length - 3 + 1 * 1000);
+        }
+    
+        
+          if(message.content == `Et le mien ?` || message.content == `et le mien ?` || message.content == `et le mien`) {
+        let Tonnom1 = `Ton nom est: ${message.author.username}`
+              message.channel.startTyping();
+              setTimeout(() => {
+                message.channel.send(Tonnom1).catch(console.error);
+                message.channel.stopTyping();
+                setTimeout(() => {
+                  message.channel.startTyping();
+                }, 3600);
+                setTimeout(() => {
+                  message.channel.stopTyping();
+                  message.channel.send("Il y a pas de suite...")
+                }, 4 * 1000);
+              }, Math.random() * Tonnom1.length - 3 + 1 * 1000);
+          }
+    
+    
+        //CONVERSATION NORMALE
+    
+        if(message.content == `bonjour` || message.content == `BONJOUR` || message.content == `Bonjour`) {
+        let bonjour = "Comment va tu ?"
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(bonjour).catch(console.error);
+            message.channel.stopTyping();
+            setTimeout(() => {
+              message.channel.startTyping();
+            }, 1600);
+            setTimeout(() => {
+              message.channel.stopTyping();
+              message.channel.send("Pour continuer:(*Bien*)")
+            }, 2 * 1000);
+          }, Math.random() * bonjour.length - 3 + 1 * 1000);
+      }
+    
+      if(message.content == `bien` || message.content == `Bien Bien` || message.content == `Bien` || message.content == `Je vais bien et toi ?`|| message.content == `Je vais bien`|| message.content == `BIEN`) {
+        let bien = "Ben je vais bien et toi tu fait quoi ?" 
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(bien).catch(console.error);
+            message.channel.stopTyping();
+            setTimeout(() => {
+              message.channel.startTyping();
+            }, 1600);
+            setTimeout(() => {
+              message.channel.stopTyping();
+              message.channel.send("Pour continuer:(*rien*)")
+            }, 2 * 1000);
+          }, Math.random() * bien.length - 3 + 1 * 1000);
+      }
+    
+      if(message.content == `je me fais chier` || message.content == `je sais pas quoi faire` || message.content == `rien` || message.content == `je te parle`|| message.content == `Je fout rien`|| message.content == `AIDE MOI JE ME FAIS CHIER`) {
+        var jemefaichier = [ 
+          `Ah d'accord...Parceque la moi aussi je me fais chier et pourtant je m'occupe de ${client.guilds.size} serveur et toi tu te fais chier alors que tu est pas un bot,et ben bravo...`,
+          "Moi aussi je fais rien.",
+          "Tu sais tout le monde dans la vie se fait chier.",
+          "Ah ok... Cool",
+        ];
+        var result0 = Math.floor((Math.random() * jemefaichier.length) + 0);
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(jemefaichier[result0]).catch(console.error);
+            message.channel.stopTyping();
+            setTimeout(() => {
+              message.channel.startTyping();
+            }, 1600);
+            setTimeout(() => {
+              message.channel.stopTyping();
+              message.channel.send("Pour continuer:(*Ah ben on est 2 a se faire chier*)")
+            }, 2 * 1000);
+          }, Math.random() * jemefaichier.length - 3 + 1 * 1000);
+      }
+      
+      if(message.content == `Ta bien raison,on se fait tout les deux chier` || message.content == `Ah ben on est 2 a se faire chier` ) {
+        var jemefaichier1 = [ 
+          `Ah ok...`,
+          "M'en blc...",
+          "Tu sais,j'en ai strictement rien a foutre de se que tu dit donc je vais parlez seul.",
+        ];
+        var result1 = Math.floor((Math.random() * jemefaichier1.length) + 0);
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(jemefaichier1[result1]).catch(console.error);
+            message.channel.stopTyping();
+    
+    
+            setTimeout(() => {
+            var jemefaichier2 = [ 
+              `Hey toi ça va ?`,
+              `Hey toi ça va ??`,
+              "ça va ?",
+              "ça va ??",
+              "ça va !!?",
+            ];
+            var result2 = Math.floor((Math.random() * jemefaichier2.length) + 0);
+              message.channel.startTyping();
+              setTimeout(() => {
+                message.channel.send(jemefaichier2[result2]).catch(console.error);
+                message.channel.stopTyping();
+        
+                setTimeout(() => {
+                  var jemefaichier3 = [ 
+                    `Oui et toi ??`,
+                    `Oui et toi ?`,
+                    "Oueh et toi ?",
+                    "Oui moi ça va et toi ?",
+                  ];
+                  var result3 = Math.floor((Math.random() * jemefaichier3.length) + 0);
+                    message.channel.startTyping();
+                    setTimeout(() => {
+                      message.channel.send(jemefaichier3[result3]).catch(console.error);
+                      message.channel.stopTyping();
+              
+                      setTimeout(() => {
+                        var jemefaichier4 = [ 
+                          `Ben oui bien sur que ça va,d'ailleur ça fesait longtemps que on s'etait pas vu`,
+                          `Oueh,ça va,ça fesait longtemp !`,
+                          "",
+                          "Oui moi ça va et toi ?",
+                        ];
+                        var result4 = Math.floor((Math.random() * jemefaichier4.length) + 0);
+                          message.channel.startTyping();
+                          setTimeout(() => {
+                            message.channel.send(jemefaichier4[result4]).catch(console.error);
+                            message.channel.stopTyping();
+                    
+                            setTimeout(() => {
+                              var jemefaichier5 = [ 
+                                `Je confirme que ça fesait longtemp !`,
+                              ];
+                              var result5 = Math.floor((Math.random() * jemefaichier5.length) + 0);
+                                message.channel.startTyping();
+                                setTimeout(() => {
+                                  message.channel.send(jemefaichier5[result5]).catch(console.error);
+                                  message.channel.stopTyping();
+                          
+                                  setTimeout(() => {
+                                    var jemefaichier6 = [ 
+                                      `ça me fait plaisir de te revoir !`,
+                                    ];
+                                    var result6 = Math.floor((Math.random() * jemefaichier6.length) + 0);
+                                      message.channel.startTyping();
+                                      setTimeout(() => {
+                                        message.channel.send(jemefaichier6[result6]).catch(console.error);
+                                        message.channel.stopTyping();
+                                
+                                        setTimeout(() => {
+                                          var jemefaichier7 = [ 
+                                            `Moi aussi !`,
+                                          ];
+                                          var result7 = Math.floor((Math.random() * jemefaichier7.length) + 0);
+                                            message.channel.startTyping();
+                                            setTimeout(() => {
+                                              message.channel.send(jemefaichier7[result7]).catch(console.error);
+                                              message.channel.stopTyping();
+                                      
+                                              setTimeout(() => {
+                                                var jemefaichier8 = [ 
+                                                  `Bon moi j'y vais !!!`,
+                                                ];
+                                                var result8 = Math.floor((Math.random() * jemefaichier8.length) + 0);
+                                                  message.channel.startTyping();
+                                                  setTimeout(() => {
+                                                    message.channel.send(jemefaichier8[result8]).catch(console.error);
+                                                    message.channel.stopTyping();
+                                            
+    
+                                                    setTimeout(() => {
+                                                      var jemefaichier9 = [ 
+                                                        `Moi aussi allez salut !`,
+                                                      ];
+                                                      var result9 = Math.floor((Math.random() * jemefaichier9.length) + 0);
+                                                        message.channel.startTyping();
+                                                        setTimeout(() => {
+                                                          message.channel.send(jemefaichier9[result9]).catch(console.error);
+                                                          message.channel.stopTyping();
+                                                          setTimeout(() => {
+                                                            message.channel.startTyping();
+                                                          }, 1600);
+                                                          setTimeout(() => {
+                                                            message.channel.stopTyping();
+                                                            message.channel.send("Pour continuer:(*Ah ben pas de suite*)(désolé)")
+                                                          }, 2 * 1000);
+                                                        }, Math.random() * jemefaichier9.length - 3 + 1 * 1000);
+                                              
+                                                      }, 2 * 1000); // seconde d'attente
+    
+                                                  }, Math.random() * jemefaichier2.length - 3 + 1 * 1000);
+                                        
+                                                }, 2 * 1000); // seconde d'attente
+    
+                                            }, Math.random() * jemefaichier2.length - 3 + 1 * 1000);
+                                  
+                                          }, 2 * 1000); // seconde d'attente
+    
+                                      }, Math.random() * jemefaichier2.length - 3 + 1 * 1000);
+                            
+                                    }, 2 * 1000); // seconde d'attente
+    
+                                }, Math.random() * jemefaichier2.length - 3 + 1 * 1000);
+                      
+                              }, 2 * 1000); // seconde d'attente
+          
+    
+    
+                          }, Math.random() * jemefaichier2.length - 3 + 1 * 1000);
+                
+                        }, 2 * 1000); // seconde d'attente
+    
+    
+                    }, Math.random() * jemefaichier2.length - 3 + 1 * 1000);
+          
+                  }, 2 * 1000); // seconde d'attente
+    
+    
+              }, Math.random() * jemefaichier2.length - 3 + 1 * 1000);
+    
+            }, 4 * 1000); // seconde d'attente
+    
+          }, Math.random() * jemefaichier1.length - 3 + 1 * 1000);
+      }
+      
+    
+    
+    //FIN CONVERSATION NORMALE AVEC LE BOT
+    
+    
+      if(message.content == `je n'admets rien` || message.content == `Je nadmets rien` || message.content == `Je nadmet rien` || message.content == `je n'admet rien`|| message.content == `JEN'ADMETSRIEN`|| message.content == `je n'admets RIEN`) {
+        var jenadmetsrien = [ 
+          `Oui,c'est vrai.`,
+          "Oui c'est bien vrai ça.",
+        ];
+        var result1 = Math.floor((Math.random() * jenadmetsrien.length) + 0);
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(jenadmetsrien[result1]).catch(console.error);
+            message.channel.stopTyping();
+          }, Math.random() * jenadmetsrien.length - 3 + 1 * 1000);
+      }
+      if(message.content == `Tu doit m'obéir` || message.content == `Tudoit m'obéir` || message.content == `Tu doitm'obéir` || message.content == `tu doit m'obéir`|| message.content == `obéi moi`|| message.content == `TUDOITMOBEIR`) {
+        var obei = `Mais oui!!Bien sur,ta cru que j'allais me soumettrais a toi peut etre`
+    
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(obei).catch(console.error);
+            message.channel.stopTyping();
+          }, Math.random() * obei.length - 3 + 1 * 1000);
+      }  
+      if(message.content == `T'es un bot` || message.content == `tu est un bot` || message.content == `T'es est un bot` || message.content == `T'e un bot` || message.content == `t'esunbot`|| message.content == `tesunbot`|| message.content == `T'e un bot`) {
+        var tesunbot = [ 
+          `Non,je suis un humain.`,
+          "Je suis une personne normal comme toi.",
+          "Je ne suis pas un robot je suis convaincu que c'est toi le robot.",
+          "Je ne suis pas un robot je suis convaincu que c'est toi le robot.",
+        ];
+        var result2 = Math.floor((Math.random() * tesunbot.length) + 0);
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(tesunbot[result2]).catch(console.error);
+            message.channel.stopTyping();
+          }, Math.random() * tesunbot.length - 3 + 1 * 1000);
+      }
+      if(message.content == `T'es de quel genre ?` ) {
+        var quelgenre = [ 
+          `Je suis une fille.`,
+          "Je suis une demoiseille.",
+        ];
+        var result3 = Math.floor((Math.random() * quelgenre.length) + 0);
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(quelgenre[result3]).catch(console.error);
+            message.channel.stopTyping();
+          }, Math.random() * quelgenre.length - 3 + 1 * 1000);
+      }
+      if(message.content == `je veux dire qu'un pauvre BOT comme toi n'a aucun avenir` || message.content == `Tu n'as aucun avenir` || message.content == `un bot comme toi n'a aucun avenir` || message.content == `Tu n'as aucun avenir !`|| message.content == `obéi moi`|| message.content == `TUDOITMOBEIR`) {
+        var aucunavenir = [ 
+          `T'es sur car moi je suis sur de avoir un avenir.`,
+          "Déjà j'ai plus d'avenir que toi.",
+          "Ben si j'ai un avenir car un autre bot va m'épouser.",
+        ];
+        var result4 = Math.floor((Math.random() * aucunavenir.length) + 0);
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(aucunavenir[result4]).catch(console.error);
+            message.channel.stopTyping();
+          }, Math.random() * aucunavenir.length - 3 + 1 * 1000);
+      }
+      if(message.content == `Epouse moi !` || message.content == `epouse moi !` || message.content == `epousemoi` || message.content == `Epouse moi`|| message.content == `Epouse moi.`|| message.content == `epouse moi`) {
+        var epousemoi = [ 
+          `T'es sur car moi je suis sur de d'avoir un avenir.`,
+          "Déjà j'ai plus d'avenir que toi.",
+          "Ben si j'ai un avenir car un autre bot va m'épouser.",
+        ];
+        var result5 = Math.floor((Math.random() * epousemoi.length) + 0);
+          message.channel.startTyping();
+          setTimeout(() => {
+            message.channel.send(epousemoi[result5]).catch(console.error);
+            message.channel.stopTyping();
+          }, Math.random() * epousemoi.length - 3 + 1 * 1000);
+      }
+    

@@ -1,0 +1,8 @@
+version.yml contient le jour ou du dernier lancement du bot
+Et contient aussi le nombre de fois ou il a était démarré depuis le 17/09/2020
+
+autoplaylist.txt contient toute une liste de musique(lien youtube)
+
+prix.yml contient tout les prix du sorte de jeu que j'ai fait.
+
+Le dossier membre contient toute les info de la personne sur leur argent et tout(argent virtuel)

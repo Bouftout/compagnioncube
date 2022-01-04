@@ -1,0 +1,16 @@
+name: ToniPortal
+money: -70
+objet: {
+tirelire: 0
+}
+maison: {
+maison: 0,
+porteenbois: 0,
+clé: 0,
+code: 0,
+lit: 1
+}
+turret: {
+turret: 0,
+nombreturret: 0
+}

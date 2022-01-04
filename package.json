@@ -1,0 +1,50 @@
+{
+    "name": "compagnioncube",
+    "version": "5.1.0",
+    "description": "Le bot discord compagnion cube ; dev depuis 2017",
+    "main": "index.js",
+    "scripts": {
+        "test": "node index.js --ignore data",
+        "start": "pm2 start ./index.js --restart-delay 500"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Bouftout/compagnioncube.git"
+    },
+    "keywords": [
+        "bot",
+        "discord",
+        "botdiscord",
+        "compagnion",
+        "compagnioncube",
+        "portal",
+        "portal2",
+        "glados",
+        "music",
+        "inutile"
+    ],
+    "author": "ToniPortal#4057",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Bouftout/compagnioncube/issues"
+    },
+    "homepage": "https://github.com/Bouftout/compagnioncube#readme",
+    "dependencies": {
+        "@discordjs/voice": "^0.7.5",
+        "@pm2/pm2-version-check": "^1.0.4",
+        "@stdlib/string-uppercase": "^0.0.7",
+        "discord.js": "^13.2.0",
+        "ffmpeg-static": "^4.4.0",
+        "file-exists": "^5.0.1",
+        "js-yaml": "^4.1.0",
+        "morpionzerwyx": "^0.0.5",
+        "mp3-duration": "^1.1.0",
+        "node-twitch": "^0.4.5",
+        "pm2": "^5.1.2",
+        "ytdl-core": "^4.9.2",
+        "zerwyx-mp-simple": "^0.0.2"
+    },
+    "devDependencies": {
+        "rocket-store": "^0.10.8"
+    }
+}
