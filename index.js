@@ -5,7 +5,7 @@ const {
   Intents
 } = require('discord.js'),
   client = new Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_VOICE_STATES]
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_VOICE_STATES,Intents.FLAGS.DIRECT_MESSAGES]
   }),
   fs = require("fs"),
   yaml = require('js-yaml'),
@@ -209,25 +209,9 @@ temps = 10;
 
 
 
-    if (message.channel.type == 'dm') {
+  if(message.channel.type != 'GUILD_TEXT') {
 
-      message.channel.send({
-        embed: {
-          color: 0xFF0000,
-          author: {
-            name: client.user.username,
-            icon_url: client.user.avatarURL
-          },
-          title: `**ERROR 404**`,
-          description: "N'utulisez que les commande dans des serveurs !",
-          timestamp: new Date(),
-          footer: {
-            icon_url: client.user.avatarURL,
-            text: `©ToniPortal#4057`
-          }
-        }
-      });
-
+console.log('Nop')
     } else {
 
 
@@ -283,22 +267,24 @@ temps = 10;
                     help
                   } = require(`./commande/${command}`);
 
-                  message.channel.send({
-                    embed: {
-                      color: 0xff80ff,
-                      author: {
-                        name: client.user.username,
-                        icon_url: client.user.avatarURL()
-                      },
-                      title: `Help !`,
-                      description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
-                      timestamp: new Date(),
-                      footer: {
-                        icon_url: client.user.avatarURL(),
-                        text: `©ToniPortal`
-                      }
+
+                  const embed = {
+                    color: 0xff80ff,
+                    author: {
+                      name: client.user.username,
+                      icon_url: client.user.avatarURL()
+                    },
+                    title: `Help !`,
+                    description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
+                    timestamp: new Date(),
+                    footer: {
+                      icon_url: client.user.avatarURL(),
+                      text: `©ToniPortal`
                     }
-                  })
+                  }
+                  
+                  message.channel.send({ embeds: [embed] })
+                  
 
                 }
 

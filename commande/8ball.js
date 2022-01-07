@@ -1,7 +1,5 @@
 exports.run = (client, message, args, colors) => {
 
-
-  
   message.delete()
 
     var sayings = [
@@ -42,6 +40,9 @@ const embed = {
     text: `©ToniPortal`
   }
 }
+
+message.channel.send({ embeds: [embed] })
+
 /*
 console.log(message)
 
@@ -55,7 +56,7 @@ console.log(message)
       message.member.roles.add(role);
 */
 
-message.channel.send({ embeds: [embed] })
+
 
 
 };
