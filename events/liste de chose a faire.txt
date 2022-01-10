@@ -1,0 +1,3 @@
+utuliser nekobot-api
+faire l'exp avec pinch grâce a nodmatic
+regler toute les commande

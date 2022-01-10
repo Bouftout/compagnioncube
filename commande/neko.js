@@ -1,35 +1,19 @@
 exports.run = (client, message, args, colors) => {
 
-    // Akaneko //
-    const akaneko = require('akaneko');
+
     const Discord = require("discord.js");
     const axios = require("axios");
 
 
 
     if (args[0] == "help") {
-
-
         const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('**Neko help**')
             .setAuthor("Compagnion Cube", client.user.avatarURL())
             .setURL('https://neko-love.xyz/')
             .setDescription('Voici les alternative pour la commande:')
-            .addFields(
-                { name: '*neko', value: 'neko', inline: true },
-                { name: '*neko', value: 'kitsune', inline: true },
-                { name: '*neko', value: 'hug', inline: true },
-                { name: '*neko', value: 'pat', inline: true },
-                { name: '*neko', value: 'waifu', inline: true },
-                { name: '*neko', value: 'cry', inline: true },
-                { name: '*neko', value: 'kiss', inline: true },
-                { name: '*neko', value: 'slap', inline: true },
-                { name: '*neko', value: 'smug', inline: true },
-                { name: '*neko', value: 'punch', inline: true },
-
-
-            )
+            .addFields({ name: '*neko', value: 'neko', inline: true }, { name: '*neko', value: 'kitsune', inline: true }, { name: '*neko', value: 'hug', inline: true }, { name: '*neko', value: 'pat', inline: true }, { name: '*neko', value: 'waifu', inline: true }, { name: '*neko', value: 'cry', inline: true }, { name: '*neko', value: 'kiss', inline: true }, { name: '*neko', value: 'slap', inline: true }, { name: '*neko', value: 'smug', inline: true }, { name: '*neko', value: 'punch', inline: true }, )
             .setTimestamp()
             .setFooter(`©ToniPortal`, client.user.avatarURL())
 
@@ -103,7 +87,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -129,7 +113,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -155,7 +139,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -180,7 +164,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -206,7 +190,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -232,7 +216,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -259,7 +243,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -285,7 +269,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -312,7 +296,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -338,7 +322,7 @@ exports.run = (client, message, args, colors) => {
                     .setTimestamp()
                     .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
 
             })
 
@@ -346,3 +330,7 @@ exports.run = (client, message, args, colors) => {
 
 
 }
+exports.help = {
+    usage: `<neko;nsfw;kitsune;hug;kiss;slap;smug;punch>`,
+    description: `Te donne des image par rapport a l'api "neko-love.xyz"`
+};

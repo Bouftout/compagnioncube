@@ -1,37 +1,22 @@
-exports.run = async (client, message, args, colors) => {
+exports.run = async(client, message, args, colors) => {
 
-    const rs = require('../node_modules/rocket-store');
-
-    var idmembre = message.author.id;
-
-    if (args == "del") {
-
-        rs.delete();
-
-    }
+    var pinch = require('pinch');
 
 
+    var data = {
+        users: [{
+                name: 'John'
+            },
+            {
+                name: 'Kenneth',
+            },
+            {
+                name: 'Brent'
+            }
+        ]
+    };
 
+    data = JSON.stringify(data);
 
-    await rs.options({
-        data_storage_area: "./data/exp",
-        data_format: rs._FORMAT_JSON,
-    });
-    result = await rs.get("exp", idmembre);
-
-    console.log(result);
-
-let ajoutexp = result.result[0].exp+1;
-
-    await rs.post("exp", idmembre, {
-        owner: message.author.username,
-        exp: ajoutexp,
-    });
-
-    result = await rs.get("exp", idmembre);
-
-
-    console.log(result);
-
-
+    console.log(pinch(data, 'users[0].name', 'Juan'))
 }

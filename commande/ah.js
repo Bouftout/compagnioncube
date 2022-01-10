@@ -9,12 +9,12 @@ exports.run = (client, message, args, colors) => {
         .setTitle("**Giphy** AH")
         .setAuthor(message.author.username, message.author.avatarURL)
 
-        .setColor(colors.defaut)
+    .setColor(colors.defaut)
         .setFooter("©ToniPortal")
 
-        .setTimestamp()
+    .setTimestamp()
 
-    message.channel.send({ embed });
+    message.channel.send({ embeds: [embed] });
 
 
 
@@ -24,5 +24,4 @@ exports.run = (client, message, args, colors) => {
 exports.help = {
     usage: ``,
     description: `Gif du fameux même **Ah**`
-  };
-  
+};

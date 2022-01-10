@@ -8,11 +8,11 @@ exports.run = (client, message, args, colors) => {
 
     let url = 'https://www.blagues-api.fr/api/' + (args[0] ? ("type/" + args[0] + '/random') : 'random');
     request(url, {
-        headers: {
-            'Authorization': `Bearer ` + tokenBlaguesAPI
-        }
-    },
-        function (error, response, body) {
+            headers: {
+                'Authorization': `Bearer ` + tokenBlaguesAPI
+            }
+        },
+        function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 const jokeBody = JSON.parse(body);
                 let typeBlague = "";
@@ -42,7 +42,7 @@ exports.run = (client, message, args, colors) => {
                     .setDescription("||" + jokeBody.answer + "||")
                     .setFooter('Blague ' + typeBlague, message.guild.iconURL())
                     .setTimestamp();
-                message.channel.send(embed);
+                message.channel.send({ embeds: [embed] });
             }
         });
 
@@ -52,4 +52,4 @@ exports.run = (client, message, args, colors) => {
 exports.help = {
     usage: `<global;dev;dark;limit;beauf;blondes>`,
     description: `Pour afficher une blague d'une certainne catégorie ou pas`
-  };
+};
