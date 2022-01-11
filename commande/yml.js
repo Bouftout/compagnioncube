@@ -1,8 +1,7 @@
 exports.run = (client, message, args, colors) => {
 
     /*
-    const yaml = require('js-yaml'),
-        fs = require('fs'),
+       const fs = require('fs'),
         Database = require("electus-db"),
         db = new Database.Json();
 

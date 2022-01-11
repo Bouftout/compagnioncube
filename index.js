@@ -103,6 +103,8 @@ client.on("ready", (function () {
 client.on("messageCreate", message => {
   if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
+  //Gestion de l'exp
+  //NPM : https://www.npmjs.com/package/electus-db
 
   if (db.has(message.author.id) == true) {
     console.log("add"+ db.get(message.author.id)[1])
