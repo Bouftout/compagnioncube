@@ -1,39 +1,30 @@
 exports.run = (client, message, args, colors) => {
 
-    const yaml = require('js-yaml');
-    const fs = require('fs');
+    /*
+    const yaml = require('js-yaml'),
+        fs = require('fs'),
+        Database = require("electus-db"),
+        db = new Database.Json();
 
-var file = `./data/exp/${message.author.id}.yml`;
+    if (db.has(message.author.id) == true) {
+        console.log("add")
+        let ajout = (db.get(message.author.id)[1]) + 1;
 
-    fs.exists(file, function (exists) {
+        db.set(message.author.id, [db.get(message.author.id)[0], ajout, db.get(message.author.id)[2], db.get(message.author.id)[3]]);
 
-        if (exists) {
+    } else {
+        console.log("set")
+        db.set(message.author.id, ["./image", 0, 1, 50]);
 
-
-            var test = yaml.load(fs.readFileSync(file, 'utf8'));
-
-            let data = { exp: test.exp+1 };
-
-            let yamlStr = yaml.dump(data);
-            fs.writeFileSync(file, yamlStr, 'utf8');
-
-        } else {
-
-
-            var stream = fs.createWriteStream(file);
-            stream.once('open', function (fd) {
-                stream.write(`name: ${message.author.username}\n`);
-                stream.write(`exp: 0,\n`);
-                stream.write(`lvl: 0,\n`);
-                stream.write(`lvlup: 0,\n`);
-                stream.write(`image: "./image/exp/wallpaper.png"\n`);
-                stream.end();
-            });
-
-        }
+    }
 
 
-    })
+
+    console.log(db.all());
+
+*/
+
+
 
 
 };
