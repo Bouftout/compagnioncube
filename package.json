@@ -30,9 +30,11 @@
     },
     "homepage": "https://github.com/Bouftout/compagnioncube#readme",
     "dependencies": {
+        "@agencyanalytics/colorthief": "^2.3.3",
         "@discordjs/voice": "^0.7.5",
         "@pm2/pm2-version-check": "^1.0.4",
         "@stdlib/string-uppercase": "^0.0.7",
+        "canvacord": "^5.2.3",
         "discord.js": "^13.5.1",
         "electus-db": "^5.0.1",
         "ffmpeg-static": "^4.4.0",
@@ -44,6 +46,8 @@
         "node-twitch": "^0.4.5",
         "pinch": "^0.1.3",
         "pm2": "^5.1.2",
+        "quantize": "^1.0.2",
+        "randomize-hex": "^1.0.7",
         "ytdl-core": "^4.9.2",
         "zerwyx-mp-simple": "^0.0.2"
     }

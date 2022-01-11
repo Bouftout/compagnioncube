@@ -127,7 +127,7 @@ console.log("LVL");
   } else {
 
     console.log("set")
-    db.set(message.author.id, ["./image", 0, 1, 50]);
+    db.set(message.author.id, ["./image/exp/wallpaper.png", 0, 1, 50]);
 
   }
 
