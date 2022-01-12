@@ -40,121 +40,126 @@ exports.run = (client, message, args, colors) => {
     let lvl = db.get(message.author.id)[2]
 
     console.log(exp)
-    
+
     if (db.has(message.author.id) == true) {
 
-      
+
 
       function colorlvl() {
         if (lvl < 5) {
-          var str = "#ffffff"
-          return str
+          var valeurcouleurlvl = "#ffffff"
+          return valeurcouleurlvl
         }
         if (lvl >= 5) {
-          var str = "#fffff0"
-          return str
+          var valeurcouleurlvl = "#fffff0"
+          return valeurcouleurlvl
         }
       }
 
       function rankname() {
-        if (lvl <= 1) {
+
+
+
+        if (lvl == 1) {
 
           return 'Chell'
         }
-        else if (lvl <= 2) {
+        if (lvl == 2) {
 
           return '1ière Salle'
         }
-        else if (lvl <= 3) {
+        if (lvl == 3) {
 
           return 'Atlas'
         }
-        else if (lvl <= 4) {
+        if (lvl == 4) {
 
           return 'Pbody'
         }
-        else if (lvl <= 5) {
+        if (lvl == 5) {
 
           return 'Portal Gun'
         }
-        else if (lvl <= 6) {
+        if (lvl == 6) {
 
           return 'Portail Bleu'
         }
 
-        else if (lvl <= 7) {
+        if (lvl == 7) {
 
           return 'Portail Orange'
         }
 
-        else if (lvl <= 9) {
+        if (lvl == 8 || lvl == 9) {
 
           return 'Aperture science'
         }
 
-        else if (lvl <= 10) {
+        if (lvl == 10) {
 
           return '//Error//'
         }
 
-        else if (lvl <= 12) {
+        if (lvl == 11 || lvl == 12) {
 
           return 'Compagnion Cube'
         }
 
-        else if (lvl <= 13) {
+        if (lvl == 13) {
 
           return 'Laser'
         }
 
-        else if (lvl <= 14) {
+        if (lvl == 14) {
 
           return 'Cube'
         }
 
-        else if (lvl <= 15) {
+        if (lvl == 15) {
 
           return 'Boule'
         }
 
-        else if (lvl <= 16) {
+        if (lvl == 16) {
 
           return 'Gel'
         }
 
-        else if (lvl <= 17) {
+        if (lvl == 17) {
 
           return 'Tourelle'
         }
 
-        else if (lvl <= 18) {
+        if (lvl == 18) {
 
           return 'Eau toxique'
         }
 
-        else if (lvl <= 19) {
+        if (lvl == 19) {
 
           return 'Plateforme'
         }
 
-        else if (lvl <= 21) {
+        if (lvl == 20 || lvl == 21) {
 
           return 'Wheatley'
         }
 
-        else if (lvl <= 24) {
+        if (lvl >= 22 && lvl <= 25) {
 
           return 'Glados'
+
         }
 
-        else if (lvl <= 49) {
+        if (lvl >= 26 && lvl <= 49) {
 
           return 'The Cake is a lie'
         }
 
-        else if (lvl >= 50) {
+        if (lvl >= 50) {
 
           return 'Sortie Du centre'
+
         }
 
 
@@ -213,24 +218,42 @@ exports.run = (client, message, args, colors) => {
         } else {
 
 
+          const Axios = require('axios')
 
-          message.channel.send({
-            embed: {
-              color: colors.info,
-              author: {
-                name: client.user.username,
-                icon_url: client.user.avatarURL()
-              },
-              title: `**Info**`,
-              description: `Vous avez bien changer le background de la commande *exp`,
-              timestamp: new Date(),
-              footer: {
-                icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`
-              }
+          async function downloadImage(url, filepath) {
+            const response = await Axios({
+              url,
+              method: 'GET',
+              responseType: 'stream'
+            });
+            return new Promise((resolve, reject) => {
+              response.data.pipe(fs.createWriteStream(filepath))
+                .on('error', reject)
+                .once('close', () => resolve(filepath));
+            });
+          }
+
+          downloadImage(args[1], `../image/exp/${message.author.id}.png`)
+
+          db.set(message.author.id, [`./image/exp/${message.author.id}.png`, exp, lvl, lvlup]);
+
+
+          const embed = {
+            color: colors.info,
+            author: {
+              name: client.user.username,
+              icon_url: client.user.avatarURL()
+            },
+            title: `**Info**`,
+            description: `Vous avez bien changer le background de la commande *exp`,
+            timestamp: new Date(),
+            footer: {
+              icon_url: client.user.avatarURL(),
+              text: `©ToniPortal`
             }
-          })
+          }
 
+          message.channel.send({ embeds: [embed] })
 
         }
 
@@ -245,44 +268,44 @@ exports.run = (client, message, args, colors) => {
         
                   numeroadmin = 666
         
-                } else if (message.guild.member(client.user).permissions.has('MANAGE_GUILD')) {
+                } if (message.guild.member(client.user).permissions.has('MANAGE_GUILD')) {
         
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('MANAGE_ROLES')) {
+                } if (message.guild.member(client.user).permissions.has('MANAGE_ROLES')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('BAN_MEMBERS')) {
+                } if (message.guild.member(client.user).permissions.has('BAN_MEMBERS')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('KICK_MEMBERS')) {
+                } if (message.guild.member(client.user).permissions.has('KICK_MEMBERS')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('MUTE_MEMBERS')) {
+                } if (message.guild.member(client.user).permissions.has('MUTE_MEMBERS')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('MANAGE_MESSAGES')) {
+                } if (message.guild.member(client.user).permissions.has('MANAGE_MESSAGES')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('READ_MESSAGE_HISTORY')) {
+                } if (message.guild.member(client.user).permissions.has('READ_MESSAGE_HISTORY')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('SEND_TTS_MESSAGES')) {
+                } if (message.guild.member(client.user).permissions.has('SEND_TTS_MESSAGES')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('SEND_MESSAGES')) {
+                } if (message.guild.member(client.user).permissions.has('SEND_MESSAGES')) {
         
                   numeroadmin--
         
-                } else if (message.guild.member(client.user).permissions.has('VIEW_CHANNEL')) {
+                } if (message.guild.member(client.user).permissions.has('VIEW_CHANNEL')) {
         
                   numeroadmin--
         
@@ -338,26 +361,17 @@ exports.run = (client, message, args, colors) => {
               .setBackground("IMAGE", backgroudimage);
 
 
+            const { Client, Intents, MessageAttachment } = require('discord.js');
+            const Canvas = require('canvas');
 
             rank.build()
               .then(data => {
                 (async () => {
-                  const attachment = new Discord.MessageAttachment(data, "RankCard.png");
+                  const attachment = new MessageAttachment(data, "RankCard.png");
 
-                  const { MessageAttachment } = require('discord.js');
-                  // ...
-                  const file = new MessageAttachment(`RankCard.png`);
 
-                  const exampleEmbed = {
-                    title: `Voici votre exp actuelle :`,
-                    color: colors.defaut,
-                    timestamp: new Date(),
-                    image: {
-                      url: `attachment://RankCard.png`,
-                    },
-                  };
+                  message.channel.send({ files: [attachment] });
 
-                  await message.channel.send({ embeds: [exampleEmbed], files: [file] }).catch(console.error);
                   response.delete();
                 })();
               })
@@ -378,24 +392,24 @@ exports.run = (client, message, args, colors) => {
     } else {
 
       console.error(err)
-      /*
-            message.channel.send({
-              embed: {
-                color: colors.error,
-                author: {
-                  name: client.user.username,
-                  icon_url: client.user.avatarURL()
-                },
-                title: `**Error**`,
-                description: `Glados n'arrive pas a trouver votre dossier de sujet de test.\n${err}`,
-                timestamp: new Date(),
-                footer: {
-                  icon_url: client.user.avatarURL(),
-                  text: `©ToniPortal`
-                }
-              }
-            })
-      */
+      const embed = {
+        color: colors.error,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL()
+        },
+        title: `**Error**`,
+        description: `Glados n'arrive pas a trouver votre dossier de sujet de test.\n${err}`,
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL(),
+          text: `©ToniPortal`
+        }
+      }
+
+      message.channel.send({ embeds: [embed] })
+
+
     }
 
   })
@@ -405,5 +419,6 @@ exports.run = (client, message, args, colors) => {
 };
 
 exports.help = {
-  help: `Vous envoie votre image avec vos paramêtre pour vous afficher la barre d'expèrience que vous avez.\nVous pouvez changez votre image avec *exp i <lien d'image>`
+  usage: `<i <lien d'image>>`,
+  description: `Vous envoie votre image avec vos paramêtre pour vous afficher la barre d'expèrience que vous avez.\nVous pouvez aussi changer l'image avec l'usage donner juste au dessue !`
 };
