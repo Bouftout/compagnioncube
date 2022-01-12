@@ -18,9 +18,13 @@
 
   console.log(list)
 
+  const { MessageAttachment } = require('discord.js');
+// ...
+const file = new MessageAttachment('./image/help/2 octobre 2020.png');
 
-  message.author.send({
-    embed: { //envoie de l'image + de l'embed pour dire que on vous a envoyer un message en mp
+
+
+    const embed = {
       color: colors.defaut,
       author: {
         name: client.user.username,
@@ -33,50 +37,48 @@
         icon_url: client.user.avatarURL(),
         text: `©ToniPortal`
       }
+    }
+  
+
+  message.author.send({ embeds: [embed] })
+
+  const embedlist = {
+    color: colors.ok,
+    author: {
+        name: client.user.username,
+        icon_url: client.user.avatarURL()
     },
-    files: [{
-      attachment: './image/help/2 octobre 2020.png',
-      name: 'Commande du bot 28 avril.jpg'
-    }]
-  })
-    .catch(console.error);
-
-  message.author.send({
-    embed: {
-      color: colors.ok,
-      author: {
-        name: client.user.username,
-        icon_url: client.user.avatarURL()
-      },
-      title: `**Commande**`,
-      description: `${list}`,
-      timestamp: new Date(),
-      footer: {
+    title: `**LIST :**`,
+    description: `${list}`,
+    timestamp: new Date(),
+    footer: {
         icon_url: client.user.avatarURL(),
         text: `©ToniPortal`
-      }
     }
-  })
+}
+
+message.author.send({ embeds: [embedlist] })
 
 
 
-  message.channel.send({
-    embed: {
-      color: colors.ok,
-      author: {
-        name: client.user.username,
-        icon_url: client.user.avatarURL()
-      },
-      title: `**Info**`,
-      description: `*${message.author}* : Je vous ai envoyer un message en privé.\nAllez le voir :upside_down:`,
-      timestamp: new Date(),
-      footer: {
-        icon_url: client.user.avatarURL(),
-        text: `©ToniPortal`
-      }
+
+  const embedchannel = {
+    color: colors.ok,
+    author: {
+      name: client.user.username,
+      icon_url: client.user.avatarURL()
+    },
+    title: `**Info**`,
+    description: `*${message.author}* : Je vous ai envoyer un message en privé.\nAllez le voir :upside_down:`,
+    timestamp: new Date(),
+    footer: {
+      icon_url: client.user.avatarURL(),
+      text: `©ToniPortal`
     }
-  })
+  }
 
+
+message.channel.send({ embeds: [embedchannel] })
 
 
 };
