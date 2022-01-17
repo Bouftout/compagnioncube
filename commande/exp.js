@@ -265,6 +265,8 @@ exports.run = (client, message, args, colors) => {
                         }
                     }
 
+                    response.delete();
+
                     message.channel.send({ embeds: [embed] })
 
                 }
