@@ -4,7 +4,7 @@
     "description": "Le bot discord compagnion cube ; dev depuis 2017",
     "main": "index.js",
     "scripts": {
-        "test": "node index.js --ignore data",
+        "test": "node index.js --ignore *.json",
         "start": "pm2 start ./index.js --restart-delay 500"
     },
     "repository": {
@@ -36,10 +36,11 @@
         "@stdlib/string-uppercase": "^0.0.7",
         "canvacord": "^5.2.3",
         "canvas": "^2.8.0",
-        "discord.js": "^13.5.1",
+        "discord.js": "^13.6.0",
         "electus-db": "^5.0.1",
         "ffmpeg-static": "^4.4.0",
         "file-exists": "^5.0.1",
+        "jimp": "^0.16.1",
         "js-yaml": "^4.1.0",
         "morpionzerwyx": "^0.0.5",
         "mp3-duration": "^1.1.0",

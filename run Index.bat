@@ -1,5 +1,5 @@
 @ECHO OFF
 
-nodemon index.js --ignore data
+nodemon index.js --ignore *.json
 
 pause
