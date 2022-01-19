@@ -1,42 +1,42 @@
 un: {
-vie: 510,
-stat: DEF,
+vie: 2084,
+stat: ATK,
 morte: 0,
 poser: 0
 }
 deux: {
-vie: 8937,
+vie: 9144,
 stat: ATK,
 morte: 0,
 poser: 0
 }
 trois: {
-vie: 5106,
+vie: 5484,
 stat: DEF,
 morte: 0,
 poser: 0
 }
 quatre: {
-vie: 2667,
-stat: DEF,
+vie: 6887,
+stat: ATK,
 morte: 0,
 poser: 0
 }
 cinq: {
-vie: 6903,
-stat: DEF,
+vie: 7575,
+stat: ATK,
 morte: 0,
 poser: 0
 }
 six: {
-vie: 8518,
-stat: DEF,
+vie: 3691,
+stat: ATK,
 morte: 0,
 poser: 0
 }
 sept: {
-vie: 7802,
-stat: ATK,
+vie: 1848,
+stat: DEF,
 morte: 0,
 poser: 0
 }

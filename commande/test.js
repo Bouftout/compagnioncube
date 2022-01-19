@@ -1,22 +1,19 @@
-exports.run = async(client, message, args, colors) => {
-
-    var pinch = require('pinch');
-
+exports.run = (client, message, args, colors) => {
 
     var data = {
         users: [{
-                name: 'John'
-            },
-            {
-                name: 'Kenneth',
-            },
-            {
-                name: 'Brent'
-            }
+            name: 'John'
+        },
+        {
+            num: 2,
+            num1: 5
+        }
         ]
     };
 
-    data = JSON.stringify(data);
+    const dataapres = JSON.stringify(data);
 
-    console.log(pinch(data, 'users[0].name', 'Juan'))
+
+    console.log(...dataapres)
+
 }

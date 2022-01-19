@@ -18,14 +18,14 @@ exports.run = (client, message, args) => {
     response.push(":raised_hand:");
     response.push(":v:");
 
-    var responsenum = Math.floor((Math.random()) * 3)
+    let responsenum = Math.floor((Math.random()) * 3)
     var botJanken = response[responsenum];
 
     var msgArray = [];
     msgArray.push(`${message.author.username}` + rps + '\n     **VS**\nGlados: ' + botJanken);
 
     if (botJanken == rps) {
-      msgArray.push("```fix\nDraw!```");
+      msgArray.push("```fix\négalité!```");
     }
     else if (rps == ":right_facing_fist:" && botJanken == ":v:" ||
       rps == ":raised_hand:" && botJanken == ":right_facing_fist:" ||
