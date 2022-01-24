@@ -25,7 +25,7 @@ async function login() {
 
 };
 
-client.on("ready", (function() {
+client.on("ready", (function () {
 
     let upTime1 = Math.round(process.uptime());
     const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024
@@ -139,11 +139,13 @@ client.on("messageCreate", message => {
         } else {
             if (await db.get(`${message.author.id}.exp`) == await db.get(`${message.author.id}.lvlup`)) {
                 //Montage de niveau
-                let lvlupnv = await db.get(`${message.author.id}.lvlup`) * 2;
+                let lvlupnv = await db.get(`${message.author.id}.lvlup`) / 2;
 
-                await db.set(message.author.id, { image: (await db.get(`${message.author.id}.image`)), lvl: 0, exp: 1, lvlup: lvlupnv, money: (await db.get(`${message.author.id}.money`)) }); //set de la base de données
 
-                console.log(await db.get(`${message.author.id}.exp`));
+                await db.add(`${message.author.id}.exp`, -(await db.get(`${message.author.id}.lvlup`)));
+                await db.add(`${message.author.id}.lvl`, 1);
+                await db.add(`${message.author.id}.lvlup`, lvlupnv);
+                
             } else {
 
                 await db.add(`${message.author.id}.exp`, 1);
@@ -328,22 +330,22 @@ client.on("messageCreate", message => {
                                     help
                                 } = require(`./commande/${command}`);
 
-                                message.channel.send({
-                                    embed: {
-                                        color: 0xff80ff,
-                                        author: {
-                                            name: client.user.username,
-                                            icon_url: client.user.avatarURL()
-                                        },
-                                        title: `Help !`,
-                                        description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
-                                        timestamp: new Date(),
-                                        footer: {
-                                            icon_url: client.user.avatarURL(),
-                                            text: `©ToniPortal`
-                                        }
+                                const helpembed = {
+                                    color: 0xff80ff,
+                                    author: {
+                                        name: client.user.username,
+                                        icon_url: client.user.avatarURL()
+                                    },
+                                    title: `Help !`,
+                                    description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
+                                    timestamp: new Date(),
+                                    footer: {
+                                        icon_url: client.user.avatarURL(),
+                                        text: `©ToniPortal`
                                     }
-                                })
+                                }
+                            
+                                message.channel.send({ embeds: [helpembed] })
 
                             }
 
@@ -362,7 +364,7 @@ client.on("messageCreate", message => {
 
                                 var stream = fs.createWriteStream(`./data/colors/${message.author.id}.yml`);
 
-                                stream.once('open', (function(fd) {
+                                stream.once('open', (function (fd) {
                                     stream.write(`ok: 0x00FF00\n`);
                                     stream.write(`error: 0xFF0000\n`);
                                     stream.write(`info: 0x778899\n`);

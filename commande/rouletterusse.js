@@ -1,191 +1,148 @@
 exports.run = (client, message, args, colors) => {
 
-  if (!message.guild.member(client.user).hasPermission('KICK_MEMBERS')) return message.reply('Je n\'ai pas le pouvoir de faire cette commande```diff\n+KICK_MEMBERS```').catch(console.error);
-  let member = message.mentions.members.first();
 
+  let nvdeballemax = 6;
 
+    //score = combien de balle on peut mettre
+    //chance = le nombre de balle
+    roulette();
 
-  const arg = message.content.split(/\s+/g).slice(1);
-  console.log(arg)
-  if (arg[1] == 'help' || arg[1] == '' || arg == '') {
+    function roulette() {
+      if (args[0] == nvdeballemax) {
+        message.delete()
 
-    message.delete()
-
-    message.channel.send({
-      embed: {
-        color: 3447003,
-        author: {
-          name: client.user.username,
-          icon_url: client.user.avatarURL()
-        },
-        title: `Help !`,
-        description: `Exemple: *rouletterusse 6(Combien de balle on peut mettre) 1(Le nombre de balle dans le pistolet) 1(la difficulté) @user\nAide sur la difficulté 1=Rien 2=kick(seulement les admin) 3=Ban(seulement les admin)`,
-        timestamp: new Date(),
-        footer: {
-          icon_url: client.user.avatarURL(),
-          text: `©ToniPortal`
-        }
-      }
-    }).then(response => { response.delete(20 * 1000) });
-  } else {
-
-    if (!member) // si tu n'a désigné personne
-    {
-      message.channel.send({
-        embed: {
-          color: 3447003,
+        const perdre100 = {
+          color: colors.ok,
           author: {
             name: client.user.username,
             icon_url: client.user.avatarURL()
           },
-          title: `! ?? !`,
-          description: `Veuillez sélectionner une personne`,
+          title: `**Error !**`,
+          description: `Vous ne pouver lancer cette partie car le nombre de chance de perdre est de 100%`,
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL(),
             text: `©ToniPortal`
           }
         }
-      }).then(response => { response.delete(3 * 1000) });
 
+        message.channel.send({ embeds: [perdre100] })
 
+      } else {
 
-    } else {
+        if (!args[0]) {
 
-
-      //score = combien de balle on peut mettre
-      //chance = le nombre de balle
-      roulette();
-      function roulette() {
-        if (arg[1] == arg[2]) {
           message.delete()
+          const errorcomposantmanquant = {
+            color: colors.error,
+            author: {
+              name: client.user.username,
+              icon_url: client.user.avatarURL()
+            },
+            title: `Erreur !`,
+            description: `Il vous manque un des "composant" pour démarrer la partie`,
+            timestamp: new Date(),
+            footer: {
+              icon_url: client.user.avatarURL(),
+              text: `©ToniPortal`
+            }
+          }
+  
+          message.channel.send({ embeds: [errorcomposantmanquant] })
 
-          message.channel.send({
-            embed: {
-              color: 3447003,
+        } else {
+
+          if (!args[1]) {
+
+            args[1] = 1
+
+            roulette();
+
+          } else {
+
+            function gagneOuPas(score, chance) {
+              return Math.random() * (score) < (chance)
+            }
+
+
+            const rouletterusseembed = {
+              color: colors.ok,
               author: {
                 name: client.user.username,
                 icon_url: client.user.avatarURL()
               },
-              title: `Erreur !`,
-              description: `Vous ne pouver lancer cette partie car le nombre de chance de perdre est de 100%`,
+              title: `Roulette russe !`,
+              description: `${message.author.username} lance une roulette !`,
               timestamp: new Date(),
               footer: {
                 icon_url: client.user.avatarURL(),
                 text: `©ToniPortal`
               }
             }
-          }).then(response => { response.delete(3 * 1000) });
 
-        } else {
-          if (!arg[1] || !arg[2]) {
-            message.delete()
-            message.channel.send({
-              embed: {
-                color: 3447003,
-                author: {
-                  name: client.user.username,
-                  icon_url: client.user.avatarURL()
-                },
-                title: `Erreur !`,
-                description: `Il vous manque un des "composant" pour démarrer la partie`,
-                timestamp: new Date(),
-                footer: {
-                  icon_url: client.user.avatarURL(),
-                  text: `©ToniPortal`
-                }
-              }
-            }).then(response => { response.delete(3 * 1000) });
+            message.channel.send({ embeds: [rouletterusseembed] })
 
-          } else {
-            if (!arg[3]) {
+            setTimeout(function() { 
 
-              arg[3] = 1
+                  message.delete()
 
-              roulette();
+                  const sentence = gagneOuPas(args[0], nvdeballemax)
 
-            } else {
-              function gagneOuPas(score, chance) {
-                return Math.random() * (score) < (chance)
-              }
+                  console.log(sentence)
 
-              message.channel.send({
-                embed: {
-                  color: 3447003,
-                  author: {
-                    name: client.user.username,
-                    icon_url: client.user.avatarURL()
-                  },
-                  title: `Roulette russe !`,
-                  description: `${message.author.username} vous défie ;${member.user.username}\nAllez vous accepter ?\nTapez *oui pour accepter(vous avez 30 seconde)`,
-                  timestamp: new Date(),
-                  footer: {
-                    icon_url: client.user.avatarURL(),
-                    text: `©ToniPortal`
-                  }
-                }
-              }).then(() => {
-                message.channel.awaitMessages(response => response.content === '*oui', {
-                  max: 1,
-                  time: 30 * 1000,
-                  errors: ['time'],
-                })
-                  .then((collected) => {
-                    message.delete()
+                  if (sentence == true) {
 
-                    const sentence = gagneOuPas(arg[1], arg[2])
-                    console.log(sentence)
-
-                    if (sentence == true) {
-                      message.channel.send({
-                        embed: {
-                          color: 3447003,
-                          author: {
-                            name: client.user.username,
-                            icon_url: client.user.avatarURL()
-                          },
-                          title: `La sentense va vous être attribué : ${member.user.username}`,
-                          description: `Vous avez **gagné**\nAucune sentense va vous être attribué`,
-                          timestamp: new Date(),
-                          footer: {
-                            icon_url: client.user.avatarURL(),
-                            text: `©ToniPortal`
-                          }
-                        }
-
-                      })
-                    } else if (sentence == false) {
-
-                      message.channel.send({
-                        embed: {
-                          color: 3447003,
-                          author: {
-                            name: client.user.username,
-                            icon_url: client.user.avatarURL()
-                          },
-                          title: `La sentense va vous être attribué : ${member.user.username}`,
-                          description: `Vous avez perdue,auresement c'était sans gage`,
-                          timestamp: new Date(),
-                          footer: {
-                            icon_url: client.user.avatarURL(),
-                            text: `©ToniPortal`
-                          }
-                        }
-
-                      })
-
+                    const gg = {
+                      color: colors.ok,
+                      author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL()
+                      },
+                      title: `La sentense va vous être attribué : ${message.author.username}`,
+                      description: `Vous avez **gagné**\nAucune sentense va vous être attribué`,
+                      timestamp: new Date(),
+                      footer: {
+                        icon_url: client.user.avatarURL(),
+                        text: `©ToniPortal`
+                      }
                     }
 
-                  })
+                    message.channel.send({ embeds: [gg] })
 
-              })
+                  } else if (sentence == false) {
+                    const perdu = {
+                      color: colors.ok,
+                      author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL()
+                      },
+                      title: `La sentense va vous être attribué : ${message.author.username}`,
+                      description: `Vous avez perdue,auresement c'était sans gage`,
+                      timestamp: new Date(),
+                      footer: {
+                        icon_url: client.user.avatarURL(),
+                        text: `©ToniPortal`
+                      }
+                    }
 
-            }
+                    message.channel.send({ embeds: [perdu] })
+
+                  }
+
+                }, 500);
+
           }
         }
       }
     }
+  
 
-  }
+
 
 } //fin commande
+
+exports.help = {
+  usage: `<nombre de balle dans le revolver> <difficulté>`,
+  description: `Une bonne petite roulette russe\nAide sur la difficulté 1=Rien 2=kick(seulement les admin) 3=Ban(seulement les admin)`
+};
+
