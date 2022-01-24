@@ -1,7 +1,9 @@
 
 exports.run = (client, message, args, colors) => {
 
-  var getJSON = require('get-json')
+  // https://www.npmjs.com/package/@albion-data/client
+  
+
 
   if (!args[1]) {
 
