@@ -111,6 +111,16 @@ client.on("ready", (function () {
     */
 
 
+    const { Database } = require("quickmongo");
+
+    const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
+
+    db.on("ready", () => {
+        console.log("Connected to the database");
+    });
+
+    db.connect();
+
 }));
 
 
@@ -118,15 +128,9 @@ client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
     const { Database } = require("quickmongo");
-
     const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
 
-    db.on("ready", () => {
-        console.log("Connected to the database");
-        doStuff();
-    });
-
-    db.connect();
+    doStuff();
 
     async function doStuff() {
         // Setting an object in the database:
@@ -145,7 +149,7 @@ client.on("messageCreate", message => {
                 await db.add(`${message.author.id}.exp`, -(await db.get(`${message.author.id}.lvlup`)));
                 await db.add(`${message.author.id}.lvl`, 1);
                 await db.add(`${message.author.id}.lvlup`, lvlupnv);
-                
+
             } else {
 
                 await db.add(`${message.author.id}.exp`, 1);
@@ -155,35 +159,6 @@ client.on("messageCreate", message => {
         }
 
     }
-
-    /*
-      //Gestion de l'exp
-      //NPM : https://www.npmjs.com/package/electus-db
-
-      if (db.has(message.author.id) == true) {
-
-        let ajout = (db.get(message.author.id)[1]) + 1;
-
-        if (db.get(message.author.id)[1] == db.get(message.author.id)[3]) {
-
-          let lvlup = db.get(message.author.id)[3] + Math.round(db.get(message.author.id)[3] / 2)
-
-          let lvl = db.get(message.author.id)[2] + 1
-          db.set(message.author.id, [db.get(message.author.id)[0], 0, lvl, lvlup]);
-
-        } else {
-
-          db.set(message.author.id, [db.get(message.author.id)[0], ajout, db.get(message.author.id)[2], db.get(message.author.id)[3]]);
-
-        }
-      } else {
-
-
-        db.set(message.author.id, ["./image/exp/wallpaper.png", 0, 1, 50]);
-
-      }
-
-    */
 
     /*
     // code pour merry :
@@ -242,6 +217,10 @@ client.on("messageCreate", message => {
       }
 
       */
+
+});
+
+client.on("messageCreate", message => {
 
     if (message.mentions.members.has(client.user.id)) {
         if (message.content == "merci" || "Merci" || "MeRcI" || "merci beaucoup") {
@@ -344,7 +323,7 @@ client.on("messageCreate", message => {
                                         text: `©ToniPortal`
                                     }
                                 }
-                            
+
                                 message.channel.send({ embeds: [helpembed] })
 
                             }
