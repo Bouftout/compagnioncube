@@ -25,7 +25,7 @@ async function login() {
 
 };
 
-client.on("ready", (function () {
+client.on("ready", (function() {
 
     let upTime1 = Math.round(process.uptime());
     const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024
@@ -111,15 +111,6 @@ client.on("ready", (function () {
     */
 
 
-    const { Database } = require("quickmongo");
-
-    const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
-
-    db.on("ready", () => {
-        console.log("Connected to the database");
-    });
-
-    db.connect();
 
 }));
 
@@ -130,14 +121,20 @@ client.on("messageCreate", message => {
     const { Database } = require("quickmongo");
     const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
 
-    doStuff();
+    db.connect();
+
+    db.on("ready", () => {
+        // console.log("Connected to the database");
+        doStuff();
+    });
+
 
     async function doStuff() {
         // Setting an object in the database:
-        console.log(await db.get(`${message.author.id}`))
+        // console.log(await db.get(`${message.author.id}`))
 
         if (db.has(`${message.author.id}`) == true) {
-            await db.set(message.author.id, { image: "./image/exp/wallpaper.png", lvl: 0, exp: 1, lvlup: 50, money: 500 }); //set de la base de données
+            await db.set(message.author.id, { image: 0, lvl: 1, exp: 1, lvlup: 50, money: 500 }); //set de la base de données
 
             console.log(await db.get(`${message.author.id}.exp`));
         } else {
@@ -262,18 +259,11 @@ client.on("messageCreate", message => {
             let profix = config.prefix
             const args = message.content.slice(profix.length).trim().split(/ +/g)
             const command = args.shift().toLowerCase()
-
             if (message.content.indexOf(profix) !== 0) return
 
             fileExists(`./commande/${command}.js`).then(exists => {
-
                 if (exists) {
-
                     let commandFile = require(`./commande/${command}.js`)
-
-
-
-
                     fileExists(`./data/colors/${message.author.id}.yml`).then(exists => {
 
                         if (exists) {
@@ -343,7 +333,7 @@ client.on("messageCreate", message => {
 
                                 var stream = fs.createWriteStream(`./data/colors/${message.author.id}.yml`);
 
-                                stream.once('open', (function (fd) {
+                                stream.once('open', (function(fd) {
                                     stream.write(`ok: 0x00FF00\n`);
                                     stream.write(`error: 0xFF0000\n`);
                                     stream.write(`info: 0x778899\n`);

@@ -4,199 +4,220 @@ exports.run = (client, message, args, colors) => {
         fs = require('fs'),
         { randomHex } = require("randomize-hex"),
         Discord = require("discord.js"),
-        canvacord = require("canvacord"),
-        Database = require("electus-db"),
-        db = new Database.Json();
+        canvacord = require("canvacord");
 
-    var colorsorgradient = "GRADIENT" // couleur fix ou gradient pour la barre de grade
+    const { Database } = require("quickmongo");
+    const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
 
-    message.delete() // delete
+    db.connect();
+
+    db.on("ready", () => {
+        dbstart();
+    });
 
 
-    canvacord.Canvas.registerFonts() // enregistrer les font du packet
+    async function dbstart() {
 
+        var img;
+        let exp = await db.get(`${message.author.id}.exp`) + 1
+        let lvlup = await db.get(`${message.author.id}.lvlup`)
+        let lvl = await db.get(`${message.author.id}.lvl`)
 
-    const embed = {
-        color: colors.defaut,
-        author: {
-            name: client.user.username,
-            icon_url: client.user.avatarURL()
-        },
-        title: `**Veuillez patientez**`,
-        description: "Votre cube est en train de chercher votre image attitrée",
-        timestamp: new Date(),
-        footer: {
-            icon_url: client.user.avatarURL(),
-            text: `©ToniPortal#8330`
+        if (db.get(`${message.author.id}.exp`) == 1) {
+
+        } else {
+            var img = `./image/exp/${message.author.id}.png`;
+
+            db.add(`${message.author.id}.image`, 1);
+
         }
-    }
-
-    message.channel.send({ embeds: [embed] }).then(response => {
-
-
-        var img = db.get(message.author.id)[0]
-        let exp = db.get(message.author.id)[1]
-        let lvlup = db.get(message.author.id)[3]
-        let lvl = db.get(message.author.id)[2]
-
-
-        if (db.has(message.author.id) == true) {
 
 
 
-            function colorlvl() {
-                if (lvl < 5) {
-                    var valeurcouleurlvl = "#ffffff"
-                    return valeurcouleurlvl
-                }
-                if (lvl >= 5) {
-                    var valeurcouleurlvl = "#fffff0"
-                    return valeurcouleurlvl
-                }
+        var colorsorgradient = "GRADIENT" // couleur fix ou gradient pour la barre de grade
+
+        message.delete() // delete
+
+
+        canvacord.Canvas.registerFonts() // enregistrer les font du packet
+
+
+        const embed = {
+            color: colors.defaut,
+            author: {
+                name: client.user.username,
+                icon_url: client.user.avatarURL()
+            },
+            title: `**Veuillez patientez**`,
+            description: "Votre cube est en train de chercher votre image attitrée",
+            timestamp: new Date(),
+            footer: {
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal#8330`
             }
+        }
 
-            function rankname() {
+        message.channel.send({ embeds: [embed] }).then(response => {
 
 
 
-                if (lvl == 1) {
 
-                    return 'Chell'
-                }
-                if (lvl == 2) {
 
-                    return '1ière Salle'
-                }
-                if (lvl == 3) {
+            if (db.has(`${message.author.id}`) != true) {
 
-                    return 'Atlas'
-                }
-                if (lvl == 4) {
 
-                    return 'Pbody'
-                }
-                if (lvl == 5) {
 
-                    return 'Portal Gun'
-                }
-                if (lvl == 6) {
-
-                    return 'Portail Bleu'
+                function colorlvl() {
+                    if (lvl < 5) {
+                        var valeurcouleurlvl = "#ffffff"
+                        return valeurcouleurlvl
+                    }
+                    if (lvl >= 5) {
+                        var valeurcouleurlvl = "#fffff0"
+                        return valeurcouleurlvl
+                    }
                 }
 
-                if (lvl == 7) {
+                function rankname() {
 
-                    return 'Portail Orange'
+
+
+                    if (lvl == 1) {
+
+                        return 'Chell'
+                    }
+                    if (lvl == 2) {
+
+                        return '1ière Salle'
+                    }
+                    if (lvl == 3) {
+
+                        return 'Atlas'
+                    }
+                    if (lvl == 4) {
+
+                        return 'Pbody'
+                    }
+                    if (lvl == 5) {
+
+                        return 'Portal Gun'
+                    }
+                    if (lvl == 6) {
+
+                        return 'Portail Bleu'
+                    }
+
+                    if (lvl == 7) {
+
+                        return 'Portail Orange'
+                    }
+
+                    if (lvl == 8 || lvl == 9) {
+
+                        return 'Aperture science'
+                    }
+
+                    if (lvl == 10) {
+
+                        return '//Error//'
+                    }
+
+                    if (lvl == 11 || lvl == 12) {
+
+                        return 'Compagnion Cube'
+                    }
+
+                    if (lvl == 13) {
+
+                        return 'Laser'
+                    }
+
+                    if (lvl == 14) {
+
+                        return 'Cube'
+                    }
+
+                    if (lvl == 15) {
+
+                        return 'Boule'
+                    }
+
+                    if (lvl == 16) {
+
+                        return 'Gel'
+                    }
+
+                    if (lvl == 17) {
+
+                        return 'Tourelle'
+                    }
+
+                    if (lvl == 18) {
+
+                        return 'Eau toxique'
+                    }
+
+                    if (lvl == 19) {
+
+                        return 'Plateforme'
+                    }
+
+                    if (lvl == 20 || lvl == 21) {
+
+                        return 'Wheatley'
+                    }
+
+                    if (lvl >= 22 && lvl <= 25) {
+
+                        return 'Glados'
+
+                    }
+
+                    if (lvl >= 26 && lvl <= 49) {
+
+                        return 'The Cake is a lie'
+                    }
+
+                    if (lvl >= 50) {
+
+                        return 'Sortie Du centre'
+
+                    }
+
+
+
+
+                };
+
+
+
+
+
+
+                function randomcolor() {
+                    try {
+
+
+                        return randomHex();
+
+                    } catch (err) {
+
+
+                        return '#DCDCDC'
+
+                    }
+
+
                 }
 
-                if (lvl == 8 || lvl == 9) {
-
-                    return 'Aperture science'
-                }
-
-                if (lvl == 10) {
-
-                    return '//Error//'
-                }
-
-                if (lvl == 11 || lvl == 12) {
-
-                    return 'Compagnion Cube'
-                }
-
-                if (lvl == 13) {
-
-                    return 'Laser'
-                }
-
-                if (lvl == 14) {
-
-                    return 'Cube'
-                }
-
-                if (lvl == 15) {
-
-                    return 'Boule'
-                }
-
-                if (lvl == 16) {
-
-                    return 'Gel'
-                }
-
-                if (lvl == 17) {
-
-                    return 'Tourelle'
-                }
-
-                if (lvl == 18) {
-
-                    return 'Eau toxique'
-                }
-
-                if (lvl == 19) {
-
-                    return 'Plateforme'
-                }
-
-                if (lvl == 20 || lvl == 21) {
-
-                    return 'Wheatley'
-                }
-
-                if (lvl >= 22 && lvl <= 25) {
-
-                    return 'Glados'
-
-                }
-
-                if (lvl >= 26 && lvl <= 49) {
-
-                    return 'The Cake is a lie'
-                }
-
-                if (lvl >= 50) {
-
-                    return 'Sortie Du centre'
-
-                }
+                if (args[0] == "i" || args[0] == "image") {
 
 
 
 
-            };
+                    if (!args[1]) {
 
-
-
-
-
-
-            function randomcolor() {
-                try {
-
-
-                    return randomHex();
-
-                } catch (err) {
-
-
-                    return '#DCDCDC'
-
-                }
-
-
-            }
-
-            if (args[0] == "i" || args[0] == "image") {
-
-
-
-
-                if (!args[1]) {
-
-
-                    message.channel.send({
-                        embed: {
+                        const embedargs = {
                             color: colors.error,
                             author: {
                                 name: client.user.username,
@@ -210,74 +231,78 @@ exports.run = (client, message, args, colors) => {
                                 text: `©ToniPortal`
                             }
                         }
-                    })
 
-                } else {
-
-
-
-                    var Jimp = require('jimp'); // https://www.npmjs.com/package/jimp
-
-                    //Utulisation de Jimp pour download l'image puis la crop si on met rien a la fin(crop au milieu)
-
-                    // `./image/exp/${message.author.id}.png`;
-                    if (!args[3]) {
-                        args[3] = 0
-                    }
-                    if (args[3] != 0) {
-
-
-                        Jimp.read(args[1], (err, lenna) => {
-                            if (err) throw err;
-                            lenna
-                                .resize(934, 282, Jimp.RESIZE_HERMITE) // resize
-                                .quality(100) // set JPEG quality
-                                .write(`./image/exp/${message.author.id}.png`); // save
-
-                            db.set(message.author.id, [`./image/exp/${message.author.id}.png`, exp, lvl, lvlup]);
-                        });
+                        message.channel.send({ embeds: [embedargs] })
 
                     } else {
 
 
-                        Jimp.read(args[1], (err, lenna) => {
-                            if (err) throw err;
-                            lenna
-                                .crop(467, 141, 934, 282) // crop
-                                .quality(100) // set JPEG quality
-                                .write(`./image/exp/${message.author.id}.png`); // save
-                        });
 
 
-                    }
-                    const embed = {
-                        color: colors.info,
-                        author: {
-                            name: client.user.username,
-                            icon_url: client.user.avatarURL()
-                        },
-                        title: `**Info**`,
-                        description: `Vous avez bien changer le background de la commande *exp`,
-                        timestamp: new Date(),
-                        footer: {
-                            icon_url: client.user.avatarURL(),
-                            text: `©ToniPortal`
+                        var Jimp = require('jimp'); // https://www.npmjs.com/package/jimp
+
+                        //Utulisation de Jimp pour download l'image puis la crop si on met rien a la fin(crop au milieu)
+
+                        // `./image/exp/${message.author.id}.png`;
+                        if (!args[3]) {
+                            args[3] = 0
                         }
+                        if (args[3] != 0) {
+
+
+                            Jimp.read(args[1], (err, lenna) => {
+                                if (err) throw err;
+                                lenna
+                                    .resize(934, 282, Jimp.RESIZE_HERMITE) // resize
+                                    .quality(100) // set JPEG quality
+                                    .write(`./image/exp/${message.author.id}.png`); // save
+
+                                db.set(message.author.id, [`./image/exp/${message.author.id}.png`, exp, lvl, lvlup]);
+                            });
+
+
+                        } else {
+
+
+                            Jimp.read(args[1], (err, lenna) => {
+                                if (err) throw err;
+                                lenna
+                                    .crop(467, 141, 934, 282) // crop
+                                    .quality(100) // set JPEG quality
+                                    .write(`./image/exp/${message.author.id}.png`); // save
+                            });
+
+
+                        }
+
+                        const embed = {
+                            color: colors.info,
+                            author: {
+                                name: client.user.username,
+                                icon_url: client.user.avatarURL()
+                            },
+                            title: `**Info**`,
+                            description: `Vous avez bien changer le background de la commande *exp`,
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: client.user.avatarURL(),
+                                text: `©ToniPortal`
+                            }
+                        }
+
+                        response.delete();
+
+                        message.channel.send({ embeds: [embed] })
+
                     }
 
-                    response.delete();
-
-                    message.channel.send({ embeds: [embed] })
-
-                }
-
-            } else {
+                } else {
 
 
-                //numéro d'admin : pour définir ton numéro de permission
+                    //numéro d'admin : pour définir ton numéro de permission
 
-                var numeroadmin = 11;
-                /*
+                    var numeroadmin = 11;
+                    /*
                         if (message.guild.member(client.user).permissions.has('ADMINISTRATOR')) {
         
                           numeroadmin = 666
@@ -332,98 +357,98 @@ exports.run = (client, message, args, colors) => {
                         */
 
 
-                var backgroudimage = img
+                    var backgroudimage = img
 
-                var convert = require('color-convert');
-
-
-                const ColorThief = require('@agencyanalytics/colorthief');
-
-                ColorThief.getPalette(backgroudimage, 5)
-                    .then(palette => {
-
-                        var valecol0 = ('#' + convert.rgb.hex(palette[0]))
-                        var valecol1 = ('#' + convert.rgb.hex(palette[1]))
-                        var valecol2 = ('#' + convert.rgb.hex(palette[2]))
-                        var valecol3 = ('#' + convert.rgb.hex(palette[3]))
-                        var valecol4 = ('#' + convert.rgb.hex(palette[4]))
-
-                        var strr = `${valecol0} ${valecol1} ${valecol2} ${valecol3} ${valecol4}`;
-                        var colorf = strr.split(" ")
+                    var convert = require('color-convert');
 
 
+                    const ColorThief = require('@agencyanalytics/colorthief');
+
+                    ColorThief.getPalette(backgroudimage, 5)
+                        .then(palette => {
+
+                            var valecol0 = ('#' + convert.rgb.hex(palette[0]))
+                            var valecol1 = ('#' + convert.rgb.hex(palette[1]))
+                            var valecol2 = ('#' + convert.rgb.hex(palette[2]))
+                            var valecol3 = ('#' + convert.rgb.hex(palette[3]))
+                            var valecol4 = ('#' + convert.rgb.hex(palette[4]))
+
+                            var strr = `${valecol0} ${valecol1} ${valecol2} ${valecol3} ${valecol4}`;
+                            var colorf = strr.split(" ")
 
 
-                        const rank = new canvacord.Rank()
-                            .setAvatar(message.author.displayAvatarURL({ dynamic: false, format: 'png' }))
-                            .setCurrentXP(exp)
-                            .setRequiredXP(lvlup)
-                            .setStatus("dnd")
-                            .setProgressBar(colorf, colorsorgradient)
-                            .setUsername(message.author.username)
-                            .setRank(numeroadmin, rankname())
-                            .setRankColor(colorlvl(), randomcolor())
-                            .setDiscriminator(message.author.discriminator)
-                            .setLevel(lvl, "Level:")
-                            .setOverlay(valecol0, 0.3, true)
-                            .setLevelColor(colorlvl(), 4)
-                            .setBackground("IMAGE", backgroudimage);
 
 
-                        const { Client, Intents, MessageAttachment } = require('discord.js');
-                        const Canvas = require('canvas');
+                            const rank = new canvacord.Rank()
+                                .setAvatar(message.author.displayAvatarURL({ dynamic: false, format: 'png' }))
+                                .setCurrentXP(exp)
+                                .setRequiredXP(lvlup)
+                                .setStatus("dnd")
+                                .setProgressBar(colorf, colorsorgradient)
+                                .setUsername(message.author.username)
+                                .setRank(numeroadmin, rankname())
+                                .setRankColor(colorlvl(), randomcolor())
+                                .setDiscriminator(message.author.discriminator)
+                                .setLevel(lvl, "Level:")
+                                .setOverlay(valecol0, 0.3, true)
+                                .setLevelColor(colorlvl(), 4)
+                                .setBackground("IMAGE", backgroudimage);
 
-                        rank.build()
-                            .then(data => {
-                                (async() => {
-                                    const attachment = new MessageAttachment(data, "RankCard.png");
+
+                            const { Client, Intents, MessageAttachment } = require('discord.js');
+                            const Canvas = require('canvas');
+
+                            rank.build()
+                                .then(data => {
+                                    (async() => {
+                                        const attachment = new MessageAttachment(data, "RankCard.png");
 
 
-                                    message.channel.send({ files: [attachment] });
+                                        message.channel.send({ files: [attachment] });
 
-                                    response.delete();
-                                })();
-                            })
-
-
+                                        response.delete();
+                                    })();
+                                })
 
 
 
 
 
-                    })
+
+
+                        })
 
 
 
-            }
-
-
-        } else {
-
-            console.error(err)
-            const embed = {
-                color: colors.error,
-                author: {
-                    name: client.user.username,
-                    icon_url: client.user.avatarURL()
-                },
-                title: `**Error**`,
-                description: `Glados n'arrive pas a trouver votre dossier de sujet de test.\n${err}`,
-                timestamp: new Date(),
-                footer: {
-                    icon_url: client.user.avatarURL(),
-                    text: `©ToniPortal`
                 }
+
+
+            } else {
+
+                console.error(err)
+                const embed = {
+                    color: colors.error,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL()
+                    },
+                    title: `**Error**`,
+                    description: `Glados n'arrive pas a trouver votre dossier de sujet de test.\n${err}`,
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: client.user.avatarURL(),
+                        text: `©ToniPortal`
+                    }
+                }
+
+                message.channel.send({ embeds: [embed] })
+
+
             }
 
-            message.channel.send({ embeds: [embed] })
+        })
 
-
-        }
-
-    })
-
-
+    } //fin function db
 
 };
 
