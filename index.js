@@ -25,7 +25,7 @@ async function login() {
 
 };
 
-client.on("ready", (function() {
+client.on("ready", (function () {
 
     let upTime1 = Math.round(process.uptime());
     const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024
@@ -128,10 +128,21 @@ client.on("messageCreate", message => {
         doStuff();
     });
 
+    const io = require('@pm2/io')
+
+    const expmetric = io.metric({
+        name: 'Exp',
+        type: 'counter',
+    })
+
+// https://pm2.io/docs//plus/guide/custom-metrics/ Metrics
+// https://pm2.io/docs/plus/guide/transaction-tracing/
 
     async function doStuff() {
         // Setting an object in the database:
         // console.log(await db.get(`${message.author.id}`))
+
+        expmetric.set(await db.get(`${message.author.id}.exp`))
 
         if (db.has(`${message.author.id}`) == true) {
             await db.set(message.author.id, { image: 0, lvl: 1, exp: 1, lvlup: 50, money: 500 }); //set de la base de données
@@ -156,64 +167,6 @@ client.on("messageCreate", message => {
         }
 
     }
-
-    /*
-    // code pour merry :
-      
-      let infinity = 1;
-
-      if (infinity == 1) {
-
-        infinity++
-    let temps = 1;
-        setInterval(() => {
-
-    const id = "255061967977447433"
-
-          const merry = client.users.fetch(id);
-          console.log(merry)
-          const TwitchApi = require("node-twitch").default;
-
-          const twitch = new TwitchApi({
-            client_id: "yftuibvijvniuhaba96bjoo5bagrxu",
-            client_secret: "odmdwail7dcfxoob4c3nw0rk2vnabf"
-          });
-
-          var stremeur = "merryeliot"
-
-          async function getStream() {
-            const streams = await twitch.getStreams({
-              channel: stremeur
-            });
-            console.log(streams);
-          }
-
-          var streame = getStream();
-
-          console.log(streame[0])
-
-
-          if (streame[0] == undefined) {
-
-            console.log(`${stremeur} n'est pas en stream`)
-
-           // merry.member.roles.remove(role);
-
-
-          } else {
-
-    console.log("En Stream")
-    temps = 10;
-            // Adding the role.
-          //  merry.member.roles.add(role);
-
-          }
-        
-
-        }, temps * 1000);
-      }
-
-      */
 
 });
 
@@ -264,101 +217,60 @@ client.on("messageCreate", message => {
             fileExists(`./commande/${command}.js`).then(exists => {
                 if (exists) {
                     let commandFile = require(`./commande/${command}.js`)
-                    fileExists(`./data/colors/${message.author.id}.yml`).then(exists => {
-
-                        if (exists) {
-
-                            // 0xff80ff == defaut
-
-                            // 0x00FF00 == vert (c'est bon c'est lancé)
-
-                            // 0xFF0000 == rouge (message d'erreur)
-
-                            // 0x778899 == gris (message d'info)
-
-                            // 0x008EE2 == Blue ancien defaut
-                            var colors = yaml.load(fs.readFileSync(`./data/colors/${message.author.id}.yml`, 'utf8'));
-
-
-                            console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
 
 
 
-                            //Ne pas oublier que comme sur la commande *ban on peut faire un async au export.run
 
-                            if (args[0] !== "help") { //Help sur les commande
+                    // 0xff80ff == defaut
+
+                    // 0x00FF00 == vert (c'est bon c'est lancé)
+
+                    // 0xFF0000 == rouge (message d'erreur)
+
+                    // 0x778899 == gris (message d'info)
+
+                    // 0x008EE2 == Blue ancien defaut
+                    var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
 
-                                commandFile.run(client, message, args, colors)
+                    console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
 
 
-                            } else if (args[0] == "help") {
+
+                    //Ne pas oublier que comme sur la commande *ban on peut faire un async au export.run
+
+                    if (args[0] !== "help") { //Help sur les commande
 
 
-                                const {
-                                    help
-                                } = require(`./commande/${command}`);
+                        commandFile.run(client, message, args, colors)
 
-                                const helpembed = {
-                                    color: 0xff80ff,
-                                    author: {
-                                        name: client.user.username,
-                                        icon_url: client.user.avatarURL()
-                                    },
-                                    title: `Help !`,
-                                    description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
-                                    timestamp: new Date(),
-                                    footer: {
-                                        icon_url: client.user.avatarURL(),
-                                        text: `©ToniPortal`
-                                    }
-                                }
 
-                                message.channel.send({ embeds: [helpembed] })
+                    } else if (args[0] == "help") {
 
+
+                        const {
+                            help
+                        } = require(`./commande/${command}`);
+
+                        const helpembed = {
+                            color: 0xff80ff,
+                            author: {
+                                name: client.user.username,
+                                icon_url: client.user.avatarURL()
+                            },
+                            title: `Help !`,
+                            description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: client.user.avatarURL(),
+                                text: `©ToniPortal`
                             }
-
-
-
-
-
-
-
-
-                        } else {
-
-                            fswritecolor()
-
-                            async function fswritecolor() {
-
-                                var stream = fs.createWriteStream(`./data/colors/${message.author.id}.yml`);
-
-                                stream.once('open', (function(fd) {
-                                    stream.write(`ok: 0x00FF00\n`);
-                                    stream.write(`error: 0xFF0000\n`);
-                                    stream.write(`info: 0x778899\n`);
-                                    stream.write(`defaut: 0xff80ff\n`);
-                                    stream.end();
-                                }))
-
-                                await commandFile.run(client, message, args, colors)
-
-                            };
-
-
-
-
-
-
-
-
-
-
                         }
 
+                        message.channel.send({ embeds: [helpembed] })
 
+                    }
 
-                    })
 
                 } else {
 

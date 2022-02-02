@@ -4,7 +4,7 @@
     "description": "Le bot discord compagnion cube ; dev depuis 2017",
     "main": "index.js",
     "scripts": {
-        "test": "node index.js --ignore *.json",
+        "test": "nodemon index.js --ignore *.json",
         "start": "pm2 start ./index.js --restart-delay 500"
     },
     "repository": {
@@ -32,6 +32,7 @@
     "dependencies": {
         "@agencyanalytics/colorthief": "^2.3.3",
         "@discordjs/voice": "^0.7.5",
+        "@pm2/io": "^5.0.0",
         "@pm2/pm2-version-check": "^1.0.4",
         "@stdlib/string-uppercase": "^0.0.7",
         "canvacord": "^5.2.3",
@@ -53,6 +54,7 @@
         "randomize-hex": "^1.0.7",
         "twdne.js": "^1.0.0",
         "ytdl-core": "^4.9.2",
+        "ytpl": "^2.2.3",
         "zerwyx-mp-simple": "^0.0.2"
     }
 }

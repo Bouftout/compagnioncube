@@ -1,6 +1,5 @@
-exports.run = (client, message, args, colors) => {
+exports.run = (client, message, _args, colors) => {
 
-        if (message.author.bot) return;
         const config = require("../config.json"); //config.json
 
         if (message.author.id == config.owner_id) {
@@ -39,6 +38,7 @@ exports.run = (client, message, args, colors) => {
             console.log("Cette commande n'est disponible que pour mon créateur");
             message.delete();
             message.channel.send("Cette commande n'est disponible que pour mon créateur");
+            
         }
 
 
