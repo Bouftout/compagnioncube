@@ -135,8 +135,8 @@ client.on("messageCreate", message => {
         type: 'counter',
     })
 
-// https://pm2.io/docs//plus/guide/custom-metrics/ Metrics
-// https://pm2.io/docs/plus/guide/transaction-tracing/
+    // https://pm2.io/docs//plus/guide/custom-metrics/ Metrics
+    // https://pm2.io/docs/plus/guide/transaction-tracing/
 
     async function doStuff() {
         // Setting an object in the database:
