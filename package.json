@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "nodemon index.js --ignore *.json",
-        "start": "pm2 start ./index.js --restart-delay 500"
+        "start": "node index.js",
+        "pm2": "pm2 start ./index.js --restart-delay 500"
     },
     "repository": {
         "type": "git",
@@ -55,6 +56,7 @@
         "quantize": "^1.0.2",
         "quickmongo": "^5.1.2",
         "randomize-hex": "^1.0.7",
+        "snakecord": "^1.0.9",
         "twdne.js": "^1.0.0",
         "ytdl-core": "^4.9.2",
         "ytpl": "^2.2.3",
