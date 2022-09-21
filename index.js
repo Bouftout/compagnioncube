@@ -5,7 +5,8 @@ const {
     Intents
 } = require('discord.js'),
     client = new Client({
-        intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_VOICE_STATES]
+        partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+        intents: ['DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILDS']
     }),
     fs = require("fs"),
     yaml = require('js-yaml'),
@@ -114,126 +115,97 @@ client.on("ready", (function () {
 
 }));
 
+const { Database } = require("quickmongo");
 
 client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
-    const { Database } = require("quickmongo");
-    const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
 
-    db.connect();
-
-    db.on("ready", () => {
-        // console.log("Connected to the database");
-        doStuff();
-    });
-
-    const io = require('@pm2/io')
-
-    const expmetric = io.metric({
-        name: 'Exp',
-        type: 'counter',
-    })
-
-// https://pm2.io/docs//plus/guide/custom-metrics/ Metrics
-// https://pm2.io/docs/plus/guide/transaction-tracing/
-
-    async function doStuff() {
-        // Setting an object in the database:
-        // console.log(await db.get(`${message.author.id}`))
-
-        expmetric.set(await db.get(`${message.author.id}.exp`))
-
-        if (db.has(`${message.author.id}`) == true) {
-            await db.set(message.author.id, { image: 0, lvl: 1, exp: 1, lvlup: 50, money: 500 }); //set de la base de données
-
-            console.log(await db.get(`${message.author.id}.exp`));
-        } else {
-            if (await db.get(`${message.author.id}.exp`) == await db.get(`${message.author.id}.lvlup`)) {
-                //Montage de niveau
-                let lvlupnv = await db.get(`${message.author.id}.lvlup`) / 2;
-
-
-                await db.add(`${message.author.id}.exp`, -(await db.get(`${message.author.id}.lvlup`)));
-                await db.add(`${message.author.id}.lvl`, 1);
-                await db.add(`${message.author.id}.lvlup`, lvlupnv);
-
-            } else {
-
-                await db.add(`${message.author.id}.exp`, 1);
+    /*
+        const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
+    
+        db.connect();
+    
+        db.on("ready", () => {
+            // console.log("Connected to the database");
+            doStuff();
+        });
+    
+        const io = require('@pm2/io')
+    
+        const expmetric = io.metric({
+            name: 'Exp',
+            type: 'counter',
+        })
+    
+        // https://pm2.io/docs//plus/guide/custom-metrics/ Metrics
+        // https://pm2.io/docs/plus/guide/transaction-tracing/
+    
+        async function doStuff() {
+            // Setting an object in the database:
+            // console.log(await db.get(`${message.author.id}`))
+    
+            expmetric.set(await db.get(`${message.author.id}.exp`))
+    
+            if (db.has(`${message.author.id}`) == true) {
+                await db.set(message.author.id, { image: 0, lvl: 1, exp: 1, lvlup: 50, money: 500 }); //set de la base de données
+    
                 console.log(await db.get(`${message.author.id}.exp`));
-
+            } else {
+                if (await db.get(`${message.author.id}.exp`) == await db.get(`${message.author.id}.lvlup`)) {
+                    //Montage de niveau
+                    let lvlupnv = await db.get(`${message.author.id}.lvlup`) / 2;
+    
+    
+                    await db.add(`${message.author.id}.exp`, -(await db.get(`${message.author.id}.lvlup`)));
+                    await db.add(`${message.author.id}.lvl`, 1);
+                    await db.add(`${message.author.id}.lvlup`, lvlupnv);
+    
+                } else {
+    
+                    await db.add(`${message.author.id}.exp`, 1);
+                    console.log(await db.get(`${message.author.id}.exp`));
+    
+                }
             }
+    
         }
-
-    }
+    
+        */
 
 });
 
-client.on("messageCreate", message => {
-
-    if (message.mentions.members.has(client.user.id)) {
-        if (message.content == "merci" || "Merci" || "MeRcI" || "merci beaucoup") {
-
-            message.channel.send("De rien");
-        };
-
-
-    }
+client.on('messageCreate', (message) => {
+    if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
 
 
 
 
-    if (message.channel.type == 'dm') {
-
-        message.channel.send({
-            embed: {
-                color: 0xFF0000,
-                author: {
-                    name: client.user.username,
-                    icon_url: client.user.avatarURL
-                },
-                title: `**ERROR 404**`,
-                description: "N'utulisez que les commande dans des serveurs !",
-                timestamp: new Date(),
-                footer: {
-                    icon_url: client.user.avatarURL,
-                    text: `©ToniPortal#4057`
-                }
-            }
-        });
-
-    } else {
 
 
-        try {
 
             let profix = config.prefix
-            const args = message.content.slice(profix.length).trim().split(/ +/g)
-            const command = args.shift().toLowerCase()
-            if (message.content.indexOf(profix) !== 0) return
+            const args = message.content.trim().split(/ +/g);
+            const command = args[0].slice((config.prefix).length).toLowerCase();
+
+           // console.log(`profix: ${config.prefix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
 
             fileExists(`./commande/${command}.js`).then(exists => {
+                console.log(exists)
                 if (exists) {
                     let commandFile = require(`./commande/${command}.js`)
 
 
-
-
                     // 0xff80ff == defaut
-
                     // 0x00FF00 == vert (c'est bon c'est lancé)
-
                     // 0xFF0000 == rouge (message d'erreur)
-
                     // 0x778899 == gris (message d'info)
-
                     // 0x008EE2 == Blue ancien defaut
+
                     var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
 
-                    console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
 
 
 
@@ -241,9 +213,38 @@ client.on("messageCreate", message => {
 
                     if (args[0] !== "help") { //Help sur les commande
 
+                        try {
+                            console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
+                            commandFile.run(client, message, args, colors)
+                        } catch (error) {
 
-                        commandFile.run(client, message, args, colors)
+                            console.error(error)
 
+                            const embed = {
+                                color: 0xFF0000,
+                                author: {
+                                    name: client.user.username,
+                                    icon_url: client.user.avatarURL()
+                                },
+                                title: `**ERROR**`,
+                                description: "Quel dommage,GLaDOS n'a pas reussie a lancer votre commande !",
+                                timestamp: new Date(),
+                                footer: {
+                                    icon_url: client.user.avatarURL(),
+                                    text: `©${client.user.tag}`
+                                }
+                            }
+
+                            message.channel.send({
+                                embeds: [embed]
+                            })
+
+
+                        } finally {
+
+                            console.log(`\n`);
+
+                        }
 
                     } else if (args[0] == "help") {
 
@@ -299,38 +300,6 @@ client.on("messageCreate", message => {
                 }
 
             })
-        } catch (err) {
-
-            message.channel.send({
-                embed: {
-                    color: 0xFF0000,
-                    author: {
-                        name: client.user.username,
-                        icon_url: client.user.avatarURL()
-                    },
-                    title: `**Désolé**`,
-                    description: "GLaDOS a détruit votre cube possédant la commande. ",
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: client.user.avatarURL(),
-                        text: `©${client.user.tag}`
-                    }
-                }
-            }).then((m) => m.delete({
-                timeout: 5 * 1000
-            }));
-
-            console.log(err)
-
-
-
-        }
-
-
-    } // fin else
-
-
-
 
 
 }); // fin client msg
