@@ -4,7 +4,12 @@ exports.run = (client, message, args, colors) => {
     const Discord = require("discord.js");
     const axios = require("axios");
 
+    message.channel.send("nike");
 
+    axios .get(`https://neko-love.xyz/api/v1/neko`)
+    .then(response => {
+        message.channel.send(`${response.data.url}`);
+    })
 
     if (args[0] == "help") {
         const exampleEmbed = new Discord.MessageEmbed()

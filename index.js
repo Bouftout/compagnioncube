@@ -116,10 +116,20 @@ client.on("ready", (function () {
 }));
 
 const { Database } = require("quickmongo");
+const { DiscordTogether } = require('discord-together');
 
 client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
+    client.discordTogether = new DiscordTogether(client);
+
+    if (message.content === '*start') {
+        if (message.member.voice.channel) {
+            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtube').then(async invite => {
+                return message.channel.send(`${invite.code}`);
+            });
+        };
+    };
 
     /*
         const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
@@ -130,13 +140,6 @@ client.on("messageCreate", message => {
             // console.log("Connected to the database");
             doStuff();
         });
-    
-        const io = require('@pm2/io')
-    
-        const expmetric = io.metric({
-            name: 'Exp',
-            type: 'counter',
-        })
     
         // https://pm2.io/docs//plus/guide/custom-metrics/ Metrics
         // https://pm2.io/docs/plus/guide/transaction-tracing/
@@ -179,103 +182,40 @@ client.on('messageCreate', (message) => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
 
+    let profix = config.prefix
+    const args = message.content.trim().split(/ +/g);
+    const command = args[0].slice((config.prefix).length).toLowerCase();
+
+    // console.log(`profix: ${config.prefix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
+
+    fileExists(`./commande/${command}.js`).then(exists => {
+        console.log(exists)
+        if (exists) {
+            let commandFile = require(`./commande/${command}.js`)
+
+
+            // 0xff80ff == defaut
+            // 0x00FF00 == vert (c'est bon c'est lancé)
+            // 0xFF0000 == rouge (message d'erreur)
+            // 0x778899 == gris (message d'info)
+            // 0x008EE2 == Blue ancien defaut
+
+            var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
 
 
 
 
+            //Ne pas oublier que comme sur la commande *ban on peut faire un async au export.run
 
-            let profix = config.prefix
-            const args = message.content.trim().split(/ +/g);
-            const command = args[0].slice((config.prefix).length).toLowerCase();
+            if (args[0] !== "help") { //Help sur les commande
 
-           // console.log(`profix: ${config.prefix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
+                try {
+                    console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
+                    commandFile.run(client, message, args, colors)
+                } catch (error) {
 
-            fileExists(`./commande/${command}.js`).then(exists => {
-                console.log(exists)
-                if (exists) {
-                    let commandFile = require(`./commande/${command}.js`)
-
-
-                    // 0xff80ff == defaut
-                    // 0x00FF00 == vert (c'est bon c'est lancé)
-                    // 0xFF0000 == rouge (message d'erreur)
-                    // 0x778899 == gris (message d'info)
-                    // 0x008EE2 == Blue ancien defaut
-
-                    var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
-
-
-
-
-
-                    //Ne pas oublier que comme sur la commande *ban on peut faire un async au export.run
-
-                    if (args[0] !== "help") { //Help sur les commande
-
-                        try {
-                            console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
-                            commandFile.run(client, message, args, colors)
-                        } catch (error) {
-
-                            console.error(error)
-
-                            const embed = {
-                                color: 0xFF0000,
-                                author: {
-                                    name: client.user.username,
-                                    icon_url: client.user.avatarURL()
-                                },
-                                title: `**ERROR**`,
-                                description: "Quel dommage,GLaDOS n'a pas reussie a lancer votre commande !",
-                                timestamp: new Date(),
-                                footer: {
-                                    icon_url: client.user.avatarURL(),
-                                    text: `©${client.user.tag}`
-                                }
-                            }
-
-                            message.channel.send({
-                                embeds: [embed]
-                            })
-
-
-                        } finally {
-
-                            console.log(`\n`);
-
-                        }
-
-                    } else if (args[0] == "help") {
-
-
-                        const {
-                            help
-                        } = require(`./commande/${command}`);
-
-                        const helpembed = {
-                            color: 0xff80ff,
-                            author: {
-                                name: client.user.username,
-                                icon_url: client.user.avatarURL()
-                            },
-                            title: `Help !`,
-                            description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
-                            timestamp: new Date(),
-                            footer: {
-                                icon_url: client.user.avatarURL(),
-                                text: `©ToniPortal`
-                            }
-                        }
-
-                        message.channel.send({ embeds: [helpembed] })
-
-                    }
-
-
-                } else {
-
-                    message.delete()
+                    console.error(error)
 
                     const embed = {
                         color: 0xFF0000,
@@ -284,7 +224,7 @@ client.on('messageCreate', (message) => {
                             icon_url: client.user.avatarURL()
                         },
                         title: `**ERROR**`,
-                        description: "Quel dommage,GLaDOS n'arrive pas a trouver votre cube possédant la commande !",
+                        description: "Quel dommage,GLaDOS n'a pas reussie a lancer votre commande !",
                         timestamp: new Date(),
                         footer: {
                             icon_url: client.user.avatarURL(),
@@ -297,9 +237,48 @@ client.on('messageCreate', (message) => {
                     })
 
 
+                } finally {
+
+                    console.log(`\n`);
+
                 }
 
-            })
+            } else if (args[0] == "help") {
+
+
+                const {
+                    help
+                } = require(`./commande/${command}`);
+
+                const helpembed = {
+                    color: 0xff80ff,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL()
+                    },
+                    title: `Help !`,
+                    description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: client.user.avatarURL(),
+                        text: `©ToniPortal`
+                    }
+                }
+
+                message.channel.send({ embeds: [helpembed] })
+
+            }
+
+
+        } else {
+
+
+            console.log("Commande non trouvé")
+
+
+        }
+
+    })
 
 
 }); // fin client msg
