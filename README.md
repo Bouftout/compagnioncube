@@ -6,8 +6,10 @@
 
 <p align="center">Toute les commande peuvent avoir leur utulisation et description en fessant *help 'nomcommande'<br>
  Les commande actuel fonctionnel<project-description></p>
-
+ <br>
+<p align="center">
 ![discordbadge](https://dcbadge.vercel.app/api/shield/255061967977447433)
+<p>
 
 ## Links
 
