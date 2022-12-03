@@ -9,13 +9,9 @@
 
 ## Links
 
-- [Repo](https://github.com/Rohit19060/<project-name> "<project-name> Repo")
+- [Repo](https://github.com/Bouftout/compagnioncube "Compagnion cube Repo")
 
-- [Live](<Homepage url> "Live View")
-
-- [Bugs](https://github.com/Rohit19060/<project-name>/issues "Issues Page")
-
-- [API](<API Link> "API")
+- [Bugs](https://github.com/Bouftout/compagnioncube/issues "Issues Page")
 
 ## Available Commands
 
