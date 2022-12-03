@@ -87,7 +87,7 @@ jobs:
   uses: falti/dotenv-action@v1.0.2
   with:
     # the path to the .env file (including file name)
-    path: configg.env # default is .env
+    path: config.env # default is .env
     # whether to log the variables to output or not
     log-variables: true # optional, default is false
     # whether to mask the variables as secrets or not
