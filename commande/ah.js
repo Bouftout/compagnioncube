@@ -3,18 +3,25 @@ exports.run = (client, message, args, colors) => {
     const Discord = require("discord.js");
     message.delete()
 
+    const embed = {
+        color: colors.ok,
+        author: {
+            name: client.user.username,
+            icon_url: client.user.avatarURL()
+        },
+        title: `AH`,
+        description: ``,
+        timestamp: new Date(),
+        image: {
+            url: 'https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif',
+        },
+        footer: {
+            icon_url: client.user.avatarURL(),
+            text: `©ToniPortal`
+        }
+    }
 
-
-    const embed = new Discord.MessageEmbed()
-        .setTitle("**Giphy** AH")
-        .setAuthor(message.author.username, message.author.avatarURL)
-
-    .setColor(colors.defaut)
-        .setFooter("©ToniPortal")
-
-    .setTimestamp()
-
-    message.channel.send({ embeds: [embed] });
+    message.channel.send({ embeds: [embed] })
 
 
 

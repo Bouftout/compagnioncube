@@ -2,11 +2,16 @@
 const {
     Client,
     Collection,
-    Intents
+    GatewayIntentBits
 } = require('discord.js'),
     client = new Client({
         partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-        intents: ['DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILDS']
+        intents: [
+            GatewayIntentBits.Guilds,
+            GatewayIntentBits.GuildMessages,
+            GatewayIntentBits.MessageContent,
+            GatewayIntentBits.GuildMembers,
+        ],
     }),
     fs = require("fs"),
     yaml = require('js-yaml'),
@@ -116,20 +121,9 @@ client.on("ready", (function () {
 }));
 
 const { Database } = require("quickmongo");
-const { DiscordTogether } = require('discord-together');
 
 client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
-
-    client.discordTogether = new DiscordTogether(client);
-
-    if (message.content === '*start') {
-        if (message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtube').then(async invite => {
-                return message.channel.send(`${invite.code}`);
-            });
-        };
-    };
 
     /*
         const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
@@ -182,7 +176,7 @@ client.on('messageCreate', (message) => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
 
-    let profix = config.prefix
+    let profix = config.prefix;
     const args = message.content.trim().split(/ +/g);
     const command = args[0].slice((config.prefix).length).toLowerCase();
 
@@ -202,13 +196,9 @@ client.on('messageCreate', (message) => {
 
             var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
-
-
-
-
             //Ne pas oublier que comme sur la commande *ban on peut faire un async au export.run
 
-            if (args[0] !== "help") { //Help sur les commande
+            if (args[0] !== "*help") { //Help sur les commande
 
                 try {
                     console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
@@ -243,12 +233,11 @@ client.on('messageCreate', (message) => {
 
                 }
 
-            } else if (args[0] == "help") {
-
+            } else if (args[0] == "*help") {
 
                 const {
                     help
-                } = require(`./commande/${command}`);
+                } = require(`./commande/${args[1]}`);
 
                 const helpembed = {
                     color: 0xff80ff,
@@ -257,7 +246,7 @@ client.on('messageCreate', (message) => {
                         icon_url: client.user.avatarURL()
                     },
                     title: `Help !`,
-                    description: `Usage : **${profix}${command}** ${help.usage}\n${help.description}.`,
+                    description: `Usage : _${profix}${args[1]}_ ${help.usage}\n${help.description}.`,
                     timestamp: new Date(),
                     footer: {
                         icon_url: client.user.avatarURL(),
