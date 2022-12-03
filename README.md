@@ -4,9 +4,8 @@
 
 <h1 align="center">Compagnion cube</h1>
 
-<p align="center">Toute les commande peuvent avoir leur utulisation et description en fessant *help 'nomcommande'<br>
- Les commande actuel fonctionnel</p>
- <br>
+<p align="center">Toute les commande peuvent avoir leur utulisation et description : *help 'nomcommande'<br></p>
+
 
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://www.npmjs.com/package/discord.js)
 [![discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/api/oauth2/authorize?client_id=413714554107985930&scope=applications.commands)
