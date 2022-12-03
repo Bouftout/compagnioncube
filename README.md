@@ -8,14 +8,19 @@
  Les commande actuel fonctionnel</p>
  <br>
 
-![discordbadge](https://dcbadge.vercel.app/api/shield/255061967977447433)
-![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://www.npmjs.com/package/discord.js)
+[![discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/api/oauth2/authorize?client_id=413714554107985930&scope=applications.commands)
+
 
 ## Links
 
-- [Repo](https://github.com/Bouftout/compagnioncube "Compagnion cube Repo")
+- [Invite This Bot](https://discord.com/api/oauth2/authorize?client_id=413714554107985930&scope=applications.commands)
 
-- [Bugs](https://github.com/Bouftout/compagnioncube/issues "Issues Page")
+- [Link of discord Serv](https://discord.com/invite/TYDa2eS)
+
+- [Repo](https://github.com/Bouftout/compagnioncube)
+
+- [Bugs](https://github.com/Bouftout/compagnioncube/issues)
 
 ## Available Commands
 
@@ -79,5 +84,3 @@ Feature requests are welcome!
 Give a ⭐️ if you like this project ! 
 ## Badges  
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://choosealicense.com/licenses/gpl-3.0/)  
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/)  
