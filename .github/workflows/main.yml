@@ -40,7 +40,6 @@ jobs:
       - name: build
         run: |
           npm run build
-          npm run test
   push_to_Docker_Hub:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -90,10 +89,3 @@ jobs:
     steps:
       - name: checkout repo
         uses: falti/dotenv-action@v1.0.2
-        with:
-          # the path to the .env file (including file name)
-          path: config.env # default is .env
-          # whether to log the variables to output or not
-          log-variables: true # optional, default is false
-          # whether to mask the variables as secrets or not
-          mask-variables: false # optional, default is false
