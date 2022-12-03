@@ -6,7 +6,8 @@
     "scripts": {
         "test": "nodemon index.js --ignore *.json",
         "start": "node index.js",
-        "pm2": "pm2 start ./index.js --restart-delay 500"
+        "pm2": "pm2 start ./index.js --restart-delay 500",
+        "build": "npm i"
     },
     "repository": {
         "type": "git",
