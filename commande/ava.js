@@ -26,24 +26,50 @@ exports.run = (client, message, args, colors) => {
 
 
 
-    const { MessageEmbed } = require('discord.js');
-
-
     if (!message.mentions.users.size) {
-        const embed = new MessageEmbed()
-            .setTitle(message.author.username)
-            .setColor(colors.ok)
-            .setImage(message.author.displayAvatarURL({ dynamic: true, size: 4096 }))
-        return message.channel.send({ embeds: [embed] });
+        const embed = {
+            color: colors.ok,
+            url: message.author.displayAvatarURL({ dynamic: true, size: 4096 }),
+            author: {
+                name: client.user.username,
+                icon_url: client.user.avatarURL()
+            },
+            title: `**${message.author.username}**`,
+            description: ``,
+            timestamp: new Date(),
+            image: {
+                url: message.author.displayAvatarURL({ dynamic: true, size: 4096 }),
+            },
+            footer: {
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal`
+            }
+        }
+
+        return message.channel.send({ embeds: [embed] })
     }
 
     const mention = message.mentions.members.first();
-    const Embed = new MessageEmbed()
-        .setTitle(message.mentions.users.first().username)
-        .setColor(colors.ok)
-        .setImage(user.displayAvatarURL({ dynamic: true, size: 4096 }))
-    return message.channel.send({ embeds: [Embed] });
-
+    console.log(mention)
+    const embed = {
+        color: colors.ok,
+        url: message.author.displayAvatarURL({ dynamic: true, size: 4096 }),
+        author: {
+            name: client.user.username,
+            icon_url: client.user.avatarURL()
+        },
+        title: `**${mention.user.username}**`,
+        description: `Voici votre avatar`,
+        timestamp: new Date(),
+        image: {
+            url: mention.user.displayAvatarURL({ dynamic: true, size: 4096 }),
+        },
+        footer: {
+            icon_url: client.user.avatarURL(),
+            text: `©ToniPortal`
+        }
+    }
+    return message.channel.send({ embeds: [embed] })
 
 
 

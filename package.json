@@ -34,6 +34,7 @@
         "@agencyanalytics/colorthief": "^2.3.3",
         "@albion-data/client": "^1.2.1",
         "@discordjs/voice": "^0.7.5",
+        "@ibaraki-douji/neko-sama": "^1.0.1",
         "@stdlib/string-uppercase": "^0.0.7",
         "@xivapi/js": "^0.4.1",
         "canvacord": "^5.2.3",

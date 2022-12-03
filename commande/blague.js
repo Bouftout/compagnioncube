@@ -36,13 +36,53 @@ exports.run = (client, message, args, colors) => {
                         typeBlague = "sur les blondes";
                         break;
                 }
-                const embed = new Discord.MessageEmbed()
-                    .setTitle(jokeBody.joke)
-                    .setColor(colors.ok)
-                    .setDescription("||" + jokeBody.answer + "||")
-                    .setFooter('Blague ' + typeBlague, message.guild.iconURL())
-                    .setTimestamp();
-                message.channel.send({ embeds: [embed] });
+                // const embed = new Discord.MessageEmbed()
+                //     .setTitle(jokeBody.joke)
+                //     .setColor(colors.ok)
+                //     .setDescription("||" + jokeBody.answer + "||")
+                //     .setFooter('Blague ' + typeBlague, message.guild.iconURL())
+                //     .setTimestamp();
+                // message.channel.send({ embeds: [embed] });
+
+                const embed = {
+                    color: colors.ok,
+                    url: `https://api.coinbase.com`,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL()
+                    },
+                    title: `**${jokeBody.joke}**`,
+                    description: `||${jokeBody.answer}||`,
+                    timestamp: new Date(),
+                    image: {
+                        url: `https://cdn6.aptoide.com/imgs/6/7/d/67da2c96adfc7dca9614752529d80630_icon.png?w=240`,
+                    },
+                    footer: {
+                        icon_url: message.guild.iconURL(),
+                        text: `Bluage ${typeBlague}`
+                    }
+                }
+    
+                message.channel.send({ embeds: [embed] })
+            }else {
+                console.log(error);
+
+                const embed = {
+                    color: colors.error,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL()
+                    },
+                    title: `**Error**`,
+                    description: `Une erreur est survenue`,
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: client.user.avatarURL(),
+                        text: `©ToniPortal`
+                    }
+                }
+    
+                message.channel.send({ embeds: [embed] })
             }
         });
 

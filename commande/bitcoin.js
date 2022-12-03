@@ -1,12 +1,12 @@
 const axios = require("axios");
-const Discord = require("discord.js");
 
-exports.run = (client, message, args) => {
+exports.run = (client, message, args, colors) => {
 
 
     axios
         .get("https://api.coinbase.com/v2/exchange-rates?currency=BTC")
         .then(response => {
+
             const info = response.data.data.rates;
             const valueUSD = Number(info.USD).toLocaleString("fr-FR", {
                 style: "currency",
@@ -17,15 +17,26 @@ exports.run = (client, message, args) => {
                 currency: "EUR",
             });
 
-            const richResponse = new Discord.MessageEmbed()
-                .setColor("#f39c12")
-                .addField("BITCOIN", `${valueUSD}, soit ${valueEUR}`)
-                .setThumbnail("https://cdn6.aptoide.com/imgs/6/7/d/67da2c96adfc7dca9614752529d80630_icon.png?w=240")
-                .setTimestamp();
+            const embed = {
+                color: colors.ok,
+                url: `https://api.coinbase.com`,
+                author: {
+                    name: client.user.username,
+                    icon_url: client.user.avatarURL()
+                },
+                title: `**BITCOIN**`,
+                description: `${valueUSD}, soit ${valueEUR}`,
+                timestamp: new Date(),
+                image: {
+                    url: `https://cdn6.aptoide.com/imgs/6/7/d/67da2c96adfc7dca9614752529d80630_icon.png?w=240`,
+                },
+                footer: {
+                    icon_url: client.user.avatarURL(),
+                    text: `©ToniPortal`
+                }
+            }
 
-            message.channel.send({
-                embed: [richResponse]
-            });
+            message.channel.send({ embeds: [embed] })
         })
         .catch(error => error);
 }
