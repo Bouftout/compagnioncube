@@ -80,3 +80,15 @@ jobs:
             echo "runing the docker image"
             echo "Testing the nodejs  app endpoints"
             echo ${{ steps.docker_build.outputs.digest }}
+  dotenvaction:
+  - name: Dotenv Action
+  # You may pin to the exact commit or the version.
+  # uses: falti/dotenv-action@622227c7a689e06646631a86c72b6dd62f95908b
+  uses: falti/dotenv-action@v1.0.2
+  with:
+    # the path to the .env file (including file name)
+    path: # default is .env
+    # whether to log the variables to output or not
+    log-variables: # optional, default is false
+    # whether to mask the variables as secrets or not
+    mask-variables: # optional, default is false
