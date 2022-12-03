@@ -7,6 +7,8 @@
 <p align="center">Toute les commande peuvent avoir leur utulisation et description en fessant *help 'nomcommande'<br>
  Les commande actuel fonctionnel<project-description></p>
 
+![discordbadge](https://dcbadge.vercel.app/api/shield/255061967977447433)
+
 ## Links
 
 - [Repo](https://github.com/Bouftout/compagnioncube "Compagnion cube Repo")
@@ -17,12 +19,12 @@
 
 In the project directory, you can run:
 
-### `npm run test"`,
+### `npm run test"`
 
 The app use nodemon so this command Runs the app in Development mode. Open your discord to view it.
 You will see any lint errors in the console.
 
-### `"npm run start"`,
+### `"npm run start"`
 
 For running discord bot.
 
@@ -47,7 +49,6 @@ For running discord bot,but restart automacly(500ms restart) if bot crashing.
 
 - [Profile](https://github.com/Bouftout "ToniPortal")
 - [Email](mailto:pastre.toni?subject=Help%for%discord%bot "Link for help!")
-- ![discordbadge](https://dcbadge.vercel.app/api/shield/255061967977447433)
 
 ## 🤝 Support
 
