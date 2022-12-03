@@ -2,10 +2,10 @@
 
 
 
-<h1 align="center">Toute les commande peuvent avoir leur utulisation et description en fessant *help 'nomcommande'<br>
- Les commande actuel fonctionnel<project-name></h1>
+<h1 align="center">Compagnion cube<project-name></h1>
 
-<p align="center"><project-description></p>
+<p align="center">Toute les commande peuvent avoir leur utulisation et description en fessant *help 'nomcommande'<br>
+ Les commande actuel fonctionnel<project-description></p>
 
 ## Links
 
