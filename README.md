@@ -1,10 +1,6 @@
-
-
-
-
 <h1 align="center">Compagnion cube</h1>
 
-<p align="center">Toute les commande peuvent avoir leur utulisation et description : *help 'nomcommande'<br></p>
+<p align="center">En devellopement depuis 2018<br>Toute les commande peuvent avoir leur utulisation et description : *help 'nomcommande'<br></p>
 
 
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://www.npmjs.com/package/discord.js)
@@ -43,43 +39,73 @@
 - bonneanne
 - cake
 
-In the project directory, you can run:
+## Run Locally  
 
-### `npm run test"`
+Clone the project  
+
+~~~bash  
+  git clone https://github.com/Bouftout/compagnioncube
+~~~
+
+Go to the project directory  
+
+~~~bash  
+  cd compagnioncube
+~~~
+
+Install dependencies  
+
+~~~bash  
+npm install
+~~~
+
+After that here option lauch:
+
+### `npm run test`
 
 The app use nodemon so this command Runs the app in Development mode. Open your discord to view it.
 You will see any lint errors in the console.
 
-### `"npm run start"`
+### `npm run start`
 
 For running discord bot.
 
-### `"npm run pm2"`
+### `npm run pm2`
 
 For running discord bot,but restart automacly(500ms restart) if bot crashing.
 
 ## Built With
 
-- Node
-- NPM
-- Discord.js
+- [Node](https://nodejs.org/fr/)
+- [NPM](https://npmjs.org/)
+- [Discord.js](https://www.npmjs.com/package/discord.js)
 - And another package
 
 ## Future Updates
 
-- [] database for save exp.
+- [] Create a module for exp.
 
 ## Author
 
 **ToniPortal**
 
-- [Profile](https://github.com/Bouftout "ToniPortal")
-- [Email](mailto:pastre.toni?subject=Help%for%discord%bot "Link for help!")
+- [My profile](https://github.com/Bouftout)
+- [My email for professional helping](mailto:pastre.toni?subject=Help%for%discord%bot)
 
 ## 🤝 Support
 
 Feature requests are welcome!
 
 Give a ⭐️ if you like this project ! 
+
 ## Badges  
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
+ 
+ 
+
+ 
+
+
+
+
+
