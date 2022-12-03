@@ -1,4 +1,6 @@
-﻿const config = require("./config.json");
+﻿const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
+
 const {
     Client,
     Collection,
@@ -15,6 +17,7 @@ const {
     }),
     fs = require("fs"),
     yaml = require('js-yaml'),
+    token = process.env.SECRET_TOKEN,
     fileExists = require('file-exists');
 
 client.commands = new Collection();
@@ -25,8 +28,8 @@ login()
 require('events').EventEmitter.defaultMaxListeners = 0;
 
 async function login() {
-
-    await client.login(config.token)
+    
+    await client.login(token)
     return console.log(">Connexion...\n--------------")
 
 };
@@ -176,11 +179,11 @@ client.on('messageCreate', (message) => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
 
-    let profix = config.prefix;
+    let profix = `*`; //prefix du bot
     const args = message.content.trim().split(/ +/g);
-    const command = args[0].slice((config.prefix).length).toLowerCase();
+    const command = args[0].slice((`*`).length).toLowerCase();
 
-    // console.log(`profix: ${config.prefix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
+    // console.log(`profix: ${`*`}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
 
     fileExists(`./commande/${command}.js`).then(exists => {
         console.log(exists)

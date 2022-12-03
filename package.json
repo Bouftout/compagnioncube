@@ -40,6 +40,7 @@
         "@xivapi/js": "^0.4.1",
         "canvacord": "^5.2.3",
         "discord.js": "^14.7.0",
+        "dotenv": "^16.0.3",
         "ffmpeg-static": "^4.4.0",
         "file-exists": "^5.0.1",
         "ftp-deploy": "^2.4.3",
