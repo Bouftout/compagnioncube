@@ -1,5 +1,4 @@
-﻿const dotenv = require('dotenv');
-dotenv.config({ path: './config.env' });
+﻿
 
 const {
     Client,
@@ -15,9 +14,9 @@ const {
             GatewayIntentBits.GuildMembers,
         ],
     }),
+    config = require('./config.json'),
     fs = require("fs"),
     yaml = require('js-yaml'),
-    token = process.env.SECRET_TOKEN,
     fileExists = require('file-exists');
 
 client.commands = new Collection();
@@ -29,7 +28,7 @@ require('events').EventEmitter.defaultMaxListeners = 0;
 
 async function login() {
     
-    await client.login(token)
+    await client.login(config.token)
     return console.log(">Connexion...\n--------------")
 
 };
