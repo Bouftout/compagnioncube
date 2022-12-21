@@ -27,7 +27,7 @@ login()
 require('events').EventEmitter.defaultMaxListeners = 0;
 
 async function login() {
-    
+
     await client.login(config.token)
     return console.log(">Connexion...\n--------------")
 
@@ -122,7 +122,7 @@ client.on("ready", (function () {
 
 }));
 
-const { Database } = require("quickmongo");
+// const { Database } = require("quickmongo");
 
 client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;

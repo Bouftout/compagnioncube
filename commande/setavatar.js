@@ -65,23 +65,27 @@ exports.run = (client, message, args) => {
 
 
     if (nombre == "1") {
-      client.user.setAvatar('/Users/No Title/Desktop/Compagnion Cube/image/avatar/avatar1.jpg')
-        .then(user => console.log(`Un nouveaux avatar est la`), message.channel.sendMessage({
-          embed: {
-            color: 3447003,
+      client.user.setAvatar('./image/avatar/avatar1.jpg')
+        .then(user => {
+         
+          const embed = {
+            color: colors.ok,
             author: {
-              name: client.user.username,
-              icon_url: client.user.avatarURL
+                name: client.user.username,
+                icon_url: client.user.avatarURL()
             },
-            title: `**Information**`,
-            description: "L'image 1 pour le bot a était mis !",
+            title: `**Oki**`,
+            description: `${user} a changé d'avatar !`,
             timestamp: new Date(),
             footer: {
-              icon_url: client.user.avatarURL,
-              text: `©ToniPortal#8330`
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal`
             }
-          }
-        }))
+        }
+    
+        message.channel.send({ embeds: [embed] })
+
+        })
         .catch(console.error);
     }
     if (nombre == "2") {
