@@ -6,7 +6,7 @@
     "scripts": {
         "test": "nodemon index.js --ignore *.json",
         "start": "node index.js",
-        "pm2": "pm2 start ./index.js --restart-delay 500",
+        "pm2": "pm2 start ./index.js --restart-delay 500 && pm2 logs",
         "build": "npm i nodemon -g"
     },
     "repository": {
@@ -39,7 +39,7 @@
         "@stdlib/string-uppercase": "^0.0.7",
         "@xivapi/js": "^0.4.1",
         "canvacord": "^5.2.3",
-        "discord.js": "^14.7.0",
+        "discord.js": "^14.7.1",
         "dotenv": "^16.0.3",
         "ffmpeg-static": "^4.4.0",
         "file-exists": "^5.0.1",

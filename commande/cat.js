@@ -1,28 +1,35 @@
-exports.run = (client, message, args, colors) => {
-
-    var request = require('request');
-
-    var cat = "http://aws.random.cat//meow"
-    const Discord = require("discord.js");
+exports.run = async (client, message, args, colors) => {
 
 
-    request({
-        url: cat,
-        json: true
-    }, function (error, response, body) {
-        console.log(body.file);
+    const response = await fetch("http://aws.random.cat//meow")
+    let body = await response.json()
+    console.log(body.file);
 
-        const embed = new Discord.MessageEmbed()
-            .setTitle("**Cat Random**")
-            .setAuthor(message.author.username, message.author.avatarURL())
-            .setColor(colors.defaut)
-            .setDescription("Voici une image ou un gif de chat !!")
-            .setFooter("©ToniPortal")
-            .setImage(body.file)
-            .setTimestamp()
+    // const { AttachmentBuilder } = require('discord.js');
+    // const file = new AttachmentBuilder(body.file);
+    // attachment://cake.png
 
-        message.channel.send({ embed });
-    })
+    message.channel.send({
+        embeds: [{
+            color: colors.defaut,
+            url : body.file,
+            author: {
+                name: client.user.username,
+                icon_url: client.user.avatarURL()
+            },
+            title: `**Votre gif/image de chat :**`,
+            timestamp: new Date(),
+            footer: {
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal`
+            },
+            image: {
+                url: body.file,
+            },
+        }]
+    });
+
+
 
 
 
@@ -32,4 +39,4 @@ exports.run = (client, message, args, colors) => {
 exports.help = {
     usage: ``,
     description: `Pour vous affichier une image ou un gif de chat aléatoirement`
-  };
+};
