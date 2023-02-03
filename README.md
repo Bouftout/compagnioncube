@@ -39,6 +39,11 @@
 - bonneanne
 - cake
 - calc
+- cat
+- channel
+- chiffre
+- clean
+- clientname(Owner Only)
 
 ## Run Locally  
 
@@ -84,7 +89,7 @@ For running discord bot,but restart automacly(500ms restart) if bot crashing.
 
 ## Future Updates
 
-- [] Create a module for exp.
+- [] Continue module for exp.
 
 ## Author
 
