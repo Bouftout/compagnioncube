@@ -1,20 +1,20 @@
-exports.run = (client, message, args,colors) => {
+exports.run = (client, message, args, colors) => {
 
 
   const data = client.channels.cache.get(message.channel.id);
+console.log(data)
+  if (data.topic == null) {
 
-if(data.topic == null){
+    data.topic = "Pas de topic dans ce channel."
 
-  data.topic = "Pas de topic dans ce channel."
-
-}
+  }
 
   message.channel.send({
-    embed: {
+    embeds: [{
       color: colors.defaut,
       author: {
-        name: message.author.username,
-        icon_url: message.author.avatarURL()
+        name: client.user.username,
+        icon_url: client.user.avatarURL()
       },
       title: `**Information sur le salon**`,
       description: "\n" + "```javascript" + "\n" + "Nom du channel: " + data.name + "\n" + "Type de channel: " + data.type + "\n" +
@@ -23,9 +23,9 @@ if(data.topic == null){
       footer: {
         icon_url: client.user.avatarURL(),
         text: `©ToniPortal`
-      }
-    }
-  })
+      },
+    }]
+  });
 
 
 };

@@ -59,6 +59,7 @@ client.on("ready", (function () {
         `\n\n------------------------------------------------`
     );
 
+    
     /*
     var channel = client.channels.cache.get('413764732407775234');
     channel.send({
@@ -195,16 +196,17 @@ client.on('messageCreate', (message) => {
             // 0xFF0000 == rouge (message d'erreur)
             // 0x778899 == gris (message d'info)
             // 0x008EE2 == Blue ancien defaut
+            // Time == temps pour les erreur
 
             var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
-            //Ne pas oublier que comme sur la commande *ban on peut faire un async au export.run
+            //Ne pas oublier que comme sur les commande on peut faire un async au export.run
 
             if (args[0] !== "*help") { //Help sur les commande
 
                 try {
                     console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
-                    commandFile.run(client, message, args, colors)
+                    commandFile.run(client, message, args, colors) // Lancement de la cmd avec les arguments.
                 } catch (error) {
 
                     console.error(error)
@@ -259,12 +261,6 @@ client.on('messageCreate', (message) => {
                 message.channel.send({ embeds: [helpembed] })
 
             }
-
-
-        } else {
-
-
-            console.log("Commande non trouvé")
 
 
         }

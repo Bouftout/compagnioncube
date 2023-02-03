@@ -10,7 +10,7 @@ exports.run = (client, message, args, colors) => {
   const yaml = require('js-yaml');
   const fs = require('fs');
 
-
+  args = args.slice(1)
 
 
 
@@ -45,19 +45,19 @@ exports.run = (client, message, args, colors) => {
         const deleteembed = {
           color: colors.ok,
           author: {
-              name: client.user.username,
-              icon_url: client.user.avatarURL()
+            name: client.user.username,
+            icon_url: client.user.avatarURL()
           },
           title: `**Delete**`,
           description: `Vous avez bien delete votre fichier !`,
           timestamp: new Date(),
           footer: {
-              icon_url: client.user.avatarURL(),
-              text: `©ToniPortal`
+            icon_url: client.user.avatarURL(),
+            text: `©ToniPortal`
           }
-      }
-  
-      message.channel.send({ embeds: [deleteembed] })
+        }
+
+        message.channel.send({ embeds: [deleteembed] })
 
       });
 
@@ -112,19 +112,19 @@ exports.run = (client, message, args, colors) => {
           const petithealembed = {
             color: colors.ok,
             author: {
-                name: client.user.username,
-                icon_url: client.user.avatarURL()
+              name: client.user.username,
+              icon_url: client.user.avatarURL()
             },
             title: `**Information**`,
             description: `Vous vous êtes heal **${nbheal}**_PV_\nVous avez maintenant **${findeheal}**_PV_`,
             timestamp: new Date(),
             footer: {
-                icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`
+              icon_url: client.user.avatarURL(),
+              text: `©ToniPortal`
             }
-        }
-    
-        message.channel.send({ embeds: [petithealembed] })
+          }
+
+          message.channel.send({ embeds: [petithealembed] })
 
         }
 
@@ -133,19 +133,19 @@ exports.run = (client, message, args, colors) => {
           const groshealembed = {
             color: colors.ok,
             author: {
-                name: client.user.username,
-                icon_url: client.user.avatarURL()
+              name: client.user.username,
+              icon_url: client.user.avatarURL()
             },
             title: `**Information**`,
             description: `Vous vous êtes heal **${nbheal}**_PV_\nVous avez maintenant **${findeheal}**_PV_\nHeal Critique`,
             timestamp: new Date(),
             footer: {
-                icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`
+              icon_url: client.user.avatarURL(),
+              text: `©ToniPortal`
             }
-        }
-    
-        message.channel.send({ embeds: [groshealembed] })
+          }
+
+          message.channel.send({ embeds: [groshealembed] })
 
         }
 
@@ -185,19 +185,19 @@ exports.run = (client, message, args, colors) => {
           const memberembed = {
             color: colors.ok,
             author: {
-                name: client.user.username,
-                icon_url: client.user.avatarURL()
+              name: client.user.username,
+              icon_url: client.user.avatarURL()
             },
             title: `**Information**`,
             description: `Veuillez mettre une mention !`,
             timestamp: new Date(),
             footer: {
-                icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`
+              icon_url: client.user.avatarURL(),
+              text: `©ToniPortal`
             }
-        }
-    
-        message.channel.send({ embeds: [memberembed] })
+          }
+
+          message.channel.send({ embeds: [memberembed] })
 
         } else {
 
@@ -212,19 +212,19 @@ exports.run = (client, message, args, colors) => {
             const vainqueurembed = {
               color: colors.ok,
               author: {
-                  name: client.user.username,
-                  icon_url: client.user.avatarURL()
+                name: client.user.username,
+                icon_url: client.user.avatarURL()
               },
               title: `**Information**`,
               description: `${message.author.username} est vainqueur,plantant Deuilgivre dans le corps de ${member.user.username}, il lui reste encore ${j1.vie} points de vie alors que ${member.user.username} est mort(${j2.vie - atk})`,
               timestamp: new Date(),
               footer: {
-                  icon_url: client.user.avatarURL(),
-                  text: `©ToniPortal`
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal`
               }
-          }
-      
-          message.channel.send({ embeds: [vainqueurembed] })
+            }
+
+            message.channel.send({ embeds: [vainqueurembed] })
 
           } else {
 
@@ -243,19 +243,19 @@ exports.run = (client, message, args, colors) => {
             const perduevieembed = {
               color: colors.ok,
               author: {
-                  name: client.user.username,
-                  icon_url: client.user.avatarURL()
+                name: client.user.username,
+                icon_url: client.user.avatarURL()
               },
               title: `**Information**`,
               description: `${member.user.username} a perdue **${atkr}** de pv(${arp}Arp)\nIl lui reste donc: **${vierestante}** pv`,
               timestamp: new Date(),
               footer: {
-                  icon_url: client.user.avatarURL(),
-                  text: `©ToniPortal`
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal`
               }
-          }
-      
-          message.channel.send({ embeds: [perduevieembed] })
+            }
+
+            message.channel.send({ embeds: [perduevieembed] })
 
           }
 
@@ -285,19 +285,19 @@ exports.run = (client, message, args, colors) => {
         const choix = {
           color: colors.ok,
           author: {
-              name: client.user.username,
-              icon_url: client.user.avatarURL()
+            name: client.user.username,
+            icon_url: client.user.avatarURL()
           },
           title: `Vous avez le choix :`,
           description: "!atk\n!armure\n!rien\n!heal",
           timestamp: new Date(),
           footer: {
-              icon_url: client.user.avatarURL(),
-              text: `©ToniPortal`
+            icon_url: client.user.avatarURL(),
+            text: `©ToniPortal`
           }
-      }
-  
-      message.channel.send({ embeds: [choix] })
+        }
+
+        message.channel.send({ embeds: [choix] })
           .then(() => {
             message.channel.awaitMessages(response => response.content === '!atk', {
               max: 1,
@@ -337,19 +337,19 @@ exports.run = (client, message, args, colors) => {
                 const arettecombatembed = {
                   color: colors.ok,
                   author: {
-                      name: client.user.username,
-                      icon_url: client.user.avatarURL()
+                    name: client.user.username,
+                    icon_url: client.user.avatarURL()
                   },
                   title: `Vous vous arrêter de combattre:`,
                   description: "Bonne continuation !",
                   timestamp: new Date(),
                   footer: {
-                      icon_url: client.user.avatarURL(),
-                      text: `©ToniPortal`
+                    icon_url: client.user.avatarURL(),
+                    text: `©ToniPortal`
                   }
-              }
-          
-              message.channel.send({ embeds: [arettecombatembed] })
+                }
+
+                message.channel.send({ embeds: [arettecombatembed] })
 
 
               }).catch(() => {
@@ -412,248 +412,248 @@ exports.run = (client, message, args, colors) => {
 
       }
 
-        fs.exists(`./data/game/game2/${message.author.id}.yml`, function (exists) {
+      fs.exists(`./data/game/game2/${message.author.id}.yml`, function (exists) {
 
-          if (exists) {
+        if (exists) {
 
-            if (args[0] == "heal" || args[0] == "armure" || args[0] == "defense" || args[0] == "def") {
+          if (args[0] == "heal" || args[0] == "armure" || args[0] == "defense" || args[0] == "def") {
 
-              aprèsmention()
+            aprèsmention()
 
-            } else {
-              let member = message.mentions.members.first();
+          } else {
+            let member = message.mentions.members.first();
 
-              if (!member) {
+            if (!member) {
 
-                const mentionembed = {
-                  color: colors.error,
-                  author: {
-                      name: client.user.username,
-                      icon_url: client.user.avatarURL()
-                  },
-                  title: `**Information**`,
-                  description: `Veuillez mettre une mention !`,
-                  timestamp: new Date(),
-                  footer: {
-                      icon_url: client.user.avatarURL(),
-                      text: `©ToniPortal`
-                  }
+              const mentionembed = {
+                color: colors.error,
+                author: {
+                  name: client.user.username,
+                  icon_url: client.user.avatarURL()
+                },
+                title: `**Information**`,
+                description: `Veuillez mettre une mention !`,
+                timestamp: new Date(),
+                footer: {
+                  icon_url: client.user.avatarURL(),
+                  text: `©ToniPortal`
+                }
               }
-          
+
               message.channel.send({ embeds: [mentionembed] })
 
 
-              } else {
-                fs.exists(`./data/game/game2/${member.user.id}.yml`, function (exists) {
-
-                  if (exists) {
-                    aprèsmention()
-
-                  } else {
-
-                    const cmdj2nessary = {
-                      color: colors.ok,
-                      author: {
-                          name: client.user.username,
-                          icon_url: client.user.avatarURL()
-                      },
-                      title: `**Information**`,
-                      description: `il faut que l'autre joueurs mette ces caractéristique en fesant la commande\n*game2 c _vie_ _armure_ _attaque_`,
-                      timestamp: new Date(),
-                      footer: {
-                          icon_url: client.user.avatarURL(),
-                          text: `©ToniPortal`
-                      }
-                  }
-              
-                  message.channel.send({ embeds: [cmdj2nessary] })
-
-                  }
-
-                })
-
-
-              }
-
-            }
-
-          } else {
-
-            //args[1] = vie
-            //args[2] = armure
-            //args[3] = attaque
-
-            if (!args[0]) {
-
-              var stream = fs.createWriteStream(`./data/game/game2/${message.author.id}.yml`);
-              stream.once('open', function (fd) {
-                stream.write(`vie: 1998\n`);
-                stream.write(`armure: 1\n`);
-                stream.write(`atk: 1\n`);
-                stream.end();
-              })
-
-              const creefichierembed = {
-                color: colors.info,
-                author: {
-                    name: client.user.username,
-                    icon_url: client.user.avatarURL()
-                },
-                title: `**Information**`,
-                description: `J'ai crée un fichier avec les donnée de base vu que vous n'avez pas donnée\nSi vous voulez des aide sur cette commande faite *game2 help\nSi vous voulez delete votre fichier faite *game2 delete`,
-                timestamp: new Date(),
-                footer: {
-                    icon_url: client.user.avatarURL(),
-                    text: `©ToniPortal`
-                }
-            }
-        
-            message.channel.send({ embeds: [creefichierembed] })
-
             } else {
-              if (args[0] == "c") {
+              fs.exists(`./data/game/game2/${member.user.id}.yml`, function (exists) {
 
-                let pointmax = 2000
-
-                if (!args[1] || !args[2] || !args[1] && !args[2] || !args[3] || !args[1] && !args[2] && !args[3]) {
-
-                  const helpoinfoembed = {
-                    color: colors.ok,
-                    author: {
-                        name: client.user.username,
-                        icon_url: client.user.avatarURL()
-                    },
-                    title: `**Information**`,
-                    description: `Veuillez mettre les info après(vous ne pouvez pas dépasser ${pointmax} en tout)\n1er = Vie\n2ième = Armure\n3ième = Attaque`,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: client.user.avatarURL(),
-                        text: `©ToniPortal`
-                    }
-                }
-            
-                message.channel.send({ embeds: [helpoinfoembed] })
+                if (exists) {
+                  aprèsmention()
 
                 } else {
-                  let pointviear = Number(args[1]) + Number(args[2]) + Number(args[3])
 
-                  if (pointviear < pointmax) {
-
-                    const restepointembed = {
-                      color: colors.ok,
-                      author: {
-                          name: client.user.username,
-                          icon_url: client.user.avatarURL()
-                      },
-                      title: `**Information**`,
-                      description: `Il vous reste encore ${pointmax - pointviear}\nRefait la commande !`,
-                      timestamp: new Date(),
-                      footer: {
-                          icon_url: client.user.avatarURL(),
-                          text: `©ToniPortal`
-                      }
+                  const cmdj2nessary = {
+                    color: colors.ok,
+                    author: {
+                      name: client.user.username,
+                      icon_url: client.user.avatarURL()
+                    },
+                    title: `**Information**`,
+                    description: `il faut que l'autre joueurs mette ces caractéristique en fesant la commande\n*game2 c _vie_ _armure_ _attaque_`,
+                    timestamp: new Date(),
+                    footer: {
+                      icon_url: client.user.avatarURL(),
+                      text: `©ToniPortal`
+                    }
                   }
-              
-                  message.channel.send({ embeds: [restepointembed] })
 
-                  } else {
-                    if (pointviear > pointmax || 0 > Number(args[1]) || 0 > Number(args[2])) {
+                  message.channel.send({ embeds: [cmdj2nessary] })
 
-                      const pointmaxembed = {
-                        color: colors.ok,
-                        author: {
-                            name: client.user.username,
-                            icon_url: client.user.avatarURL()
-                        },
-                        title: `**Information**`,
-                        description: `Vous ne pouvez pas dépaser ${pointmax}`,
-                        timestamp: new Date(),
-                        footer: {
-                            icon_url: client.user.avatarURL(),
-                            text: `©ToniPortal`
-                        }
-                    }
-                
-                    message.channel.send({ embeds: [pointmaxembed] })
+                }
 
-                    } else {
-                      if (args[1] <= 0) {
-
-                        const vietropbasseembed = {
-                          color: colors.ok,
-                          author: {
-                              name: client.user.username,
-                              icon_url: client.user.avatarURL()
-                          },
-                          title: `**Information**`,
-                          description: `Vous ne pouvez pas mettre en dessous ou égal a 0 pour la vie`,
-                          timestamp: new Date(),
-                          footer: {
-                              icon_url: client.user.avatarURL(),
-                              text: `©ToniPortal`
-                          }
-                      }
-                  
-                      message.channel.send({ embeds: [vietropbasseembed] })
-
-                      } else {
-
-                        if (args[2] > 59) {
-                          const armurecheatembed = {
-                            color: colors.ok,
-                            author: {
-                                name: client.user.username,
-                                icon_url: client.user.avatarURL()
-                            },
-                            title: `**Information**`,
-                            description: `Vous ne pouvez pas mettre au dessue de 50 pour l'armure(Trop cheaté sinon)`,
-                            timestamp: new Date(),
-                            footer: {
-                                icon_url: client.user.avatarURL(),
-                                text: `©ToniPortal`
-                            }
-                        }
-                    
-                        message.channel.send({ embeds: [armurecheatembed] })
-
-                        } else {
-                          var stream = fs.createWriteStream(`./data/game/game2/${message.author.id}.yml`); //pour la personne qui donne
-                          stream.once('open', function (fd) {
-                            stream.write(`vie: ${args[1]}\n`);
-                            stream.write(`armure: ${args[2]}\n`);
-                            stream.write(`atk: ${args[3]}\n`);
-                            stream.end();
-                          })
+              })
 
 
-                          const infoembed = {
-                            color: colors.ok,
-                            author: {
-                                name: client.user.username,
-                                icon_url: client.user.avatarURL()
-                            },
-                            title: `**Information**`,
-                            description: `Votre vie et votre armure a bien était enregistrer\nVie= ${args[1]}\nArmure= ${args[2]}\nAttaque= ${args[3]}\nVeuillez dire au 2ième joueurs de faire la fiche !`,
-                            timestamp: new Date(),
-                            footer: {
-                                icon_url: client.user.avatarURL(),
-                                text: `©ToniPortal`
-                            }
-                        }
-                    
-                        message.channel.send({ embeds: [infoembed] })
-                        }
-                      }
-                    }
+            }
 
+          }
+
+        } else {
+
+          //args[1] = vie
+          //args[2] = armure
+          //args[3] = attaque
+
+          if (!args[0]) {
+
+            var stream = fs.createWriteStream(`./data/game/game2/${message.author.id}.yml`);
+            stream.once('open', function (fd) {
+              stream.write(`vie: 1998\n`);
+              stream.write(`armure: 1\n`);
+              stream.write(`atk: 1\n`);
+              stream.end();
+            })
+
+            const creefichierembed = {
+              color: colors.info,
+              author: {
+                name: client.user.username,
+                icon_url: client.user.avatarURL()
+              },
+              title: `**Information**`,
+              description: `J'ai crée un fichier avec les donnée de base vu que vous n'avez pas donnée\nSi vous voulez des aide sur cette commande faite *game2 help\nSi vous voulez delete votre fichier faite *game2 delete`,
+              timestamp: new Date(),
+              footer: {
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal`
+              }
+            }
+
+            message.channel.send({ embeds: [creefichierembed] })
+
+          } else {
+            if (args[0] == "c") {
+
+              let pointmax = 2000
+
+              if (!args[1] || !args[2] || !args[1] && !args[2] || !args[3] || !args[1] && !args[2] && !args[3]) {
+
+                const helpoinfoembed = {
+                  color: colors.ok,
+                  author: {
+                    name: client.user.username,
+                    icon_url: client.user.avatarURL()
+                  },
+                  title: `**Information**`,
+                  description: `Veuillez mettre les info après(vous ne pouvez pas dépasser ${pointmax} en tout)\n1er = Vie\n2ième = Armure\n3ième = Attaque`,
+                  timestamp: new Date(),
+                  footer: {
+                    icon_url: client.user.avatarURL(),
+                    text: `©ToniPortal`
                   }
                 }
 
+                message.channel.send({ embeds: [helpoinfoembed] })
 
+              } else {
+                let pointviear = Number(args[1]) + Number(args[2]) + Number(args[3])
+
+                if (pointviear < pointmax) {
+
+                  const restepointembed = {
+                    color: colors.ok,
+                    author: {
+                      name: client.user.username,
+                      icon_url: client.user.avatarURL()
+                    },
+                    title: `**Information**`,
+                    description: `Il vous reste encore ${pointmax - pointviear}\nRefait la commande !`,
+                    timestamp: new Date(),
+                    footer: {
+                      icon_url: client.user.avatarURL(),
+                      text: `©ToniPortal`
+                    }
+                  }
+
+                  message.channel.send({ embeds: [restepointembed] })
+
+                } else {
+                  if (pointviear > pointmax || 0 > Number(args[1]) || 0 > Number(args[2])) {
+
+                    const pointmaxembed = {
+                      color: colors.ok,
+                      author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL()
+                      },
+                      title: `**Information**`,
+                      description: `Vous ne pouvez pas dépaser ${pointmax}`,
+                      timestamp: new Date(),
+                      footer: {
+                        icon_url: client.user.avatarURL(),
+                        text: `©ToniPortal`
+                      }
+                    }
+
+                    message.channel.send({ embeds: [pointmaxembed] })
+
+                  } else {
+                    if (args[1] <= 0) {
+
+                      const vietropbasseembed = {
+                        color: colors.ok,
+                        author: {
+                          name: client.user.username,
+                          icon_url: client.user.avatarURL()
+                        },
+                        title: `**Information**`,
+                        description: `Vous ne pouvez pas mettre en dessous ou égal a 0 pour la vie`,
+                        timestamp: new Date(),
+                        footer: {
+                          icon_url: client.user.avatarURL(),
+                          text: `©ToniPortal`
+                        }
+                      }
+
+                      message.channel.send({ embeds: [vietropbasseembed] })
+
+                    } else {
+
+                      if (args[2] > 59) {
+                        const armurecheatembed = {
+                          color: colors.ok,
+                          author: {
+                            name: client.user.username,
+                            icon_url: client.user.avatarURL()
+                          },
+                          title: `**Information**`,
+                          description: `Vous ne pouvez pas mettre au dessue de 50 pour l'armure(Trop cheaté sinon)`,
+                          timestamp: new Date(),
+                          footer: {
+                            icon_url: client.user.avatarURL(),
+                            text: `©ToniPortal`
+                          }
+                        }
+
+                        message.channel.send({ embeds: [armurecheatembed] })
+
+                      } else {
+                        var stream = fs.createWriteStream(`./data/game/game2/${message.author.id}.yml`); //pour la personne qui donne
+                        stream.once('open', function (fd) {
+                          stream.write(`vie: ${args[1]}\n`);
+                          stream.write(`armure: ${args[2]}\n`);
+                          stream.write(`atk: ${args[3]}\n`);
+                          stream.end();
+                        })
+
+
+                        const infoembed = {
+                          color: colors.ok,
+                          author: {
+                            name: client.user.username,
+                            icon_url: client.user.avatarURL()
+                          },
+                          title: `**Information**`,
+                          description: `Votre vie et votre armure a bien était enregistrer\nVie= ${args[1]}\nArmure= ${args[2]}\nAttaque= ${args[3]}\nVeuillez dire au 2ième joueurs de faire la fiche !`,
+                          timestamp: new Date(),
+                          footer: {
+                            icon_url: client.user.avatarURL(),
+                            text: `©ToniPortal`
+                          }
+                        }
+
+                        message.channel.send({ embeds: [infoembed] })
+                      }
+                    }
+                  }
+
+                }
               }
+
+
             }
           }
-        })
+        }
+      })
     } //else delete
   } //fin function jeu
 

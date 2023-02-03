@@ -1,6 +1,5 @@
 exports.run = (client, message, args, colors) => {
-
-  if (message.author.bot) return;
+  const { AttachmentBuilder } = require('discord.js');
 
   message.delete().then(msg => console.log(`J'ai supprimé le message de ${msg.author.username},\net supprimé le message: ${msg}`)).catch(console.error);;
 
@@ -13,7 +12,7 @@ exports.run = (client, message, args, colors) => {
   }
 
 
-  let nombre = message.content.split(" ").slice(1, 2)[0];
+  let nombre = args[1];
 
 
 
@@ -25,18 +24,18 @@ exports.run = (client, message, args, colors) => {
 
   if (nombre == "random" || nombre == null) {
     const randomchiffre = getrandom(1, nombremax)
+    const file = new AttachmentBuilder(`./image/core/core${randomchiffre}.jpg`);
 
-    message.channel.send({
-      embed: {
-        title: `Core ${randomchiffre}`,
-        color: colors.defaut,
-        timestamp: new Date(),
+    const exampleEmbed = {
+      title: `Core N°${randomchiffre}`,
+      image: {
+        url: 'attachment://core.png',
       },
-      files: [{
-        attachment: `./image/core/core${randomchiffre}.jpg`,
-        name: `core${randomchiffre}.jpg`
-      }]
-    }).catch(console.error);
+    };
+
+    message.channel.send({ embeds: [exampleEmbed], files: [file] });
+
+
   } else {
 
     if (nombre == "0") {
@@ -52,7 +51,7 @@ exports.run = (client, message, args, colors) => {
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
-            text: `©ToniPortal#8330`
+            text: `©ToniPortal#4057`
           }
         }
       }).then(response => response.delete({ timeout: "10000" }))
@@ -71,7 +70,7 @@ exports.run = (client, message, args, colors) => {
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
-            text: `©ToniPortal#8330`
+            text: `©ToniPortal#4057`
           }
         }
       })
@@ -89,29 +88,27 @@ exports.run = (client, message, args, colors) => {
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
-            text: `©ToniPortal#8330`
+            text: `©ToniPortal#4057`
           }
         }
       })
     }
 
 
+    const filec = new AttachmentBuilder(`./image/core/core${nombre}.jpg`);
+
+    const embc = {
+      title: `Core N°${nombre}`,
+      image: {
+        url: 'attachment://nombre.png',
+      },
+    };
 
 
     switch (nombre) {
 
       case nombre:
-        message.channel.send({
-          embed: {
-            title: `Core ${nombre}`,
-            color: colors.defaut,
-            timestamp: new Date(),
-          },
-          files: [{
-            attachment: `./image/core/core${nombre}.jpg`,
-            name: `core${nombre}.jpg`
-          }]
-        }).catch(console.error);
+        message.channel.send({ embeds: [embc], files: [filec] });
         break;
 
       default:
@@ -128,7 +125,7 @@ exports.run = (client, message, args, colors) => {
             timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
-              text: `©ToniPortal#8330`
+              text: `©ToniPortal#4057`
             }
           }
         }).then(response => response.delete({ timeout: "10000" }))
