@@ -1,4 +1,5 @@
-﻿
+﻿const exp = require('constants');
+
 
 const {
     Client,
@@ -59,7 +60,7 @@ client.on("ready", (function () {
         `\n\n------------------------------------------------`
     );
 
-    
+
     /*
     var channel = client.channels.cache.get('413764732407775234');
     channel.send({
@@ -128,50 +129,50 @@ client.on("ready", (function () {
 client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
-    /*
-        const db = new Database("mongodb://ui2ucdep6kutwkqkhytl:W5Q7aCXQldIjlWiuT3G5@btaxraikjinilhy-mongodb.services.clever-cloud.com:27017/btaxraikjinilhy");
-    
-        db.connect();
-    
-        db.on("ready", () => {
-            // console.log("Connected to the database");
-            doStuff();
-        });
-    
-        // https://pm2.io/docs//plus/guide/custom-metrics/ Metrics
-        // https://pm2.io/docs/plus/guide/transaction-tracing/
-    
-        async function doStuff() {
-            // Setting an object in the database:
-            // console.log(await db.get(`${message.author.id}`))
-    
-            expmetric.set(await db.get(`${message.author.id}.exp`))
-    
-            if (db.has(`${message.author.id}`) == true) {
-                await db.set(message.author.id, { image: 0, lvl: 1, exp: 1, lvlup: 50, money: 500 }); //set de la base de données
-    
-                console.log(await db.get(`${message.author.id}.exp`));
+
+    fileExists(`./data/exp/${message.author.id}.yml`).then(async exists => {
+        console.log(exists)
+        if (exists) {
+
+            var file = await yaml.load(fs.readFileSync(`./data/exp/${message.author.id}.yml`, 'utf8'));
+
+
+            if (file.exp < file.lvlup) {
+                file.exp += Number(1);
             } else {
-                if (await db.get(`${message.author.id}.exp`) == await db.get(`${message.author.id}.lvlup`)) {
-                    //Montage de niveau
-                    let lvlupnv = await db.get(`${message.author.id}.lvlup`) / 2;
-    
-    
-                    await db.add(`${message.author.id}.exp`, -(await db.get(`${message.author.id}.lvlup`)));
-                    await db.add(`${message.author.id}.lvl`, 1);
-                    await db.add(`${message.author.id}.lvlup`, lvlupnv);
-    
-                } else {
-    
-                    await db.add(`${message.author.id}.exp`, 1);
-                    console.log(await db.get(`${message.author.id}.exp`));
-    
-                }
+                file.exp = Number(0)
+                file.lvl += Number(1)
+                file.lvlup = Number(file.lvlup) * 2
             }
-    
+
+            fs.writeFile(`./data/exp/${message.author.id}.yml`, yaml.dump(file), (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+
+            console.log("ADD ONE EXP " + file.exp + "\n" + yaml.dump(file));
+
+        } else {
+            // Exemple :
+            // name: ToniPortal
+            // exp: 0
+            // lvl: 0
+            // lvlup: 0
+            // image: "./image/exp/wallpaper.png
+
+            var stream = fs.createWriteStream(`./data/exp/${message.author.id}.yml`);
+
+            stream.once('open', (function (fd) {
+                stream.write(`name: ${message.author.username}\n`);
+                stream.write(`exp: 1\n`);
+                stream.write(`lvl: 1\n`);
+                stream.write(`lvlup: 50\n`);
+                stream.write(`image: ./image/exp/wallpaper.png\n`);
+                stream.end();
+            }))
         }
-    
-        */
+    })
 
 });
 
