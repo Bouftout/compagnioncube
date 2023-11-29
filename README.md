@@ -6,6 +6,10 @@
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://www.npmjs.com/package/discord.js)
 [![discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/api/oauth2/authorize?client_id=413714554107985930&scope=applications.commands)
 
+<a href="https://top.gg/bot/413714554107985930">
+  <img src="https://top.gg/api/widget/413714554107985930.svg">
+</a>
+
 
 ## Links
 
