@@ -1,6 +1,6 @@
 <h1 align="center">Compagnion cube</h1>
 
-<p align="center">En dev depuis 2018<br>Toute les commande peuvent avoir leur utilisation et description : *help 'nomcommande'<br></p>
+<p align="center">En dev depuis 2018,lentement mais sûrement !<br>Toute les commande peuvent avoir leur utilisation et description : *help 'nomcommande'<br></p>
 
 
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://www.npmjs.com/package/discord.js)
