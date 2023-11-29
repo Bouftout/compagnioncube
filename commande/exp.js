@@ -4,7 +4,6 @@ exports.run = (client, message, args, colors) => {
     const yaml = require('js-yaml'),
         fs = require('fs'),
         { randomHex } = require("randomize-hex"),
-        Discord = require("discord.js"),
         canvacord = require("canvacord");
 
     const embed = {

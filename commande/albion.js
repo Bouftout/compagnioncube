@@ -1,203 +1,117 @@
-exports.run = (client, message, args, colors) => {
+exports.run = async (client, message, args, colors) => {
+// API https://www.tools4albion.com/api_info.php#
 
-    // https://www.npmjs.com/package/@albion-data/client
+  async function searchPlayer(playerName) {
+    try {
+      const url = `https://gameinfo.albiononline.com/api/gameinfo/search?q=${playerName}`;
+      const response = await fetch(url);
 
-    //args[0] == ce que tu veut mais en anglais
-    //args[1] == Qualité
-    //args[2] == la ville
+      if (!response.ok) {
+        throw new Error(`Erreur lors de la requête. Statut : ${response.status}`);
+      }
 
-    if (!args[0]) {
-
-        args[0] = "T5_BAG"
-
+      const data = await response.json();
+      // Retournez les données ou effectuez d'autres actions nécessaires
+      return data;
+    } catch (error) {
+      console.error(`Erreur lors de la recherche du joueur : ${error.message}`);
+      // Gérez l'erreur de manière appropriée
     }
-    if (!args[1]) {
+  }
 
-        args[1] = 1
+  async function infoPlayer(id) {
+    try {
+      const url = `https://gameinfo.albiononline.com/api/gameinfo/players/${id}`;
+      const response = await fetch(url);
 
+      if (!response.ok) {
+        throw new Error(`Erreur lors de la requête. Statut : ${response.status}`);
+      }
+
+      const data = await response.json();
+      // Retournez les données ou effectuez d'autres actions nécessaires
+      return data;
+    } catch (error) {
+      console.error(`Erreur lors des info du joueur : ${error.message}`);
     }
-    if (!args[2]) {
+  }
 
-        args[2] = "Martlock"
+  // Utilisation de la fonction avec un nom spécifique (par exemple, "ToniPortal")
+  try {
 
+    var idp = await searchPlayer(args[1]);
+    const pl = await infoPlayer(idp.players[0].Id);
+
+    if (pl.AllianceName == null || pl.AllianceName == '') {
+      pl.AllianceName = "Pas d'alliance"
     }
-
-    const { getPriceData } = require("@albion-data/client");
-    getPriceData({
-            itemList: args[0],
-            locations: args[2],
-            qualities: [args[1]],
-
-        })
-        .then((data) => {
-
-            console.log(data)
-
-            const embed = {
-                color: colors.ok,
-                author: {
-                    name: client.user.username,
-                    icon_url: client.user.avatarURL()
-                },
-                title: args[0],
-                description: `Prix de vente **minimum**: ${data[0].sell_price_min}\nPrix de vente **maximum**: ${data[0].sell_price_max}`,
-                timestamp: new Date(),
-                footer: {
-                    icon_url: client.user.avatarURL(),
-                    text: `©ToniPortal`
-                }
-            }
+    console.log(pl)
 
 
-            message.channel.send({ embeds: [embed] })
-
-
-        })
-        .catch((err) => console.error(err));
-
-
-    /*
-      if (!args[1]) {
-
-        if (args[0] == "m") {
-          args[1] = "9p30UVy2T36aJYEQ3bsWFw" //ToniPortal
+    message.channel.send({
+      embeds: [{
+        color: colors.defaut,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL()
+        },
+        title: `**Joueurs** : **${pl.Name}**`,
+        description: `Temps de la dernière Connexion: **${Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' }).format(new Date(pl.LifetimeStatistics.Timestamp))}**
+                  Nom de la *guilde* du joueurs: **${pl.GuildName}**\n
+                  Nom de l'alliance: **${pl.AllianceName}**\n
+                  DeathFame(?): **${pl.DeathFame}**\n
+                  KillFame: **${pl.KillFame}**\n`,
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL(),
+          text: `©ToniPortal`
         }
-        if (args[0] == "g") {
-          args[1] = "GKdQVRAhQ8u4nbLG1e3y0w" //Guilde d'ay
-        }
-
-        //Section si c'est des membre de la guilde qui font *albion m
-
-        if (message.author.id == "354975313723129856") { // Ay
-          args[1] = "VMBKIbhQQ-a9EMRzWboncg"
-        }
-        if (message.author.id == "") { //Matt
-          args[1] = "X-Pa1e1PQli1PtwKlQX_oQ"
-        }
-        if (message.author.id == "") { //SpoTachi
-          args[1] = "4a01wah-T0GRZYLn9cxENw"
-        }
-
-
-      }
+      }]
+    })
 
 
 
-      if (!args[0]) {
-    const embed = {
-            color: colors.defaut,
-            author: {
-              name: client.user.username,
-              icon_url: client.user.avatarURL()
-            },
-            title: `Vous avez le choix entre:`,
-            description: `Joueurs = *albion m\nou\nGuilde = *albion g`,
-            timestamp: new Date(),
-            footer: {
-              icon_url: client.user.avatarURL(),
-              text: `©ToniPortal`
-            }
-          }
-
-          message.channel.send({ embeds: [embed] })
-
-      }
-
-
-      if (args[0] == "m") {
-
-
-        if (args[1] == "SentinelleDor" || args[1] == "ay") {
-          args[1] = "VMBKIbhQQ-a9EMRzWboncg"
-
-        }
-        if (args[1] == "Amaliooo" || args[1] == "ma") {
-          args[1] = "X-Pa1e1PQli1PtwKlQX_oQ"
-
-        }
-        if (args[1] == "SpoTashi" || args[1] == "sp") {
-          args[1] = "4a01wah-T0GRZYLn9cxENw"
-
-        }
-        if (args[1] == "ToniPortal" || args[1] == "tp") {
-          args[1] = "9p30UVy2T36aJYEQ3bsWFw"
-
-        }
-
-        var url = `https://gameinfo.albiononline.com/api/gameinfo/players/${args[1]}`
-
-        console.log(url)
-        getJSON(url, function (error, response) {
-          console.log(response)
-
-          if (response.AllianceName == null || response.AllianceName == '') {
-            response.AllianceName = "Pas d'alliance"
-          }
-
-          message.channel.send({
-            embed: {
-              color: colors.defaut,
-              author: {
-                name: client.user.username,
-                icon_url: client.user.avatarURL()
-              },
-              title: `**Joueurs** : **${response.Name}**`,
-              description: `Nom de la *guilde* du joueurs: **${response.GuildName}**\n
-                    Nom de l'alliance: **${response.AllianceName}**\n
-                    DeathFame(?): **${response.DeathFame}**\n
-                    Nombre de kill: **${response.KillFame}**\n
-                    Renommé Total: **${response.LifetimeStatistics.PvE.Total}**\n
-                    Renommé Crafting: **${response.LifetimeStatistics.Crafting.Total}**`,
-              timestamp: new Date(),
-              footer: {
-                icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`
-              }
-            }
-          })
-
-        })
+  } catch (e) {
+    console.warn(e)
+    message.channel.send("Le joueurs n'a pas était trouvée.")
+  }
 
 
 
 
 
+  // if (args[0] == "g") {
 
-      }
+  //   var url = `https://gameinfo.albiononline.com/api/gameinfo/guilds/${args[1]}`
 
+  //   getJSON(url, function (error, idp) {
+  //     console.log(idp)
+  //     message.channel.send({
+  //       embed: {
+  //         color: colors.defaut,
+  //         author: {
+  //           name: client.user.username,
+  //           icon_url: client.user.avatarURL()
+  //         },
+  //         title: `**Guilde** : ${idp.Name}`,
+  //         description: `Fondateur de la *guilde*: **${idp.FounderName}**\n
+  //               Crée en: **${idp.Founded}**`,
+  //         timestamp: new Date(),
+  //         footer: {
+  //           icon_url: client.user.avatarURL(),
+  //           text: `©ToniPortal`
+  //         }
+  //       }
+  //     })
 
-      if (args[0] == "g") {
+  //   })
 
-        var url = `https://gameinfo.albiononline.com/api/gameinfo/guilds/${args[1]}`
+  // }
 
-        getJSON(url, function (error, response) {
-          console.log(response)
-          message.channel.send({
-            embed: {
-              color: colors.defaut,
-              author: {
-                name: client.user.username,
-                icon_url: client.user.avatarURL()
-              },
-              title: `**Guilde** : ${response.Name}`,
-              description: `Fondateur de la *guilde*: **${response.FounderName}**\n
-                    Crée en: **${response.Founded}**`,
-              timestamp: new Date(),
-              footer: {
-                icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`
-              }
-            }
-          })
-
-        })
-
-      }
-    */
 
 }
 
 exports.help = {
-    usage: ` m = Joueurs ; Guilde = *albion g`,
-    description: `Permet de voir certaine stats(ancienne) de certain joueurs du jeu albion`
+  usage: ` m = Joueurs ; Guilde = *albion g`,
+  description: `Permet de voir certaine stats(ancienne) de certain joueurs du jeu albion`
 };

@@ -1,7 +1,4 @@
-﻿const exp = require('constants');
-
-
-const {
+﻿const {
     Client,
     Collection,
     GatewayIntentBits
@@ -37,7 +34,7 @@ async function login() {
 client.on("ready", (function () {
 
     let upTime1 = Math.round(process.uptime());
-    const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024
+    const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024;
 
     console.log(
         "\n _   _   _____   _       _       _____  \n" +
@@ -61,42 +58,34 @@ client.on("ready", (function () {
     );
 
 
-    /*
-    var channel = client.channels.cache.get('413764732407775234');
-    channel.send({
-      embed: {
-        color: 0x778899,
-        author: {
-          name: client.user.username,
-          icon_url: client.user.avatarURL()
-        },
-        title: `**Info**`,
-        description: `Le bot a démarré le **${new Date()}**`,
-        timestamp: new Date(),
-        footer: {
-          icon_url: client.user.avatarURL(),
-          text: `©ToniPortal`
-        }
-      }
-    })
+
+    // var channel = client.channels.cache.get('413764732407775234');
+    // channel.send({
+    //   embed: {
+    //     color: 0x778899,
+    //     author: {
+    //       name: client.user.username,
+    //       icon_url: client.user.avatarURL()
+    //     },
+    //     title: `**Info**`,
+    //     description: `Le bot a démarré le **${new Date()}**`,
+    //     timestamp: new Date(),
+    //     footer: {
+    //       icon_url: client.user.avatarURL(),
+    //       text: `©ToniPortal`
+    //     }
+    //   }
+    // })
 
 
-    var fichier = yaml.load(fs.readFileSync(`./data/version.yml`, 'utf8'));
+    var yv = yaml.load(fs.readFileSync(`./data/version.yml`, 'utf8'));
 
-    fs.readFileSync('./package.json', (err, data) => {
-      if (err) throw err;
-      let packet = JSON.parse(data);
+    yaml.load(fs.writeFileSync(`./data/version.yml`, `version: ${yv.version}\nverdem: ${(Number(yv.verdem) + 1)}`, 'utf8'));
 
 
-      const ajout = (parseInt(fichier.verdem) + parseInt(1))
-
-      yaml.load(fs.writeFileSync(`./data/version.yml`, `version: ${packet.version}\nverdem: ${ajout}`, 'utf8'));
 
 
-    });
 
-
-    */
 
     /*
     if (config.maintenance == "non") {
@@ -124,8 +113,6 @@ client.on("ready", (function () {
 
 }));
 
-// const { Database } = require("quickmongo");
-
 client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
@@ -136,23 +123,27 @@ client.on("messageCreate", message => {
 
             var file = await yaml.load(fs.readFileSync(`./data/exp/${message.author.id}.yml`, 'utf8'));
 
-
-            if (file.exp < file.lvlup) {
-                file.exp += Number(1);
-            } else {
-                file.exp = Number(0)
-                file.lvl += Number(1)
-                file.lvlup = Number(file.lvlup) * 2
-            }
-
-            fs.writeFile(`./data/exp/${message.author.id}.yml`, yaml.dump(file), (err) => {
-                if (err) {
-                    console.log(err);
+            if (file) {
+                if (file.exp < file.lvlup) {
+                    file.exp += Number(1);
+                } else {
+                    file.exp = Number(0)
+                    file.lvl += Number(1)
+                    file.lvlup = Number(file.lvlup) * 2
                 }
-            });
 
-            console.log("ADD ONE EXP " + file.exp + "\n" + yaml.dump(file));
 
+
+                fs.writeFile(`./data/exp/${message.author.id}.yml`, yaml.dump(file), (err) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+
+                // console.log("ADD ONE EXP " + file.exp + "\n" + yaml.dump(file));
+            } else {
+                console.warn("[EXP] non existant")
+            }
         } else {
             // Exemple :
             // name: ToniPortal
@@ -183,11 +174,9 @@ client.on('messageCreate', (message) => {
     let profix = `*`; //prefix du bot
     const args = message.content.trim().split(/ +/g);
     const command = args[0].slice((`*`).length).toLowerCase();
-
-    // console.log(`profix: ${`*`}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
+    // console.log(`profix: ${profix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
 
     fileExists(`./commande/${command}.js`).then(exists => {
-        console.log(exists)
         if (exists) {
             let commandFile = require(`./commande/${command}.js`)
 
@@ -202,8 +191,9 @@ client.on('messageCreate', (message) => {
             var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
             //Ne pas oublier que comme sur les commande on peut faire un async au export.run
+            console.log(args[1])
 
-            if (args[0] !== "*help") { //Help sur les commande
+            if (args[0] !== "*help" || (args[0] == "*help" && args[1] === undefined)) { //Help sur les commande
 
                 try {
                     console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
@@ -238,8 +228,7 @@ client.on('messageCreate', (message) => {
 
                 }
 
-            } else if (args[0] == "*help") {
-
+            } else if (args[0] == "*help" && args[1] != undefined) {
                 const {
                     help
                 } = require(`./commande/${args[1]}`);
