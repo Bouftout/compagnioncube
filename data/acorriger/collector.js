@@ -29,7 +29,7 @@ exports.run = (client, message, args, colors) => {
 
 
     } else {
-      setTimeout(() => embedMessage.delete(), tempsdelareaction);
+      // setTimeout(() => embedMessage.delete(), tempsdelareaction);
     }
 
 
@@ -42,7 +42,7 @@ exports.run = (client, message, args, colors) => {
     const collector = message.createReactionCollector({ filter,max: 1, time: tempsdelareaction });
 
     collector.on('collect', (reaction, user) => {
-      message.delete()
+      // message.delete()
 
       console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
 
@@ -61,7 +61,7 @@ exports.run = (client, message, args, colors) => {
 
     collector.on('end', collected => {
       if (!message) { } else {
-        message.delete()
+        // message.delete()
       }
 
       console.log(`Collected ${collected.size} items`);

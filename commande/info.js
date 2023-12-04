@@ -12,19 +12,21 @@ exports.run = (client, message, args, colors) => {
     var getvalueof = message.author;
   }
 
+
+  var avatarDecoration = getvalueof.avatarDecoration
+
   if (getvalueof.bot == true) {
     var checkbot = "L'utilisateur est un bot";
   } else {
     var checkbot = "N'est pas un bot";
   }
-  if (getvalueof.presence.status == 'online') {
-    var status = "En ligne";
-  } else {
-    var status = "Hors ligne";
+  if (avatarDecoration == null) {
+    avatarDecoration = "N'a pas de décoration d'avatar";
   }
 
+
   message.channel.send({
-    embed: {
+    embeds: [{
       type: 'rich',
       description: '',
       fields: [{
@@ -40,8 +42,8 @@ exports.run = (client, message, args, colors) => {
         value: getvalueof.discriminator,
         inline: true
       }, {
-        name: 'Status',
-        value: status,
+        name: 'avatarDecoration',
+        value: avatarDecoration,
         inline: true
       }, {
         name: 'Bot',
@@ -62,7 +64,7 @@ exports.run = (client, message, args, colors) => {
         icon_url: memberavatar,
         proxy_icon_url: ' '
       }
-    }
+    }]
   });
 
 

@@ -1,16 +1,14 @@
-exports.run = (client, message, args) => {
+exports.run = (client, message, args, colors) => {
   if (message.author.bot) return;
 
-  var maintenant = new Date();
-  var hour = maintenant.getHours();
+  var hour = new Date().getHours();
   let response = "";
 
-  if (hour < 08 || hour > 22) {
+  if (hour < 8 || hour > 22) {
     response = "Faut allez dormir tout de suite !!!";
   }
-  if (hour > 08 || hour < 22) {
+  if (hour > 8 || hour < 22) {
     response = "C'est pas l'heure de dormir";
-
   }
   if (hour == 22 || hour == 21) {
     response = "Tu va dormir s'il te plaît ?";
@@ -19,9 +17,12 @@ exports.run = (client, message, args) => {
   if (hour == 21 || hour == 20) {
     response = "C'est bientôt l'heure d'allez dormir !! ( ͡° ͜ʖ ͡°)";
   }
-  message.channel.send({
-    embed: {
-      color: 3447003,
+
+
+
+  return message.channel.send({
+    embeds: [{
+      color: colors.ok,
       author: {
         name: client.user.username,
         icon_url: client.user.avatarURL()
@@ -31,8 +32,10 @@ exports.run = (client, message, args) => {
       timestamp: new Date(),
       footer: {
         icon_url: client.user.avatarURL(),
-        text: `©ToniPortal#8330`
+        text: colors.author
       }
     }
+    ]
   })
+
 };

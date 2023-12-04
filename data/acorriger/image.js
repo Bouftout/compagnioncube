@@ -42,7 +42,7 @@ exports.run = (client, message, args, colors) => {
 
 
     switch (args[0]) {
-// stickbug c'est une vidéo
+        // stickbug c'est une vidéo
 
         case "threats":
         case "baguette":
@@ -53,17 +53,27 @@ exports.run = (client, message, args, colors) => {
         case "trash":
             (async () => {
                 const image = await api.generate(args[0], { url: mentionouuser() });
-                const embed = new Discord.MessageEmbed()
-                    .setColor(colors.defaut)
-                    .setTitle(`${args[0]}`)
-                    .setURL(image)
-                    .setAuthor("Compagnion Cube", client.user.avatarURL())
-                    .setDescription('Voici votre image ;')
-                    .setImage(image)
-                    .setTimestamp()
-                    .setFooter(`©ToniPortal`, client.user.avatarURL())
 
-                message.channel.send(embed);
+                const embed = {
+                    color: colors.defaut,
+                    title: `${args[0]}`,
+                    url: image,
+                    author: {
+                        name: "Compagnion Cube",
+                        icon_url: client.user.avatarURL(),
+                    },
+                    description: 'Voici votre image ;',
+                    image: {
+                        url: image,
+                    },
+                    timestamp: new Date(),
+                    footer: {
+                        text: `©ToniPortal`,
+                        icon_url: client.user.avatarURL(),
+                    },
+                };
+
+                message.channel.send({ embeds: [embed] });
 
             })();
             break;

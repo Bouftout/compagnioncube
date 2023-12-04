@@ -7,7 +7,7 @@ exports.run = (client, message, args, colors) => {
         canvacord = require("canvacord");
 
     const { Database } = require("quickmongo");
-    const db = new Database("mongodb://botdiscord:totoni13@louna@b61de8bd-5f3e-48d3-b5bf-60b26d9957d3.compagnioncube-3215.mongo.a.osc-fr1.scalingo-dbs.com:39766/compagnioncube-3215?replicaSet=compagnioncube-3215-rs0&ssl=true");
+    const db = new Database("mongodb://botdiscord:@louna@b61de8bd-5f3e-48d3-b5bf-60b26d9957d3.compagnioncube-3215.mongo.a.osc-fr1.scalingo-dbs.com:39766/compagnioncube-3215?replicaSet=compagnioncube-3215-rs0&ssl=true");
 
     db.connect();
 

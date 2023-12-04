@@ -1,5 +1,6 @@
 exports.run = (client, message, args, colors) => {
 
+    // UTULISER LE BOT ETUDIK
 
     const yaml = require('js-yaml'),
         fs = require('fs'),

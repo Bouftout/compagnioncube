@@ -1,0 +1,67 @@
+[
+  {
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1179795239603552276",
+      "createdTimestamp": 1701355504657,
+      "type": 0,
+      "system": false,
+      "content": "",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [
+        {
+          "type": "rich",
+          "title": "**Votre réponse :**",
+          "timestamp": "2023-11-30T14:45:03.328000+00:00",
+          "footer": {
+            "text": "©ToniPortal",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          },
+          "description": "Très douteux",
+          "color": 65280,
+          "author": {
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "name": "Companion Cube",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          }
+        }
+      ],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": null,
+        "members": [],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": null,
+      "interaction": null,
+      "cleanContent": ""
+    }
+  },
+  {
+    "success": true
+  },
+  {
+    "success": true
+  }
+]

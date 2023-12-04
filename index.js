@@ -31,7 +31,10 @@ async function login() {
 
 };
 
-client.on("ready", (function () {
+const colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
+
+
+client.on("ready", (async function () {
 
     let upTime1 = Math.round(process.uptime());
     const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024;
@@ -110,7 +113,6 @@ client.on("ready", (function () {
     */
 
 
-
 }));
 
 client.on("messageCreate", message => {
@@ -125,10 +127,10 @@ client.on("messageCreate", message => {
 
             if (file) {
                 if (file.exp < file.lvlup) {
-                    file.exp += Number(1);
+                    file.exp += 1;
                 } else {
-                    file.exp = Number(0)
-                    file.lvl += Number(1)
+                    file.exp = 0
+                    file.lvl += 1
                     file.lvlup = Number(file.lvlup) * 2
                 }
 
@@ -167,8 +169,8 @@ client.on("messageCreate", message => {
 
 });
 
-client.on('messageCreate', (message) => {
-    if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
+client.on('messageCreate', async (message) => {
+    // if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
 
     let profix = `*`; //prefix du bot
@@ -176,86 +178,135 @@ client.on('messageCreate', (message) => {
     const command = args[0].slice((`*`).length).toLowerCase();
     // console.log(`profix: ${profix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
 
-    fileExists(`./commande/${command}.js`).then(exists => {
-        if (exists) {
-            let commandFile = require(`./commande/${command}.js`)
 
 
-            // 0xff80ff == defaut
-            // 0x00FF00 == vert (c'est bon c'est lancé)
-            // 0xFF0000 == rouge (message d'erreur)
-            // 0x778899 == gris (message d'info)
-            // 0x008EE2 == Blue ancien defaut
-            // Time == temps pour les erreur
+    // 0xff80ff == defaut
+    // 0x00FF00 == vert (c'est bon c'est lancé)
+    // 0xFF0000 == rouge (message d'erreur)
+    // 0x778899 == gris (message d'info)
+    // 0x008EE2 == Blue ancien defaut
+    // Time == temps pour les erreur
+    console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
 
-            var colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
-            //Ne pas oublier que comme sur les commande on peut faire un async au export.run
-            console.log(args[1])
+    //Ne pas oublier que comme sur les commande on peut faire un async au export.run
+    if (
+        (args[0] !== "*help" && args[0] !== "*testo") ||
+        (args[0] == "*help" && args[1] === undefined)
+    ) {
+        fileExists(`./commande/${command}.js`).then(async exists => {
+            if (exists) {
+                let commandFile = require(`./commande/${command}.js`)
 
-            if (args[0] !== "*help" || (args[0] == "*help" && args[1] === undefined)) { //Help sur les commande
 
+                // Bloc exécuté si la condition est vraie
                 try {
-                    console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
-                    commandFile.run(client, message, args, colors) // Lancement de la cmd avec les arguments.
+                    commandFile.run(client, message, args, colors); // Lancement de la cmd avec les arguments.
                 } catch (error) {
-
-                    console.error(error)
+                    console.error(error);
 
                     const embed = {
                         color: 0xFF0000,
                         author: {
                             name: client.user.username,
-                            icon_url: client.user.avatarURL()
+                            icon_url: client.user.avatarURL(),
                         },
                         title: `**ERROR**`,
-                        description: "Quel dommage,GLaDOS n'a pas reussie a lancer votre commande !",
+                        description: "Quel dommage, GLaDOS n'a pas réussi à lancer votre commande !",
                         timestamp: new Date(),
                         footer: {
                             icon_url: client.user.avatarURL(),
-                            text: `©${client.user.tag}`
-                        }
-                    }
+                            text: `©${client.user.tag}`,
+                        },
+                    };
 
-                    message.channel.send({
-                        embeds: [embed]
-                    })
-
-
+                    message.channel.send({ embeds: [embed] });
                 } finally {
-
                     console.log(`\n`);
-
                 }
-
-            } else if (args[0] == "*help" && args[1] != undefined) {
-                const {
-                    help
-                } = require(`./commande/${args[1]}`);
-
-                const helpembed = {
-                    color: 0xff80ff,
-                    author: {
-                        name: client.user.username,
-                        icon_url: client.user.avatarURL()
-                    },
-                    title: `Help !`,
-                    description: `Usage : _${profix}${args[1]}_ ${help.usage}\n${help.description}.`,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: client.user.avatarURL(),
-                        text: `©ToniPortal`
-                    }
-                }
-
-                message.channel.send({ embeds: [helpembed] })
 
             }
+        })
+    } else if (args[0] == "*help" && args[1] != undefined) {
+        // Bloc exécuté si la condition précédente est fausse, mais celle-ci est vraie
+        const { help } = require(`./commande/${args[1]}`);
 
+        const helpembed = {
+            color: 0xff80ff,
+            author: {
+                name: client.user.username,
+                icon_url: client.user.avatarURL(),
+            },
+            title: `Help !`,
+            description: `Usage : _${profix}${args[1]}_ ${help.usage}\n${help.description}.`,
+            timestamp: new Date(),
+            footer: {
+                icon_url: client.user.avatarURL(),
+                text: `©ToniPortal`,
+            },
+        };
 
+        message.channel.send({ embeds: [helpembed] });
+    } else if (args[0] == "*testo") {
+        // const commandNames = [
+        //     '8ball.js',
+        //     '8balluti.js',
+        //     'yomamma.js',
+        // ];
+
+        // Pour tester chaque commande :
+        const commandNames = fs.readdirSync('./commande/');
+        const results = [];
+
+        async function runCommandsSequentially() {
+            try {
+                const channel = client.channels.cache.get("1179755824344731728");
+
+                // Vérifiez si le canal existe
+                if (!channel) {
+                    throw new Error(`Le canal n'a pas été trouvé.`);
+                }
+
+                for (const commandName of commandNames) {
+                    try {
+                        if (commandName != "exit.js") {
+                            const result = await channel.send(`*${commandName}`);
+
+                            let commandFile = require(`./commande/${commandName}`);
+
+                            let cmdResult = await commandFile.run(client, result, "", colors); // Lancement de la cmd avec les arguments.
+
+                            await new Promise(resolve => setTimeout(resolve, 750)); // Se stopper avant de continuer !
+
+                            console.log(`Commande ${commandName} exécutée avec succès.`);
+
+                            // Stocker les résultats de succès dans le tableau
+                            results.push({ command: commandName, success: true, result: cmdResult });
+                        }
+                    } catch (error) {
+                        console.error(`Erreur lors de l'exécution de la commande ${commandName}:`, error);
+
+                        // Stocker les résultats d'échec dans le tableau
+                        results.push({ command: commandName, success: false, error: error.message });
+                    }
+                }
+
+                // Enregistre les résultats dans un fichier JSON
+                const resultsJSON = JSON.stringify(results, null, 2);
+                fs.writeFileSync('./data/testcommande/commandResults.json', resultsJSON);
+
+                console.log('Tests terminés. Résultats enregistrés dans commandResults.json.');
+                message.channel.send("Tests terminés. Résultats enregistrés dans commandResults.json.");
+            } catch (error) {
+                console.error('Erreur lors de l\'éxécution du test de commande:', error);
+                message.channel.send('Erreur lors de l\'éxécution du test de commande');
+            }
         }
 
-    })
+        // Appeler la fonction pour exécuter les commandes séquentiellement
+        await runCommandsSequentially();
+
+    } // Fin testo
 
 
 }); // fin client msg
@@ -366,3 +417,4 @@ client.on('interactionCreate', async interaction => {
 client.on("error", (e) => {
     console.log("Error:\n" + e)
 })
+

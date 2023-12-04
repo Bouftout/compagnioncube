@@ -1,6 +1,6 @@
 exports.run = (client, message, args, colors) => {
 
-    message.delete()
+    // message.delete()
 
     var sayings = [
         "C'est certain",
@@ -41,7 +41,9 @@ exports.run = (client, message, args, colors) => {
         }
     }
 
-    message.channel.send({ embeds: [embed] })
+
+    
+    return message.channel.send({ embeds: [embed] })
 
     /*
     console.log(message)
