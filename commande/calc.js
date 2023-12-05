@@ -1,100 +1,106 @@
-exports.run = (client, message, args, colors) => {
+function calc(tokens) {
+  const operators = new Set(['+', '-', '*', '/', 'x']);
+
+  var anciencalc = 0, actualope;
+  var calcul = [];
+
+  tokens.forEach((token, tour) => {
+    if (operators.has(token)) {
+      //Si l'array actuel est un opérateur
+      // console.log("OperatorToken", token);
+
+      actualope = token;
 
 
-  function chop(str) {
-    var result = [];
-    var pastFirst = false;
-    str.split('+').forEach(function (x) {
-      if (pastFirst) result.push('+');
-      if (x.length) result.push(x);
-      pastFirst = true;
-    });
-    return result;
-  }
-
-  notcmd = args.slice(1)
-  console.log(notcmd)
-  if (notcmd.length > 2) {
-    args = notcmd;
-  } else {
-    console.log("chop")
-    args = chop(notcmd[0])
-  }
-
-
-  console.log(args)
-  let result;
-  let number2 = 0;
-
-  let plus = 0;
-  let moins = 0;
-  let multi = 0;
-  let divi = 0;
-
-  args.forEach(element => {
-    console.log("element: " + element)
-
-
-    if (result == 0 || result == undefined) {
-      // console.log("result mis a :" + element)
-      result = Number(element);
+    } else {
+      // console.log("PushToken", token)
+      calcul.push(token)
     }
 
-    if (/^\d*$/.test(element)) {
-      // console.log("Regpassed")
-      number2 = Number(element)
+    if (tour == 2) {
+      //Si c'est le 3ieme tour
+      console.log("A calculer départ: ", calcul)
+
+      //Voir quel opétareur actuel
+      switch (actualope) {
+        case '+':
+          anciencalc = (Number(calcul[0]) + Number(calcul[1]))
+          break;
+        case '-':
+          anciencalc = (Number(calcul[0]) - Number(calcul[1]))
+          break;
+        case 'X':
+        case 'x':
+        case '*':
+          anciencalc = (Number(calcul[0]) * Number(calcul[1]))
+          break;
+        case '/':
+          anciencalc = (Number(calcul[0]) / Number(calcul[1]))
+          break;
+        default:
+          return "Error";
+      }
+
+      calcul = [];
+
+    } else if (tour % 2 === 0 && tour != 2 && tour != 0) {
+
+      console.log("A calculer après : ", calcul)
+
+      //Voir quel opétareur actuel
+      switch (actualope) {
+        case '+':
+          anciencalc += Number(calcul[0]);
+          break;
+        case '-':
+          anciencalc -= Number(calcul[0]);
+          break;
+        case 'X':
+        case 'x':
+        case '*':
+          anciencalc *= Number(calcul[0]);
+          break;
+        case '/':
+          anciencalc /= Number(calcul[0]);
+          break;
+        default:
+          return "Error";
+      }
+
+      calcul = [];
+
     }
 
-    if (plus == 1) {
-      // console.log("result" + result)
-      // console.log("plus" + number2)
-      result = Number(result) + Number(number2);
-      plus--
-    }
-
-    if (moins == 1) {
-      result = Number(result) - Number(number2);
-      moins--
-    }
-
-    if (multi == 1) {
-      result = Number(result) * Number(number2);
-      multi--
-    }
-
-    if (divi == 1) {
-      result = Number(result) / Number(number2);
-      divi--
-    }
-
-
-
-    if (element == '+') {
-      plus++;
-    }
-    else if (element == '-') {
-      moins++;
-    }
-    else if (element == '*') {
-      multi++
-    }
-    else if (element == '/') {
-      divi++;
-    }
 
   });
 
+  // Le résultat final est le seul élément restant dans la pile
+  return anciencalc;
+}
 
-  if (result != "NaN") {
+exports.run = (client, message, args, colors) => {
 
-    let affical = ""
+  if (args[1]) { // Vérifier que il a au moins un argument pour le calcul
 
-    notcmd.forEach(element => {
-      affical += element
-    })
+    var cal = 0;
 
-    console.log("result: " + result)
-    // const embed = 
+    if (args[2]) {
+      //Si il fait des espace pour faire les calcul
+
+      args.shift() //supprimer le *calc
+
+      cal = calc(args);
+
+    } else {
+      //Si il fait pas d'espace !
+
+      let tableau = args[1].match(/(\d+|[\+\-\*\/\x])/g);
+      cal = calc(tableau);
+
+      args.shift(); //supprimer le *calc
+    }
+
+
     message.channel.send({
       embeds: [{
         color: colors.defaut,
@@ -103,7 +109,7 @@ exports.run = (client, message, args, colors) => {
           icon_url: client.user.avatarURL()
         },
         title: `**Votre opération :**`,
-        description: `Calcul : *${affical}*\nRésultat : **${result}**`,
+        description: `Calcul : *${args}*\nRésultat : **${cal}**`,
         timestamp: new Date(),
         footer: {
           icon_url: client.user.avatarURL(),
@@ -111,35 +117,23 @@ exports.run = (client, message, args, colors) => {
         }
       }]
     });
+
+
+
 
 
   } else {
-
-    message.channel.send({
-      embeds: [{
-        color: colors.error,
-        author: {
-          name: client.user.username,
-          icon_url: client.user.avatarURL()
-        },
-        title: `**Error**`,
-        description: `Chiffre invalide ou erreur`,
-        timestamp: new Date(),
-        footer: {
-          icon_url: client.user.avatarURL(),
-          text: `©ToniPortal`
-        }
-      }]
-    });
-
+    message.reply("Veuillez mettre un argument")
+      .then(msg => {
+        setTimeout(() => {
+          message.delete();
+          msg.delete()
+        }, colors.time)
+      })
   }
 
 
-
 }
-
-
-
 
 
 

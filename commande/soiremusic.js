@@ -1,14 +1,16 @@
+
+const fs = require("fs"),
+  ytpl = require('ytpl');
+
 exports.run = async (client, message, args, colors) => {
 
-  const fs = require("fs"),
-   ytpl = require('ytpl');
 
-
+  //Permet d'enregistrer des musique a avoir
 
   if (args[0] == "yt") {
 
     for (var i = 1; i <= args.length; i++) {
-      var enleverytb = args[i-1].replace("https://www.youtube.com/watch?v=", "");
+      var enleverytb = args[i - 1].replace("https://www.youtube.com/watch?v=", "");
 
       fs.writeFile(`./data/autre/ytplaylist/${enleverytb}.txt`, '', function (err) {
         if (err) throw err;
@@ -17,30 +19,27 @@ exports.run = async (client, message, args, colors) => {
 
     }
 
-  } else if(args[0] == "pl") {
-    
-var final = args[1].replace("https://www.youtube.com/watch?v=_crezDzuriM&list=","")
-console.log(final);
+  } else if (args[0] == "pl") {
 
-    const firstResultBatch = await ytpl(final, {
+    const firstResultBatch = await ytpl(args[1].replace("https://www.youtube.com/watch?v=_crezDzuriM&list=", ""), {
       pages: 1
     });
-// https://www.youtube.com/watch?v=_crezDzuriM&list=PLmx0cwWL2xwGjHsQD3WvYx_CQRAeMdf_j
+    // https://www.youtube.com/watch?v=_crezDzuriM&list=PLmx0cwWL2xwGjHsQD3WvYx_CQRAeMdf_j
     //firstResultBatch.items[0].shortUrl
 
-console.log(firstResultBatch.items.length)
+    console.log(firstResultBatch.items.length)
 
-for (var i = 1; i <= firstResultBatch.items.length; i++) {
-  var enleverytb = firstResultBatch.items[i].shortUrl.replace("https://www.youtube.com/watch?v=", "");
+    for (var i = 1; i <= firstResultBatch.items.length; i++) {
+      var enleverytb = firstResultBatch.items[i].shortUrl.replace("https://www.youtube.com/watch?v=", "");
 
-  fs.writeFile(`./data/autre/ytplaylist/${enleverytb}.txt`, '', function (err) {
-    if (err) throw err;
-    console.log('File is created successfully.');
-  });
+      fs.writeFile(`./data/autre/ytplaylist/${enleverytb}.txt`, '', function (err) {
+        if (err) throw err;
+        console.log('File is created successfully.');
+      });
 
-}
+    }
 
-  }else {
+  } else {
 
     message.delete()
 
@@ -65,7 +64,7 @@ for (var i = 1; i <= firstResultBatch.items.length; i++) {
       }
     }
 
-    message.channel.send({ embeds: [embed] })
+    return message.channel.send({ embeds: [embed] })
 
   }
 

@@ -1,11 +1,12 @@
 [
   {
+    "command": "8ball.js",
     "success": true,
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1179795239603552276",
-      "createdTimestamp": 1701355504657,
+      "id": "1181581089857347644",
+      "createdTimestamp": 1701781284537,
       "type": 0,
       "system": false,
       "content": "",
@@ -17,13 +18,13 @@
         {
           "type": "rich",
           "title": "**Votre réponse :**",
-          "timestamp": "2023-11-30T14:45:03.328000+00:00",
+          "timestamp": "2023-12-05T13:01:24.311000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
             "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
           },
-          "description": "Très douteux",
+          "description": "Mes sources disent non",
           "color": 65280,
           "author": {
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -59,9 +60,715 @@
     }
   },
   {
+    "command": "8balluti.js",
     "success": true
   },
   {
+    "command": "ah.js",
+    "success": true
+  },
+  {
+    "command": "aiwaifu.js",
+    "success": true
+  },
+  {
+    "command": "albion.js",
+    "success": true
+  },
+  {
+    "command": "anime.js",
+    "success": true
+  },
+  {
+    "command": "ava.js",
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1181581136485437561",
+      "createdTimestamp": 1701781295654,
+      "type": 0,
+      "system": false,
+      "content": "",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [
+        {
+          "url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp?size=4096",
+          "type": "rich",
+          "title": "**Companion Cube**",
+          "timestamp": "2023-12-05T13:01:35.508000+00:00",
+          "image": {
+            "width": 614,
+            "url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp?size=4096",
+            "proxy_url": "https://images-ext-2.discordapp.net/external/VrajB7_VnY6l4UCHCVWWBMzHb3RJBRnJ9qmtLqkFozA/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "height": 614
+          },
+          "footer": {
+            "text": "©ToniPortal",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          },
+          "color": 65280,
+          "author": {
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "name": "Companion Cube",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          }
+        }
+      ],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": null,
+        "members": [],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": null,
+      "interaction": null,
+      "cleanContent": ""
+    }
+  },
+  {
+    "command": "ban.js",
+    "success": true
+  },
+  {
+    "command": "bigthink.js",
+    "success": true
+  },
+  {
+    "command": "bitcoin.js",
+    "success": true
+  },
+  {
+    "command": "blague.js",
+    "success": true
+  },
+  {
+    "command": "bonneanne.js",
+    "success": true
+  },
+  {
+    "command": "cake.js",
+    "success": true
+  },
+  {
+    "command": "calc.js",
+    "success": true
+  },
+  {
+    "command": "cat.js",
+    "success": false,
+    "error": "fetch failed"
+  },
+  {
+    "command": "channel.js",
+    "success": true
+  },
+  {
+    "command": "chiffre.js",
+    "success": true
+  },
+  {
+    "command": "clean.js",
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1181581244300001281",
+      "createdTimestamp": 1701781321359,
+      "type": 19,
+      "system": false,
+      "content": "S'il te plaît met un nombre entre 2 et 100 !",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [
+          "413714554107985930"
+        ],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": "413714554107985930",
+        "members": [
+          "413714554107985930"
+        ],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": {
+        "channelId": "1179755824344731728",
+        "guildId": "413710882376515584",
+        "messageId": "1181581242416779381"
+      },
+      "interaction": null,
+      "cleanContent": "S'il te plaît met un nombre entre 2 et 100 !"
+    }
+  },
+  {
+    "command": "clientname.js",
+    "success": true
+  },
+  {
+    "command": "core.js",
+    "success": true
+  },
+  {
+    "command": "cube.js",
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1181581264227160117",
+      "createdTimestamp": 1701781326110,
+      "type": 0,
+      "system": false,
+      "content": "",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [
+        {
+          "type": "rich",
+          "title": "Information sur le Compagion Cube de Portal !",
+          "timestamp": "2023-12-05T13:02:06.076000+00:00",
+          "footer": {
+            "text": "©ToniPortal",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          },
+          "description": "Veuillez mettre un nombre valide en dessous de 15 !",
+          "color": 16711680,
+          "author": {
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "name": "Companion Cube",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          }
+        }
+      ],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": null,
+        "members": [],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": null,
+      "interaction": null,
+      "cleanContent": ""
+    }
+  },
+  {
+    "command": "debug.js",
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1181581270111748157",
+      "createdTimestamp": 1701781327513,
+      "type": 0,
+      "system": false,
+      "content": "",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [
+        {
+          "type": "rich",
+          "title": "Erreur Droit !",
+          "timestamp": "2023-12-05T13:02:07.300000+00:00",
+          "footer": {
+            "text": "©ToniPortal",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          },
+          "description": "Veuillez être le créateur du bot pour voir cela !",
+          "color": 16711680,
+          "author": {
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "name": "Companion Cube",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          }
+        }
+      ],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": null,
+        "members": [],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": null,
+      "interaction": null,
+      "cleanContent": ""
+    }
+  },
+  {
+    "command": "delchan.js",
+    "success": true
+  },
+  {
+    "command": "deusvult.js",
+    "success": true
+  },
+  {
+    "command": "dormir.js",
+    "success": true
+  },
+  {
+    "command": "edit.js",
+    "success": true
+  },
+  {
+    "command": "eval.js",
+    "success": true
+  },
+  {
+    "command": "event.js",
+    "success": true
+  },
+  {
+    "command": "fauxvirus.js",
+    "success": true
+  },
+  {
+    "command": "ffm.js",
+    "success": false,
+    "error": "Cannot read properties of undefined (reading '0')"
+  },
+  {
+    "command": "game1.js",
+    "success": true
+  },
+  {
+    "command": "game2.js",
+    "success": true
+  },
+  {
+    "command": "gouter.js",
+    "success": true
+  },
+  {
+    "command": "guild.js",
+    "success": true
+  },
+  {
+    "command": "help.js",
+    "success": true
+  },
+  {
+    "command": "info.js",
+    "success": true
+  },
+  {
+    "command": "infopack.json.js",
+    "success": true
+  },
+  {
+    "command": "jeff.js",
+    "success": true
+  },
+  {
+    "command": "kick.js",
+    "success": false,
+    "error": "message.guild.member is not a function"
+  },
+  {
+    "command": "leave.js",
+    "success": true
+  },
+  {
+    "command": "leaveguild.js",
+    "success": false,
+    "error": "Cannot find module './config.json'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\leaveguild.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+  },
+  {
+    "command": "link.js",
+    "success": true
+  },
+  {
+    "command": "listemoji.js",
+    "success": true
+  },
+  {
+    "command": "manger.js",
+    "success": true
+  },
+  {
+    "command": "matt.js",
+    "success": true
+  },
+  {
+    "command": "messageme!.js",
+    "success": true
+  },
+  {
+    "command": "minuit.js",
+    "success": true
+  },
+  {
+    "command": "morpion.js",
+    "success": false,
+    "error": "Cannot find module 'morpionzerwyx'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\morpion.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+  },
+  {
+    "command": "ms.js",
+    "success": true
+  },
+  {
+    "command": "mute.js",
+    "success": true
+  },
+  {
+    "command": "météo.js",
+    "success": true
+  },
+  {
+    "command": "neko.js",
+    "success": true
+  },
+  {
+    "command": "noamoru.edu.js",
+    "success": true
+  },
+  {
+    "command": "onlinemember.js",
+    "success": false,
+    "error": "guild is not defined"
+  },
+  {
+    "command": "opti.js",
+    "success": true
+  },
+  {
+    "command": "pause.js",
+    "success": false,
+    "error": "Cannot read properties of undefined (reading 'id')"
+  },
+  {
+    "command": "peaceandlove.js",
+    "success": true
+  },
+  {
+    "command": "pileouface.js",
+    "success": true
+  },
+  {
+    "command": "PING.js",
+    "success": false,
+    "error": "Discord.MessageEmbed is not a constructor"
+  },
+  {
+    "command": "play.js",
+    "success": false,
+    "error": "Cannot read properties of null (reading 'id')"
+  },
+  {
+    "command": "pong.js",
+    "success": false,
+    "error": "Discord.MessageEmbed is not a constructor"
+  },
+  {
+    "command": "pow.js",
+    "success": true
+  },
+  {
+    "command": "ppc.js",
+    "success": true
+  },
+  {
+    "command": "prefixes.json",
+    "success": false,
+    "error": "commandFile.run is not a function"
+  },
+  {
+    "command": "progress.js",
+    "success": false,
+    "error": "Discord.MessageEmbed is not a constructor"
+  },
+  {
+    "command": "rabbit.js",
+    "success": true
+  },
+  {
+    "command": "randgiphy.js",
+    "success": true
+  },
+  {
+    "command": "randomword.js",
+    "success": true
+  },
+  {
+    "command": "raw.js",
+    "success": true
+  },
+  {
+    "command": "react.js",
+    "success": false,
+    "error": "Cannot find module 'discord.js-collector'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\react.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+  },
+  {
+    "command": "reactmsg.js",
+    "success": false,
+    "error": "caca is not defined"
+  },
+  {
+    "command": "reload.js",
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1181581597791764602",
+      "createdTimestamp": 1701781405638,
+      "type": 19,
+      "system": false,
+      "content": "Must provide a command name to reload.",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [
+          "413714554107985930"
+        ],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": "413714554107985930",
+        "members": [
+          "413714554107985930"
+        ],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": {
+        "channelId": "1179755824344731728",
+        "guildId": "413710882376515584",
+        "messageId": "1181581596252459041"
+      },
+      "interaction": null,
+      "cleanContent": "Must provide a command name to reload."
+    }
+  },
+  {
+    "command": "report.js",
+    "success": true
+  },
+  {
+    "command": "retourner.js",
+    "success": true
+  },
+  {
+    "command": "reverse.js",
+    "success": true
+  },
+  {
+    "command": "roll.js",
+    "success": true
+  },
+  {
+    "command": "rosti.js",
+    "success": true
+  },
+  {
+    "command": "rouletterusse.js",
+    "success": true
+  },
+  {
+    "command": "rpg.js",
+    "success": true
+  },
+  {
+    "command": "say.js",
+    "success": true
+  },
+  {
+    "command": "ser.js",
+    "success": true
+  },
+  {
+    "command": "serveur.js",
+    "success": true
+  },
+  {
+    "command": "setavatar.js",
+    "success": true
+  },
+  {
+    "command": "setrank.js",
+    "success": true
+  },
+  {
+    "command": "slashcommande",
+    "success": false,
+    "error": "Cannot find module './commande/slashcommande'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+  },
+  {
+    "command": "snake.js",
+    "success": false,
+    "error": "Cannot find module 'snakecord'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\snake.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+  },
+  {
+    "command": "soiremusic.js",
+    "success": false,
+    "error": "Cannot find module 'ytpl'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\soiremusic.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+  },
+  {
+    "command": "spooky.js",
+    "success": true
+  },
+  {
+    "command": "stream.js",
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1181581698064973834",
+      "createdTimestamp": 1701781429545,
+      "type": 0,
+      "system": false,
+      "content": "",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [
+        {
+          "type": "rich",
+          "title": "**Erreur**",
+          "timestamp": "2023-12-05T13:03:49.422000+00:00",
+          "footer": {
+            "text": "©ToniPortal",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          },
+          "description": "Veuillez mettre un argument de la chaîne dont vous voulez voir les stats.",
+          "color": 16711680,
+          "author": {
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "name": "Companion Cube",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          }
+        }
+      ],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": null,
+        "members": [],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": null,
+      "interaction": null,
+      "cleanContent": ""
+    }
+  },
+  {
+    "command": "talkcmd.js",
+    "success": true
+  },
+  {
+    "command": "test.js",
+    "success": true
+  },
+  {
+    "command": "toni.js",
+    "success": false,
+    "error": "colors is not defined"
+  },
+  {
+    "command": "ygo.js",
+    "success": true
+  },
+  {
+    "command": "yomamma.js",
     "success": true
   }
 ]
