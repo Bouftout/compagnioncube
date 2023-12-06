@@ -7,7 +7,8 @@
         "test": "nodemon index.js --ignore *.json",
         "start": "node index.js",
         "pm2": "pm2 start ./index.js --restart-delay 500 && pm2 logs",
-        "build": "npm i nodemon -g"
+        "build": "docker build -t compagnioncube .",
+        "docker": "docker run -p compagnioncube"
     },
     "repository": {
         "type": "git",

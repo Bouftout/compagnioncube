@@ -1,27 +1,29 @@
-FROM node
+# Use an official Node.js runtime as a base image
+FROM node:20
+
 LABEL authors="ToniPortal"
-# update dependencies and install curl
-RUN apt-get update && apt-get install -y \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+
+# Update dependencies and install curl
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 # Create app directory
 WORKDIR /app
+
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-# COPY package*.json ./ \
-#     ./source ./
+COPY package*.json ./
 
-# This will copy everything from the source path 
-# --more of a convenience when testing locally.
-COPY . .
-# update each dependency in package.json to the latest version
-RUN npm install -g npm-check-updates \
-    ncu -u \
-    npm install \
-    npm install discord.js
-# If you are building your code for production
-RUN npm ci --only=production
+# Install npm-check-updates globally and update dependencies
+RUN npm install -g npm-check-updates && ncu -u
+
+# Install dependencies
+RUN npm install
+
+# Install discord.js
+RUN npm install discord.js
+
 # Bundle app source
-COPY . /app
-CMD [ "node", "index.js" ]
+COPY . .
+
+# Specify the command to run on container start
+CMD ["node", "index.js"]

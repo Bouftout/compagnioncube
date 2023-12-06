@@ -63,10 +63,10 @@ exports.run = async (client, message, args, colors) => {
         if (args[1] == "word" && args[2] == "random") {
             let randWord = va[Math.floor(Math.random() * va.length)];
             actualWord = randWord;
-            url = `https://cataas.com/cat/${json._id}/says/${randWord}`
+            url = `https://cataas.com/cat/${json._id}/says/${randWord}?fontSize=:size&fontColor=:color`
         } else if (args[1] == "word") {
             actualWord = args[2];
-            url = `https://cataas.com/cat/${json._id}/says/${args[2]}`
+            url = `https://cataas.com/cat/${json._id}/says/${args[2]}?fontSize=:size&fontColor=:color`
         }
 
         message.channel.send({
