@@ -1,82 +1,82 @@
-exports.run = (client, message, args, colors) => {
+exports.run = async (client, message, args, colors) => {
 
-    const Discord = require("discord.js");
-
-
-    brmusic(10)
-
-    function brmusic(maximo) {
-
-        let max = maximo + 1;
-
-
-        let intervalval = 1;
-
-
-        const mesgggdebarre = new Discord.MessageEmbed()
-            .setTitle("**Barre**")
-            .setAuthor("Compagnion Cube", client.user.avatarURL())
-            .setColor(colors.defaut)
-            .setDescription("Une barre va être mis en place")
-            .setFooter(`©ToniPortal`, client.user.avatarURL())
-            .setTimestamp(new Date())
-
-
-
-        message.channel.send({ embed: mesgggdebarre }).then((msg) => {
-
-
-
-
-
-
-
-
-
-            var idVar = setInterval(() => {
-
-                console.log(intervalval)
-
-
-
-
-                const x = "□";
-                const barStr = `[${'='.repeat(intervalval)}${'□'.repeat(max - intervalval)}]`;
-                console.log(barStr);
-
-
-
-
-                const barre = new Discord.MessageEmbed()
-                    .setTitle("**Barre**")
-                    .setAuthor("Compagnion Cube", client.user.avatarURL())
-                    .setColor(colors.defaut)
-                    .setDescription(barStr)
-                    .setFooter(`©ToniPortal`, client.user.avatarURL())
-                    .setTimestamp(new Date());
-
-                msg.edit(barre)
-
-                intervalval++
-                if (intervalval == max || intervalval > max) {
-
-                    myStopFunction()
-                }
-
-
-            }, 1000);
-
-
-
-            function myStopFunction() {
-                clearInterval(idVar);
-            }
-
-
-        });
-
+    if (!args[1]) {
+        return message.reply("Please set a number !")
     }
 
+    await brmusic(Number(args[1]) - 1);
+
+    async function brmusic(maximo) {
+        let max = maximo + 1;
+        let intervalval = 1;
+
+        var msg = await message.channel.send({
+            embeds: [{
+                color: colors.ok,
+                author: {
+                    name: client.user.username,
+                    icon_url: client.user.avatarURL()
+                },
+                title: `**Pala**`,
+                description: `Une barre va être mise en place`,
+                timestamp: new Date(),
+                footer: {
+                    icon_url: client.user.avatarURL(),
+                    text: `©ToniPortal`
+                }
+            }]
+        });
+
+        var idVar = setInterval(async () => {
+            console.log(intervalval);
+
+            const x = "□";
+            const barStr = `[${'='.repeat(intervalval)}${'□'.repeat(max - intervalval)}]`;
+            console.log(barStr);
+
+            const barre = {
+                color: colors.defaut,
+                author: {
+                    name: client.user.username,
+                    icon_url: client.user.avatarURL()
+                },
+                title: `Voici votre barre :`,
+                description: `${barStr}`,
+                timestamp: new Date(),
+                footer: {
+                    icon_url: client.user.avatarURL(),
+                    text: `©ToniPortal`
+                }
+            };
+
+            await msg.edit({ embeds: [barre] });
+
+            intervalval++;
+            if (intervalval == max + 1 || intervalval > max) {
+                myStopFunction();
 
 
-}
+                await msg.edit({
+                    embeds: [{
+                        color: colors.ok,
+                        author: {
+                            name: client.user.username,
+                            icon_url: client.user.avatarURL()
+                        },
+                        title: `Fini`,
+                        description: `${barStr}`,
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: client.user.avatarURL(),
+                            text: `©ToniPortal`
+                        }
+                    }]
+                });
+            }
+        }, 1000);
+
+        function myStopFunction() {
+            clearInterval(idVar);
+        }
+    };
+};

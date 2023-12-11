@@ -1,11 +1,37 @@
-exports.run = (client, message, args, colors) => {
+exports.run = async (client, message, args, colors) => {
+
+  //How create collector :
+  function createCollector(searchmsg, stopmsg, time) {
+    let filter = m => m.content.includes(searchmsg);
+
+    let collector = message.channel.createMessageCollector({ filter, time: time * 1000 });
+    collector.on('end', collected => {
+      if (collected.size == 0) {
+        message.channel.send({
+          embeds: [{
+            color: colors.info,
+            author: {
+              name: client.user.username,
+              icon_url: client.user.avatarURL()
+            },
+            title: `Aucun PEGU n'a fait ce que il demander !`,
+            description: stopmsg,
+            timestamp: new Date(),
+            footer: {
+              icon_url: client.user.avatarURL(),
+              text: colors.author
+            }
+          }]
+        })
+      }
+
+    });
+
+    return collector;
+  }
 
 
 
-  const filter = m => m.content.includes('DEUSVULT');
-  const collector = message.channel.createMessageCollector({ filter, time: 15_000 });
-
-  collector.on('end', collected => console.log(`Collected ${collected.size} items`));
 
   message.channel.send({
     embeds: [{
@@ -14,38 +40,78 @@ exports.run = (client, message, args, colors) => {
         name: client.user.username,
         icon_url: client.user.avatarURL()
       },
-      title: `Réponse:`,
+      title: `DEUSVULT`,
       description: "**DEUSVULT**",
       timestamp: new Date(),
       footer: {
         icon_url: client.user.avatarURL(),
-        text: `©ToniPortal`
+        text: colors.author
       }
     }]
   })
-  collector.on('collect', m => {
-    console.log(m)
-    message.channel.send({
-      embeds: [{
-        color: colors.defaut,
-        author: {
-          name: client.user.username,
-          icon_url: client.user.avatarURL()
-        },
-        title: `${m.content}`,
-        description: "**ATTAQUONS JERUSALEM**",
-        timestamp: new Date(),
-        footer: {
-          icon_url: client.user.avatarURL(),
-          text: `©ToniPortal`
-        }
-      }]
-    })
 
-  });
+
+
+
+  function createAll(searchmsg, stopmsg, time, aftermsg) {
+    return new Promise(resolve => {
+
+      let col = createCollector(searchmsg, stopmsg, time)
+
+      col.on('collect', m => {
+        message.channel.send({
+          embeds: [{
+            color: colors.defaut,
+            author: {
+              name: client.user.username,
+              icon_url: client.user.avatarURL()
+            },
+            title: `${m.content}`,
+            description: aftermsg,
+            timestamp: new Date(),
+            footer: {
+              icon_url: client.user.avatarURL(),
+              text: colors.author
+            }
+          }]
+        });
+        resolve()
+      })
+
+    })
+  }
+
+
+  // 1er le message que je vais demander pour collecte ; 2 c'est quand il a personne qui le fait ; 3 c'est le temps
+  // 4 c'est le msg que on va envoyer si on le reçois bien !
+  createAll("DEUSVULT", "Pas de pegu...\nRestons neutre,mais pas trop on va juste les attaquez discretement !", 20, "*ATTAQUONS JERUSALEM*").then(() => {
+
+    createAll("ATTAQUONS JERUSALEM", "Pas de Jerusalem pour maintenant...\nNous les attaquerons demain", 15, "*OUEH*\n PRENEZ TOUS").then(() => {
+
+      createAll("OUEH", "On n'a rien trouver...", 15, "Toi tu aura rien tu *sais* ?").then(() => {
+
+        createAll("sais", "On n'a rien trouver...", 15, "- *CHEF* ON A FINI DE TOUT PRENDRE\n- ENFIN, bande de bras cassée... Bon moi je vais m'amuser,allez a plus p'tiot").then(() => {
+
+          createAll("CHEF", "PANIC PANIC", 15, "- CHEF CHEF\n- TG ENCU*** - MAIS CHEF - J'AI DIT NON\n - ON SE FAIT *ATTAQUER*\n- BEN ON VA *ATTAQUER* NOUS AUSSI HOP HOP").then(() => {
+
+            createAll("ATTAQUER", "On a perdu... FF15", 15, "- INCREDIBILIS\n- ON A WIN BRAVO").then(() => {
+
+            })
+
+          })
+
+        })
+      })
+    })
+  })
+
+
+
+
+
+
 
   //   .then(() => {
-
   //     message.channel.awaitMessages(response => response.content === 'DEUSVULT', {
   //       max: 1,
   //       time: 30000,
