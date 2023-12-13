@@ -1,34 +1,27 @@
-"use script";
 exports.run = (client, message, args, colors) => {
 
-        //Jeu de carte contre bot
+    let tours = 0;
 
-        const fs = require('fs');
+    function random(min, max) { //juste un random normal
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
 
-        function attackoudef() {
-
-            var raandom = random(1, 2)
-
-            if (raandom == 1) {
-
-                return "DEF"
-            }
-            if (raandom == 2) {
-
-                return "ATK"
-            }
+    class createPlayer {
+        constructor(nom, age) {
+            this.nom = nom;
+            this.age = age;
         }
 
-
-
-        function random(min, max) { //juste un random normal
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
+        // Méthode de la classe
+        sePresenter() {
+            console.log(`Je m'appelle ${this.nom} et j'ai ${this.age} ans.`);
         }
+    }
 
 
 
 
-    } //fin commande
+} //fin commande

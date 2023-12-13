@@ -269,7 +269,7 @@ client.on('messageCreate', async (message) => {
 
                 for (const commandName of commandNames) {
                     try {
-                        if (commandName != "exit.js") {
+                        if (commandName != "exit.js" && commandName != "slashcommande") {
                             const result = await channel.send(`*${commandName}`);
 
                             let commandFile = require(`./commande/${commandName}`);

@@ -5,8 +5,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796236910854166",
-      "createdTimestamp": 1702309416750,
+      "id": "1184498886421774376",
+      "createdTimestamp": 1702476941448,
       "type": 0,
       "system": false,
       "content": "",
@@ -18,13 +18,13 @@
         {
           "type": "rich",
           "title": "**Votre réponse :**",
-          "timestamp": "2023-12-11T15:43:35.896000+00:00",
+          "timestamp": "2023-12-13T14:15:41.275000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
             "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
           },
-          "description": "Perspectives bonnes",
+          "description": "Mieux vaut ne pas te le dire maintenant",
           "color": 65280,
           "author": {
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -85,8 +85,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796284742709348",
-      "createdTimestamp": 1702309428154,
+      "id": "1184498934740160622",
+      "createdTimestamp": 1702476952968,
       "type": 0,
       "system": false,
       "content": "",
@@ -99,7 +99,7 @@
           "url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp?size=4096",
           "type": "rich",
           "title": "**Companion Cube**",
-          "timestamp": "2023-12-11T15:43:47.233000+00:00",
+          "timestamp": "2023-12-13T14:15:52.828000+00:00",
           "image": {
             "width": 614,
             "url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp?size=4096",
@@ -155,8 +155,7 @@
   },
   {
     "command": "bitcoin.js",
-    "success": false,
-    "error": "Cannot find module 'axios'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\bitcoin.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+    "success": true
   },
   {
     "command": "blague.js",
@@ -193,8 +192,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796361095811112",
-      "createdTimestamp": 1702309446358,
+      "id": "1184499017334403163",
+      "createdTimestamp": 1702476972660,
       "type": 19,
       "system": false,
       "content": "S'il te plaît met un nombre entre 2 et 100 !",
@@ -231,7 +230,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1183796359682334811"
+        "messageId": "1184499015908339804"
       },
       "interaction": null,
       "cleanContent": "S'il te plaît met un nombre entre 2 et 100 !"
@@ -251,8 +250,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796393756852304",
-      "createdTimestamp": 1702309454145,
+      "id": "1184499049693462591",
+      "createdTimestamp": 1702476980375,
       "type": 0,
       "system": false,
       "content": "",
@@ -264,7 +263,7 @@
         {
           "type": "rich",
           "title": "Information sur le Compagion Cube de Portal !",
-          "timestamp": "2023-12-11T15:44:08.644000+00:00",
+          "timestamp": "2023-12-13T14:16:16.020000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -311,8 +310,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796399184281630",
-      "createdTimestamp": 1702309455439,
+      "id": "1184499055540326413",
+      "createdTimestamp": 1702476981769,
       "type": 0,
       "system": false,
       "content": "",
@@ -324,7 +323,7 @@
         {
           "type": "rich",
           "title": "Erreur Droit !",
-          "timestamp": "2023-12-11T15:44:14.463000+00:00",
+          "timestamp": "2023-12-13T14:16:21.682000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -379,8 +378,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796412874502316",
-      "createdTimestamp": 1702309458703,
+      "id": "1184499069977108560",
+      "createdTimestamp": 1702476985211,
       "type": 19,
       "system": false,
       "content": "Veuillez choisir une difficulté parmi : facile,intermediaire,difficile,hardu,impossible\n(vous pouvez utuliser que la première lettre pour lancer la commande).",
@@ -417,7 +416,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1183796411851079731"
+        "messageId": "1184499068450390106"
       },
       "interaction": null,
       "cleanContent": "Veuillez choisir une difficulté parmi : facile,intermediaire,difficile,hardu,impossible\n(vous pouvez utuliser que la première lettre pour lancer la commande)."
@@ -537,8 +536,7 @@
   },
   {
     "command": "neko.js",
-    "success": false,
-    "error": "Cannot find module 'axios'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\neko.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+    "success": true
   },
   {
     "command": "noamoru.edu.js",
@@ -546,8 +544,7 @@
   },
   {
     "command": "onlinemember.js",
-    "success": false,
-    "error": "guild is not defined"
+    "success": true
   },
   {
     "command": "opti.js",
@@ -555,8 +552,45 @@
   },
   {
     "command": "pause.js",
-    "success": false,
-    "error": "Cannot read properties of undefined (reading 'id')"
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1184499327561896067",
+      "createdTimestamp": 1702477046624,
+      "type": 0,
+      "system": false,
+      "content": "Vous devez être dans un channel vocal",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": null,
+        "members": [],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": null,
+      "interaction": null,
+      "cleanContent": "Vous devez être dans un channel vocal"
+    }
   },
   {
     "command": "peaceandlove.js",
@@ -582,8 +616,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796696212316280",
-      "createdTimestamp": 1702309526256,
+      "id": "1184499361485430926",
+      "createdTimestamp": 1702477054712,
       "type": 0,
       "system": false,
       "content": "",
@@ -596,7 +630,7 @@
           "url": "https://www.ponggame.org/",
           "type": "rich",
           "title": "The famous Pong !",
-          "timestamp": "2023-12-11T15:45:20.938000+00:00",
+          "timestamp": "2023-12-13T14:17:34.493000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -651,8 +685,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796709604733048",
-      "createdTimestamp": 1702309529449,
+      "id": "1184499375716708363",
+      "createdTimestamp": 1702477058105,
       "type": 19,
       "system": false,
       "content": "Please set a number !",
@@ -689,7 +723,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1183796708568735835"
+        "messageId": "1184499373778931824"
       },
       "interaction": null,
       "cleanContent": "Please set a number !"
@@ -712,14 +746,54 @@
     "success": true
   },
   {
-    "command": "react.js",
-    "success": false,
-    "error": "Cannot find module 'discord.js-collector'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\react.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
-  },
-  {
     "command": "reactmsg.js",
-    "success": false,
-    "error": "caca is not defined"
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1184499397891989634",
+      "createdTimestamp": 1702477063392,
+      "type": 19,
+      "system": false,
+      "content": "Veuillez mettre un argument !",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [
+          "413714554107985930"
+        ],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": "413714554107985930",
+        "members": [
+          "413714554107985930"
+        ],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": {
+        "channelId": "1179755824344731728",
+        "guildId": "413710882376515584",
+        "messageId": "1184499396600139817"
+      },
+      "interaction": null,
+      "cleanContent": "Veuillez mettre un argument !"
+    }
   },
   {
     "command": "reload.js",
@@ -727,8 +801,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796735873654976",
-      "createdTimestamp": 1702309535712,
+      "id": "1184499404313460756",
+      "createdTimestamp": 1702477064923,
       "type": 19,
       "system": false,
       "content": "Must provide a command name to reload.",
@@ -765,7 +839,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1183796734468575313"
+        "messageId": "1184499401977237576"
       },
       "interaction": null,
       "cleanContent": "Must provide a command name to reload."
@@ -820,18 +894,13 @@
     "success": true
   },
   {
-    "command": "slashcommande",
-    "success": false,
-    "error": "Cannot find module './commande/slashcommande'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
-  },
-  {
     "command": "soiremusic.js",
     "success": true,
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796809785675867",
-      "createdTimestamp": 1702309553334,
+      "id": "1184499477860593735",
+      "createdTimestamp": 1702477082458,
       "type": 0,
       "system": false,
       "content": "",
@@ -843,13 +912,13 @@
         {
           "type": "rich",
           "title": "Musique aléatoire",
-          "timestamp": "2023-12-11T15:45:52.227000+00:00",
+          "timestamp": "2023-12-13T14:18:02.071000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
             "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
           },
-          "description": "https://www.youtube.com/watch?v=Mhp2W3O_cXU",
+          "description": "https://www.youtube.com/watch?v=SA1ESPFd3LQ",
           "color": 16744703,
           "author": {
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -894,8 +963,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1183796835098312817",
-      "createdTimestamp": 1702309559369,
+      "id": "1184499502162387036",
+      "createdTimestamp": 1702477088252,
       "type": 0,
       "system": false,
       "content": "",
@@ -907,7 +976,7 @@
         {
           "type": "rich",
           "title": "**Erreur**",
-          "timestamp": "2023-12-11T15:45:58.523000+00:00",
+          "timestamp": "2023-12-13T14:18:08.110000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -966,7 +1035,6 @@
   },
   {
     "command": "yomamma.js",
-    "success": false,
-    "error": "Cannot find module 'axios'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\yomamma.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+    "success": true
   }
 ]

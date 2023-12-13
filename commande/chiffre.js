@@ -1,13 +1,14 @@
 exports.run = (client, message, args, colors) => {
-    const n2words = require('n2words')
+    //n2word module utulisée de base
+    if (!args[1] || args[1] == NaN) return message.reply("Veuillez mettre un texte a transformée en nombre !");
 
-    if(typeof args[1] != "number") args[1] = Number(args[1]);
-    if(!args[1] || args[1] == NaN) return message.reply("Veuillez mettre un nombre !").then(msg => { setTimeout(function(){ message.delete(); msg.delete() },colors.time) });
-    if (!args[2]) args[2] = "fr";
+    if (typeof args[1] == "number") args[1] = String(args[1]);
 
-    const numbers = n2words(args[1], { lang: args[2] });
+    const number = (args.splice(1).join(" ")).replaceAll(/^(un|deux|trois|quatre|cinq|six|sept|huit|neuf|dix)$/i, "");
 
-    message.channel.send({
+
+
+    return message.channel.send({
         embeds: [{
             color: colors.defaut,
             author: {
@@ -15,11 +16,11 @@ exports.run = (client, message, args, colors) => {
                 icon_url: client.user.avatarURL()
             },
             title: `Chiffre :**${args[1]}**`,
-            description: `Voici comment ça donnerai avec des mot :\n **${numbers}**`,
+            description: `Voici comment ça donnerai avec des mot :\n **${number}**`,
             timestamp: new Date(),
             footer: {
                 icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`
+                text: colors.author
             },
         }]
     });

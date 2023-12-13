@@ -1,26 +1,25 @@
-exports.run = (client, message, args, colors) => {
+exports.run = async (client, message, args, colors) => {
 
-  const axios = require("axios");
+  let f = await fetch("http://api.yomomma.info/")
+  let response = await f.json();
 
 
-  axios.get("http://api.yomomma.info/").then(response => {
-    const embed = {
+  message.channel.send({
+    embeds: [{
       color: colors.default,
       author: {
         name: client.user.username,
         icon_url: client.user.avatarURL()
       },
-      title: `**Joke ?**`,
-      description: `${response.data.joke}`,
+      title: `**Yomamma Joke !!**`,
+      description: `${response.joke}`,
       timestamp: new Date(),
       footer: {
         icon_url: client.user.avatarURL(),
-        text: `©ToniPortal`
+        text: colors.author
       }
-    }
+    }]
+  })
 
-    message.channel.send({ embeds: [embed] })
-
-  });
 
 };
