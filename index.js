@@ -31,6 +31,8 @@ async function login() {
 
 };
 
+
+//Fichier YML
 const colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
 
 
