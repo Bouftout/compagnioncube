@@ -121,53 +121,53 @@ client.on("messageCreate", message => {
     if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
 
 
-    fileExists(`./data/exp/${message.author.id}.yml`).then(async exists => {
-        console.log(exists)
-        if (exists) {
+    // fileExists(`./data/exp/${message.author.id}.yml`).then(async exists => {
+    //     // console.log(exists)
+    //     if (exists) {
 
-            var file = await yaml.load(fs.readFileSync(`./data/exp/${message.author.id}.yml`, 'utf8'));
+    //         var file = await yaml.load(fs.readFileSync(`./data/exp/${message.author.id}.yml`, 'utf8'));
 
-            if (file) {
-                if (file.exp < file.lvlup) {
-                    file.exp += 1;
-                } else {
-                    file.exp = 0
-                    file.lvl += 1
-                    file.lvlup = Number(file.lvlup) * 2
-                }
+    //         if (file) {
+    //             if (file.exp < file.lvlup) {
+    //                 file.exp += 1;
+    //             } else {
+    //                 file.exp = 0
+    //                 file.lvl += 1
+    //                 file.lvlup = Number(file.lvlup) * 2
+    //             }
 
 
 
-                fs.writeFile(`./data/exp/${message.author.id}.yml`, yaml.dump(file), (err) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
+    //             fs.writeFile(`./data/exp/${message.author.id}.yml`, yaml.dump(file), (err) => {
+    //                 if (err) {
+    //                     console.log(err);
+    //                 }
+    //             });
 
-                // console.log("ADD ONE EXP " + file.exp + "\n" + yaml.dump(file));
-            } else {
-                console.warn("[EXP] non existant")
-            }
-        } else {
-            // Exemple :
-            // name: ToniPortal
-            // exp: 0
-            // lvl: 0
-            // lvlup: 0
-            // image: "./image/exp/wallpaper.png
+    //             // console.log("ADD ONE EXP " + file.exp + "\n" + yaml.dump(file));
+    //         } else {
+    //             console.warn("[EXP] non existant")
+    //         }
+    //     } else {
+    //         // Exemple :
+    //         // name: ToniPortal
+    //         // exp: 0
+    //         // lvl: 0
+    //         // lvlup: 0
+    //         // image: "./image/exp/wallpaper.png
 
-            var stream = fs.createWriteStream(`./data/exp/${message.author.id}.yml`);
+    //         var stream = fs.createWriteStream(`./data/exp/${message.author.id}.yml`);
 
-            stream.once('open', (function (fd) {
-                stream.write(`name: ${message.author.username}\n`);
-                stream.write(`exp: 1\n`);
-                stream.write(`lvl: 1\n`);
-                stream.write(`lvlup: 50\n`);
-                stream.write(`image: ./image/exp/wallpaper.png\n`);
-                stream.end();
-            }))
-        }
-    })
+    //         stream.once('open', (function (fd) {
+    //             stream.write(`name: ${message.author.username}\n`);
+    //             stream.write(`exp: 1\n`);
+    //             stream.write(`lvl: 1\n`);
+    //             stream.write(`lvlup: 50\n`);
+    //             stream.write(`image: ./image/exp/wallpaper.png\n`);
+    //             stream.end();
+    //         }))
+    //     }
+    // })
 
 });
 
@@ -181,14 +181,15 @@ client.on('messageCreate', async (message) => {
     // console.log(`profix: ${profix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
 
 
-
     // 0xff80ff == defaut
     // 0x00FF00 == vert (c'est bon c'est lancé)
     // 0xFF0000 == rouge (message d'erreur)
     // 0x778899 == gris (message d'info)
     // 0x008EE2 == Blue ancien defaut
     // Time == temps pour les erreur
-    console.log(`${message.author.username} ; Commande éxécuté : ${profix}${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
+    // author == Author de l'embed
+
+    // console.log(`${message.author.username} ; Commande éxécuté : ${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
 
 
     //Ne pas oublier que comme sur les commande on peut faire un async au export.run

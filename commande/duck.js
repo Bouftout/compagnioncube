@@ -1,5 +1,6 @@
 const mysql = require('mysql2/promise');
 const config = require("../config.json");
+const { AttachmentBuilder } = require('discord.js');
 
 // Créer une connexion à la base de données
 const pool = mysql.createPool({
@@ -22,11 +23,90 @@ function getDate() {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
 
+// Crée des image différente pour chaque truc de faim sur base de coink
+const hungerImages = [
+    "0.webp",
+
+    "20.webp",
+    "40.webp",
+    "60.webp",
+    "80.webp",
+    "80-100.webp",
+
+    "100.webp",
+    "error.webp"
+];
+
+function whatimg(nb) {
+    let imageIndex;
+
+    if (nb === 0) {
+        imageIndex = 0;
+    } else if (nb > 0 && nb <= 20) {
+        imageIndex = 1;
+    } else if (nb > 20 && nb <= 40) {
+        imageIndex = 2;
+    } else if (nb > 40 && nb <= 60) {
+        imageIndex = 3;
+    } else if (nb > 60 && nb <= 80) {
+        imageIndex = 4;
+    } else if (nb > 80 && nb <= 100) {
+        imageIndex = 5;
+    } else if (nb > 100) {
+        imageIndex = 6;
+    } else {
+        imageIndex = 7
+    }
+
+    return `./data/duck/img/${hungerImages[imageIndex]}`;
+}
+
+
 exports.run = async (client, message, args, colors) => {
     const connection = await pool.getConnection();
     const id = message.author.id;
 
+
     try {
+
+        async function create() {
+            message.delete();
+
+            if (!args[2]) {
+                return message.reply("Veuillez mettre le nom de votre canard !")
+            }
+
+            let c = await connection.execute(`SELECT count(duck.name) FROM accounts 
+            INNER JOIN duck ON accounts.id_duck = duck.id WHERE accounts.id = ?`, [id])
+
+            if (c == 0) {
+                await connection.execute(`INSERT INTO duck (name) VALUES (?)`, [args[2]]);
+                var msg = await message.channel.send({
+                    embeds: [{
+                        color: colors.defaut,
+                        author: {
+                            name: client.user.username,
+                            icon_url: client.user.avatarURL()
+                        },
+                        title: `Coink`,
+                        description: `Votre canard nomée : **${args[2]}** prend vie !`,
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: client.user.avatarURL(),
+                            text: `©ToniPortal`
+                        }
+                    }
+                    ]
+                })
+                setTimeout(function () {
+                    msg.delete();
+                }, 2000)
+            } else {
+                message.reply("Vous avez déjà un canard !")
+            }
+
+        }
+
 
         switch (args[1]) {
             case "m":
@@ -79,8 +159,9 @@ exports.run = async (client, message, args, colors) => {
                     })
                 }
                 break;
+            case "b":
             case "buy":
-                const [se, a] = await connection.execute('SELECT accounts.money AS "money",duck.json AS "json",faim FROM accounts INNER JOIN duck ON accounts.id_duck = duck.id');
+                var [se, a] = await connection.execute('SELECT accounts.money AS "money",duck.json AS "json",faim FROM accounts INNER JOIN duck ON accounts.id_duck = duck.id');
 
                 /*
                  Explication :
@@ -97,13 +178,18 @@ exports.run = async (client, message, args, colors) => {
                 const fla = args[2].charAt(0).toLowerCase();
 
                 if (se[0].money >= buythingLowerCase[fla][0]) {
-                    console.log(buythingLowerCase[fla])
-                    let [t, e] = await connection.execute(`
+                    // console.log(buythingLowerCase[fla])
+
+                    await connection.execute(`
                     UPDATE accounts 
                     INNER JOIN duck ON accounts.id_duck = duck.id 
                     SET accounts.money = accounts.money - ?, duck.faim = duck.faim + ? 
                     WHERE accounts.id = ?;
                   `, [buythingLowerCase[fla][0], buythingLowerCase[fla][1], id]);
+
+                    let actualFaim = buythingLowerCase[fla][1] + se[0].faim;
+
+                    const file = new AttachmentBuilder(whatimg(actualFaim));
 
                     return message.channel.send({
                         embeds: [{
@@ -115,16 +201,20 @@ exports.run = async (client, message, args, colors) => {
                             title: `Vous avez achetée un produit à ${buythingLowerCase[fla][0]}$ `,
                             description: `Vous avez rempli la faim de votre canard ! 
 Faim donner : **${buythingLowerCase[fla][1]}**
-Faim actuel : **${buythingLowerCase[fla][1] + se[0].faim}**
+Faim actuel : **${actualFaim}**
 Il vous reste : ***${se[0].money - buythingLowerCase[fla][0]}**$*`,
                             timestamp: new Date(),
+                            image: {
+                                url: `attachment://${path.basename(whatimg(actualFaim))}`,
+                            },
                             footer: {
                                 icon_url: client.user.avatarURL(),
                                 text: `©ToniPortal`
                             }
                         }
-                        ]
+                        ], files: [file]
                     })
+
                 } else if (se[0].money < buythingLowerCase[fla][0]) {
                     return message.reply("Vous n'avez pas assez d'argent !")
                 } else {
@@ -150,6 +240,37 @@ Il vous reste : ***${se[0].money - buythingLowerCase[fla][0]}**$*`,
 
 
                 break;
+            case "c":
+            case "create":
+                create();
+                break;
+            case "l":
+            case "leaderboard":
+                let l = await connection.execute(`SELECT duck.name AS "duckname",accounts.name AS "accname",faim AS "faim" FROM accounts 
+                INNER JOIN duck ON accounts.id_duck = duck.id ORDER BY faim ASC LIMIT 10`);
+
+                var msg = "DuckName ; AccName\n";
+                l[0].forEach((la) => {
+                    msg += `**${la.duckname}** -> *${la.accname}*\nFaim : **${la.faim}**\n`;
+                })
+
+                return message.channel.send({
+                    embeds: [{
+                        color: colors.defaut,
+                        author: {
+                            name: client.user.username,
+                            icon_url: client.user.avatarURL()
+                        },
+                        title: `Leaderboard`,
+                        description: msg,
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: client.user.avatarURL(),
+                            text: `©ToniPortal`
+                        }
+                    }
+                    ]
+                })
             default:
                 return message.channel.send({
                     embeds: [{
@@ -159,7 +280,11 @@ Il vous reste : ***${se[0].money - buythingLowerCase[fla][0]}**$*`,
                             icon_url: client.user.avatarURL()
                         },
                         title: `Money!`,
-                        description: `Veuillez choisir quoi faire au canard : \n * - money\n- buy * `,
+                        description: `Veuillez choisir quoi faire au canard : \n
+                - money
+                - buy
+                - create
+                - leaderboard`,
                         timestamp: new Date(),
                         footer: {
                             icon_url: client.user.avatarURL(),
@@ -168,7 +293,6 @@ Il vous reste : ***${se[0].money - buythingLowerCase[fla][0]}**$*`,
                     }
                     ]
                 })
-                break;
         }
 
 
