@@ -1,6 +1,5 @@
 # Use an official Node.js runtime as a base image
 FROM node:20
-
 LABEL authors="ToniPortal"
 
 # Update dependencies and install curl

@@ -8,7 +8,8 @@
         "start": "node index.js",
         "pm2": "pm2 start ./index.js --restart-delay 500 && pm2 logs",
         "build": "docker build -t compagnioncube .",
-        "docker": "docker run -p compagnioncube"
+        "docker": "docker run -p compagnioncube",
+        "minify": "terser index.js -o bundle.min.js"
     },
     "repository": {
         "type": "git",
@@ -53,5 +54,8 @@
         "randomize-hex": "^1.0.7",
         "ytdl-core": "^4.9.2",
         "ytpl": "^2.3.0"
+    },
+    "devDependencies": {
+        "terser": "^5.26.0"
     }
 }
