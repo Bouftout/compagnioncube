@@ -1,2 +1,10 @@
+# Node package
 node_modules
+
+# Config data
 config.json
+
+# Clinic node profiler
+.clinic/
+
+# Others

@@ -49,18 +49,14 @@ exports.run = (client, message, args, colors) => {
 
       if (!args[1] || !args[2]) return message.reply("Veuillez dire sur quelle ligne vous voulez le placer puis sur quelle colonne");
 
-      let plmorp = JSON.parse(fs.readFileSync(wh, "utf8"));
+      let plmorp = JSON.parse(fs.readFileSync(wh, "utf8")); // Récuperation de la partie
 
-      let stopw = true;
-      while (stopw) {
-        
-        console.log("Boucle")
-        if (ligne(plmorp, args[1])[col(args[2])] == "8") {
-          ligne(plmorp, args[1])[col(args[2])] = "X";
-          message.channel.send(format(plmorp)) // Envoie de ton tour
-          stopw = false;
-        }
-
+      let selectedLine = ligne(plmorp, args[1]);
+      if (selectedLine && selectedLine[col(args[2])] == "8") {
+        selectedLine[col(args[2])] = "X";
+        message.channel.send(format(plmorp)); // Envoi de votre tour
+      } else {
+        return message.channel.send("Veuillez choisir un ligne qui est vide");
       }
 
 

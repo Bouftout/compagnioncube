@@ -5,8 +5,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224124569092177",
-      "createdTimestamp": 1703603526013,
+      "id": "1194996743654342708",
+      "createdTimestamp": 1704979825653,
       "type": 0,
       "system": false,
       "content": "",
@@ -18,13 +18,13 @@
         {
           "type": "rich",
           "title": "**Votre réponse :**",
-          "timestamp": "2023-12-26T15:11:59.359000+00:00",
+          "timestamp": "2024-01-11T13:30:23.916000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
             "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
           },
-          "description": "Mes sources disent non",
+          "description": "Ma réponse est non",
           "color": 65280,
           "author": {
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -85,8 +85,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224196421734451",
-      "createdTimestamp": 1703603543144,
+      "id": "1194996829222338640",
+      "createdTimestamp": 1704979846054,
       "type": 0,
       "system": false,
       "content": "",
@@ -99,7 +99,7 @@
           "url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp?size=4096",
           "type": "rich",
           "title": "**Companion Cube**",
-          "timestamp": "2023-12-26T15:12:16.484000+00:00",
+          "timestamp": "2024-01-11T13:30:44.397000+00:00",
           "image": {
             "width": 614,
             "url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp?size=4096",
@@ -175,8 +175,7 @@
   },
   {
     "command": "cat.js",
-    "success": false,
-    "error": "fetch failed"
+    "success": true
   },
   {
     "command": "channel.js",
@@ -188,8 +187,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224266101686283",
-      "createdTimestamp": 1703603559757,
+      "id": "1194996901179822100",
+      "createdTimestamp": 1704979863210,
       "type": 19,
       "system": false,
       "content": "Veuillez mettre un texte a transformée en nombre !",
@@ -226,7 +225,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1189224264759509043"
+        "messageId": "1194996899988656269"
       },
       "interaction": null,
       "cleanContent": "Veuillez mettre un texte a transformée en nombre !"
@@ -238,8 +237,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224273064235060",
-      "createdTimestamp": 1703603561417,
+      "id": "1194996922860191804",
+      "createdTimestamp": 1704979868379,
       "type": 19,
       "system": false,
       "content": "S'il te plaît met un nombre entre 2 et 100 !",
@@ -276,7 +275,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1189224270467973290"
+        "messageId": "1194996921350246400"
       },
       "interaction": null,
       "cleanContent": "S'il te plaît met un nombre entre 2 et 100 !"
@@ -296,8 +295,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224305561698305",
-      "createdTimestamp": 1703603569165,
+      "id": "1194996939335413912",
+      "createdTimestamp": 1704979872307,
       "type": 0,
       "system": false,
       "content": "",
@@ -309,7 +308,7 @@
         {
           "type": "rich",
           "title": "Information sur le Compagion Cube de Portal !",
-          "timestamp": "2023-12-26T15:12:38.039000+00:00",
+          "timestamp": "2024-01-11T13:31:10.645000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -356,8 +355,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224310750064720",
-      "createdTimestamp": 1703603570402,
+      "id": "1194996946516058133",
+      "createdTimestamp": 1704979874019,
       "type": 0,
       "system": false,
       "content": "",
@@ -369,7 +368,7 @@
         {
           "type": "rich",
           "title": "Erreur Droit !",
-          "timestamp": "2023-12-26T15:12:43.761000+00:00",
+          "timestamp": "2024-01-11T13:31:12.356000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -424,8 +423,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224323593027616",
-      "createdTimestamp": 1703603573464,
+      "id": "1194996980372475965",
+      "createdTimestamp": 1704979882091,
       "type": 19,
       "system": false,
       "content": "Veuillez choisir une difficulté parmi : facile,intermediaire,difficile,hardu,impossible\n(vous pouvez utuliser que la première lettre pour lancer la commande).",
@@ -462,7 +461,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1189224323035172954"
+        "messageId": "1194996978405347498"
       },
       "interaction": null,
       "cleanContent": "Veuillez choisir une difficulté parmi : facile,intermediaire,difficile,hardu,impossible\n(vous pouvez utuliser que la première lettre pour lancer la commande)."
@@ -474,63 +473,8 @@
   },
   {
     "command": "duck.js",
-    "success": true,
-    "result": {
-      "channelId": "1179755824344731728",
-      "guildId": "413710882376515584",
-      "id": "1189224351334158446",
-      "createdTimestamp": 1703603580078,
-      "type": 0,
-      "system": false,
-      "content": "",
-      "authorId": "413714554107985930",
-      "pinned": false,
-      "tts": false,
-      "nonce": null,
-      "embeds": [
-        {
-          "type": "rich",
-          "title": "Money!",
-          "timestamp": "2023-12-26T15:12:53.453000+00:00",
-          "footer": {
-            "text": "©ToniPortal",
-            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
-            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
-          },
-          "description": "Veuillez choisir quoi faire au canard : \n\n                - money\n                - buy\n                - create\n                - leaderboard",
-          "color": 16744703,
-          "author": {
-            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
-            "name": "Companion Cube",
-            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
-          }
-        }
-      ],
-      "components": [],
-      "attachments": [],
-      "stickers": [],
-      "position": null,
-      "roleSubscriptionData": null,
-      "resolved": null,
-      "editedTimestamp": null,
-      "mentions": {
-        "everyone": false,
-        "users": [],
-        "roles": [],
-        "crosspostedChannels": [],
-        "repliedUser": null,
-        "members": [],
-        "channels": []
-      },
-      "webhookId": null,
-      "groupActivityApplicationId": null,
-      "applicationId": null,
-      "activity": null,
-      "flags": 0,
-      "reference": null,
-      "interaction": null,
-      "cleanContent": ""
-    }
+    "success": false,
+    "error": "Cannot read properties of undefined (reading 'host')"
   },
   {
     "command": "edit.js",
@@ -619,8 +563,53 @@
   },
   {
     "command": "morpion.js",
-    "success": false,
-    "error": "Cannot find module 'morpionzerwyx'\nRequire stack:\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\commande\\morpion.js\n- C:\\Users\\g2rform\\Documents\\Github\\compagnioncube\\index.js"
+    "success": true,
+    "result": {
+      "channelId": "1179755824344731728",
+      "guildId": "413710882376515584",
+      "id": "1194997179518029905",
+      "createdTimestamp": 1704979929571,
+      "type": 19,
+      "system": false,
+      "content": "Veuillez dire sur quelle ligne vous voulez le placer puis sur quelle colonne",
+      "authorId": "413714554107985930",
+      "pinned": false,
+      "tts": false,
+      "nonce": null,
+      "embeds": [],
+      "components": [],
+      "attachments": [],
+      "stickers": [],
+      "position": null,
+      "roleSubscriptionData": null,
+      "resolved": null,
+      "editedTimestamp": null,
+      "mentions": {
+        "everyone": false,
+        "users": [
+          "413714554107985930"
+        ],
+        "roles": [],
+        "crosspostedChannels": [],
+        "repliedUser": "413714554107985930",
+        "members": [
+          "413714554107985930"
+        ],
+        "channels": []
+      },
+      "webhookId": null,
+      "groupActivityApplicationId": null,
+      "applicationId": null,
+      "activity": null,
+      "flags": 0,
+      "reference": {
+        "channelId": "1179755824344731728",
+        "guildId": "413710882376515584",
+        "messageId": "1194997178276511794"
+      },
+      "interaction": null,
+      "cleanContent": "Veuillez dire sur quelle ligne vous voulez le placer puis sur quelle colonne"
+    }
   },
   {
     "command": "ms.js",
@@ -656,8 +645,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224599196536903",
-      "createdTimestamp": 1703603639173,
+      "id": "1194997236636074014",
+      "createdTimestamp": 1704979943189,
       "type": 0,
       "system": false,
       "content": "Vous devez être dans un channel vocal",
@@ -716,8 +705,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224616556769280",
-      "createdTimestamp": 1703603643312,
+      "id": "1194997259843153960",
+      "createdTimestamp": 1704979948722,
       "type": 0,
       "system": false,
       "content": "",
@@ -727,21 +716,21 @@
       "nonce": null,
       "embeds": [
         {
-          "url": "https://www.ponggame.org/",
           "type": "rich",
+          "url": "https://www.ponggame.org/",
           "title": "The famous Pong !",
-          "timestamp": "2023-12-26T15:13:56.686000+00:00",
-          "footer": {
-            "text": "©ToniPortal",
-            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
-            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
-          },
           "description": "Vous pouvez jouer a pong sur ce lien :\nhttps://www.ponggame.org/",
           "color": 65280,
+          "timestamp": "2024-01-11T13:32:25.970000+00:00",
           "author": {
-            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
             "name": "Companion Cube",
-            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
+          },
+          "footer": {
+            "text": "©ToniPortal",
+            "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
           }
         }
       ],
@@ -785,8 +774,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224644004282388",
-      "createdTimestamp": 1703603649856,
+      "id": "1194997274128957531",
+      "createdTimestamp": 1704979952128,
       "type": 19,
       "system": false,
       "content": "Please set a number !",
@@ -823,7 +812,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1189224642653720667"
+        "messageId": "1194997272837095494"
       },
       "interaction": null,
       "cleanContent": "Please set a number !"
@@ -851,8 +840,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224666083102801",
-      "createdTimestamp": 1703603655120,
+      "id": "1194997299265413220",
+      "createdTimestamp": 1704979958121,
       "type": 19,
       "system": false,
       "content": "Veuillez mettre un argument !",
@@ -889,7 +878,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1189224665059696791"
+        "messageId": "1194997297667383326"
       },
       "interaction": null,
       "cleanContent": "Veuillez mettre un argument !"
@@ -901,8 +890,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224671124660274",
-      "createdTimestamp": 1703603656322,
+      "id": "1194997306160861305",
+      "createdTimestamp": 1704979959765,
       "type": 19,
       "system": false,
       "content": "Must provide a command name to reload.",
@@ -939,7 +928,7 @@
       "reference": {
         "channelId": "1179755824344731728",
         "guildId": "413710882376515584",
-        "messageId": "1189224670088663201"
+        "messageId": "1194997304621531166"
       },
       "interaction": null,
       "cleanContent": "Must provide a command name to reload."
@@ -999,8 +988,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224744680169553",
-      "createdTimestamp": 1703603673859,
+      "id": "1194997381922557993",
+      "createdTimestamp": 1704979977828,
       "type": 0,
       "system": false,
       "content": "",
@@ -1012,13 +1001,13 @@
         {
           "type": "rich",
           "title": "Musique aléatoire",
-          "timestamp": "2023-12-26T15:14:27.052000+00:00",
+          "timestamp": "2024-01-11T13:32:55.893000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
             "icon_url": "https://cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp"
           },
-          "description": "https://www.youtube.com/watch?v=tZYlqiGgKQ4",
+          "description": "https://www.youtube.com/watch?v=KX4i8XMTNmE",
           "color": 16744703,
           "author": {
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",
@@ -1063,8 +1052,8 @@
     "result": {
       "channelId": "1179755824344731728",
       "guildId": "413710882376515584",
-      "id": "1189224772068974604",
-      "createdTimestamp": 1703603680389,
+      "id": "1194997409617563687",
+      "createdTimestamp": 1704979984431,
       "type": 0,
       "system": false,
       "content": "",
@@ -1076,7 +1065,7 @@
         {
           "type": "rich",
           "title": "**Erreur**",
-          "timestamp": "2023-12-26T15:14:29.361000+00:00",
+          "timestamp": "2024-01-11T13:33:02.837000+00:00",
           "footer": {
             "text": "©ToniPortal",
             "proxy_icon_url": "https://images-ext-1.discordapp.net/external/QjXkaipyinseewUsjrj_QOZHO1gisHk56VZARF-Km_U/https/cdn.discordapp.com/avatars/413714554107985930/beb304a2235582fd94e761a7602ad16d.webp",

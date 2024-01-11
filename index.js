@@ -1,423 +1,214 @@
-﻿const {
-    Client,
-    Collection,
-    GatewayIntentBits
-} = require('discord.js'),
-    client = new Client({
-        partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-        intents: [
-            GatewayIntentBits.Guilds,
-            GatewayIntentBits.GuildMessages,
-            GatewayIntentBits.MessageContent,
-            GatewayIntentBits.GuildMembers,
-        ],
-    }),
-    config = require('./config.json'),
-    fs = require("fs"),
-    yaml = require('js-yaml'),
-    fileExists = require('file-exists');
+﻿const { Client, Collection, GatewayIntentBits } = require("discord.js");
+const yaml = require("js-yaml");
+const fileExists = require("file-exists");
+
+const client = new Client({
+  partials: ["MESSAGE", "CHANNEL", "REACTION"],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMembers,
+  ],
+});
+
+const config = require("./config.json");
+const colors = yaml.load(
+  require("fs").readFileSync("./data/colors/colors.yml", "utf8")
+);
 
 client.commands = new Collection();
 
-login()
+(async () => {
+  try {
+    await client.login(config.token);
+    console.log("> Connexion...\n--------------");
+  } catch (error) {
+    console.error("Erreur de connexion:", error);
+  }
+})();
 
+client.on("ready", () => {
+  const upTime1 = Math.round(process.uptime());
+  const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024;
 
-require('events').EventEmitter.defaultMaxListeners = 0;
+  console.log(`
+ _   _   _____   _       _       _____  
+| | | | | ____| | |     | |     /  _   
+| |_| | | |__   | |     | |     | | | | 
+|  _  | |  __|  | |     | |     | | | | 
+| | | | | |___  | |___  | |___  | |_| | 
+|_| |_| |_____| |_____| |_____| _____/ 
+`);
 
-async function login() {
+  console.log(
+    `-----------------------------------------------------------\n` +
+      `[Démarré] ${new Date}\n` +
+      `-----------------------------------------------------------\n` +
+      `[INFO] Uptime ${upTime1}s\nUsed Memory : ${memoryUsedMb}\n` +
+      `-----------------------------------------------------------\n\n` +
+      `>> Le bot est pret pour servir ${client.guilds} serveur.\n` +
+      `Je suis au courant de ??? canaux dans l'ensemble.\n` +
+      `Et je suis le ${client.user.tag}.\n\n` +
+      `Crée par ToniPortal\n\n` +
+      `------------------------------------------------`
+  );
 
-    await client.login(config.token)
-    return console.log(">Connexion...\n--------------")
-
-};
-
-
-//Fichier YML
-const colors = yaml.load(fs.readFileSync(`./data/colors/colors.yml`, 'utf8'));
-
-
-client.on("ready", (async function () {
-
-    let upTime1 = Math.round(process.uptime());
-    const memoryUsedMb = process.memoryUsage().heapUsed / 1024 / 1024;
-
-    console.log(
-        "\n _   _   _____   _       _       _____  \n" +
-        "| | | | | ____| | |     | |     /  _  \ \n" +
-        "| |_| | | |__   | |     | |     | | | | \n" +
-        "|  _  | |  __|  | |     | |     | | | | \n" +
-        "| | | | | |___  | |___  | |___  | |_| | \n" +
-        "|_| |_| |_____| |_____| |_____| \_____/ \n"
-    );
-    console.log(
-        `-----------------------------------------------------------` +
-        `\n[Démarré] ${new Date()}` +
-        `\n-----------------------------------------------------------` +
-        `\n[INFO]Uptime ${upTime1}s\nUsed Memory : ${memoryUsedMb}` +
-        `\n-----------------------------------------------------------` +
-        `\n\n>>Le bot est pret pour servir ${client.guilds} serveur.` +
-        `\n\nJe suis au courant de ??? canaux dans l'ensemble.` +
-        `\nEt je suis le ${client.user.tag}.` +
-        `\n\nCrée par ToniPortal` +
-        `\n\n------------------------------------------------`
-    );
-
-
-
-    // var channel = client.channels.cache.get('413764732407775234');
-    // channel.send({
-    //   embed: {
-    //     color: 0x778899,
-    //     author: {
-    //       name: client.user.username,
-    //       icon_url: client.user.avatarURL()
-    //     },
-    //     title: `**Info**`,
-    //     description: `Le bot a démarré le **${new Date()}**`,
-    //     timestamp: new Date(),
-    //     footer: {
-    //       icon_url: client.user.avatarURL(),
-    //       text: `©ToniPortal`
-    //     }
-    //   }
-    // })
-
-
-    var yv = yaml.load(fs.readFileSync(`./data/version.yml`, 'utf8'));
-
-    yaml.load(fs.writeFileSync(`./data/version.yml`, `version: ${yv.version}\nverdem: ${(Number(yv.verdem) + 1)}`, 'utf8'));
-
-
-
-
-
-
-    /*
-    if (config.maintenance == "non") {
-
-      client.user.setStatus("online");
-
-      setInterval((function () {
-        client.setGame(`Online || *help || ${client.guilds.cache.size} Server`)
-
-
-      }), 3600); //Toute les heure vérifie
-
-    } else {
-
-      client.user.setStatus("dnd");
-      setInterval((function () {
-        client.setGame(`In maintenance || *help || ${client.guilds.cache.size} Server`);
-      }), 3600); //Toute les heure vérifie
-
-
-    }
-    */
-
-
-}));
-
-client.on("messageCreate", message => {
-    if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
-
-
-    // fileExists(`./data/exp/${message.author.id}.yml`).then(async exists => {
-    //     // console.log(exists)
-    //     if (exists) {
-
-    //         var file = await yaml.load(fs.readFileSync(`./data/exp/${message.author.id}.yml`, 'utf8'));
-
-    //         if (file) {
-    //             if (file.exp < file.lvlup) {
-    //                 file.exp += 1;
-    //             } else {
-    //                 file.exp = 0
-    //                 file.lvl += 1
-    //                 file.lvlup = Number(file.lvlup) * 2
-    //             }
-
-
-
-    //             fs.writeFile(`./data/exp/${message.author.id}.yml`, yaml.dump(file), (err) => {
-    //                 if (err) {
-    //                     console.log(err);
-    //                 }
-    //             });
-
-    //             // console.log("ADD ONE EXP " + file.exp + "\n" + yaml.dump(file));
-    //         } else {
-    //             console.warn("[EXP] non existant")
-    //         }
-    //     } else {
-    //         // Exemple :
-    //         // name: ToniPortal
-    //         // exp: 0
-    //         // lvl: 0
-    //         // lvlup: 0
-    //         // image: "./image/exp/wallpaper.png
-
-    //         var stream = fs.createWriteStream(`./data/exp/${message.author.id}.yml`);
-
-    //         stream.once('open', (function (fd) {
-    //             stream.write(`name: ${message.author.username}\n`);
-    //             stream.write(`exp: 1\n`);
-    //             stream.write(`lvl: 1\n`);
-    //             stream.write(`lvlup: 50\n`);
-    //             stream.write(`image: ./image/exp/wallpaper.png\n`);
-    //             stream.end();
-    //         }))
-    //     }
-    // })
-
+  const yv = yaml.load(
+    require("fs").readFileSync("./data/version.yml", "utf8")
+  );
+  yaml.load(
+    require("fs").writeFileSync(
+      "./data/version.yml",
+      `version: ${yv.version}\nverdem: ${Number(yv.verdem) + 1}`,
+      "utf8"
+    )
+  );
 });
 
-client.on('messageCreate', async (message) => {
-    // if (message.author.id === client.user.id || message.author.bot || message.author.equals(client.user)) return;
+client.on("messageCreate", async (message) => {
+  if (
+    message.author.id === client.user.id ||
+    message.author.bot ||
+    message.author.equals(client.user)
+  ) {
+    return;
+  }
 
+  const prefix = "*";
+  const args = message.content.trim().split(/ +/g);
+  const command = args[0].slice(prefix.length).toLowerCase();
 
-    let profix = `*`; //prefix du bot
-    const args = message.content.trim().split(/ +/g);
-    const command = args[0].slice((`*`).length).toLowerCase();
-    // console.log(`profix: ${profix}\nArgs: ${args}\nCommand: ${command}\nMessage: ${message}`)
+  if (
+    (args[0] !== "*help" && args[0] !== "*testo") ||
+    (args[0] === "*help" && args[1] === undefined)
+  ) {
+    try {
+      const exists = await fileExists(`./commande/${command}.js`);
+      if (exists) {
+        const commandFile = require(`./commande/${command}.js`);
+        commandFile.run(client, message, args, colors);
+      }
+    } catch (error) {
+      console.error(error);
+      const embed = {
+        color: 16711680,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL(),
+        },
+        title: `**ERROR**`,
+        description:
+          "Quel dommage, GLaDOS n'a pas réussi à lancer votre commande !",
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL(),
+          text: `©${client.user.tag}`,
+        },
+      };
+      message.channel.send({ embeds: [embed] });
+    } finally {
+      console.log(`\n`);
+    }
+  } else if (args[0] === "*help" && args[1] !== undefined) {
+    try {
+      const { help } = require(`./commande/${args[1]}`);
+      const helpembed = {
+        color: 16744703,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL(),
+        },
+        title: `Help !`,
+        description: `Usage : _${prefix}${args[1]}_ ${help.usage}\n${help.description}.`,
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL(),
+          text: `©ToniPortal`,
+        },
+      };
+      message.channel.send({ embeds: [helpembed] });
+    } catch (error) {
+      console.error(error);
+    }
+  } else if (args[0] === "*testo") {
+    const commandNames = require("fs").readdirSync("./commande/");
+    const results = [];
 
-
-    // 0xff80ff == defaut
-    // 0x00FF00 == vert (c'est bon c'est lancé)
-    // 0xFF0000 == rouge (message d'erreur)
-    // 0x778899 == gris (message d'info)
-    // 0x008EE2 == Blue ancien defaut
-    // Time == temps pour les erreur
-    // author == Author de l'embed
-
-    // console.log(`${message.author.username} ; Commande éxécuté : ${command} ${args} ; Latence ${Date.now() - message.createdTimestamp}`);
-
-
-    //Ne pas oublier que comme sur les commande on peut faire un async au export.run
-    if (
-        (args[0] !== "*help" && args[0] !== "*testo") ||
-        (args[0] == "*help" && args[1] === undefined)
-    ) {
-        fileExists(`./commande/${command}.js`).then(async exists => {
-            if (exists) {
-                let commandFile = require(`./commande/${command}.js`)
-
-
-                // Bloc exécuté si la condition est vraie
-                try {
-                    commandFile.run(client, message, args, colors); // Lancement de la cmd avec les arguments.
-                } catch (error) {
-                    console.error(error);
-
-                    const embed = {
-                        color: 0xFF0000,
-                        author: {
-                            name: client.user.username,
-                            icon_url: client.user.avatarURL(),
-                        },
-                        title: `**ERROR**`,
-                        description: "Quel dommage, GLaDOS n'a pas réussi à lancer votre commande !",
-                        timestamp: new Date(),
-                        footer: {
-                            icon_url: client.user.avatarURL(),
-                            text: `©${client.user.tag}`,
-                        },
-                    };
-
-                    message.channel.send({ embeds: [embed] });
-                } finally {
-                    console.log(`\n`);
-                }
-
-            }
-        })
-    } else if (args[0] == "*help" && args[1] != undefined) {
-        // Bloc exécuté si la condition précédente est fausse, mais celle-ci est vraie
-        const { help } = require(`./commande/${args[1]}`);
-
-        const helpembed = {
-            color: 0xff80ff,
-            author: {
-                name: client.user.username,
-                icon_url: client.user.avatarURL(),
-            },
-            title: `Help !`,
-            description: `Usage : _${profix}${args[1]}_ ${help.usage}\n${help.description}.`,
-            timestamp: new Date(),
-            footer: {
-                icon_url: client.user.avatarURL(),
-                text: `©ToniPortal`,
-            },
-        };
-
-        message.channel.send({ embeds: [helpembed] });
-    } else if (args[0] == "*testo") {
-        // const commandNames = [
-        //     '8ball.js',
-        //     '8balluti.js',
-        //     'yomamma.js',
-        // ];
-
-        // Pour tester chaque commande :
-        const commandNames = fs.readdirSync('./commande/');
-        const results = [];
-
-        async function runCommandsSequentially() {
-            try {
-                const channel = client.channels.cache.get("1179755824344731728");
-
-                // Vérifiez si le canal existe
-                if (!channel) {
-                    throw new Error(`Le canal n'a pas été trouvé.`);
-                }
-
-                for (const commandName of commandNames) {
-                    try {
-                        if (commandName != "exit.js" && commandName != "slashcommande") {
-                            const result = await channel.send(`*${commandName}`);
-
-                            let commandFile = require(`./commande/${commandName}`);
-
-                            let cmdResult = await commandFile.run(client, result, "", colors); // Lancement de la cmd avec les arguments.
-
-                            await new Promise(resolve => setTimeout(resolve, 750)); // Se stopper avant de continuer !
-
-                            console.log(`Commande ${commandName} exécutée avec succès.`);
-
-                            // Stocker les résultats de succès dans le tableau
-                            results.push({ command: commandName, success: true, result: cmdResult });
-                        }
-                    } catch (error) {
-                        console.error(`Erreur lors de l'exécution de la commande ${commandName}:`, error);
-
-                        // Stocker les résultats d'échec dans le tableau
-                        results.push({ command: commandName, success: false, error: error.message });
-                    }
-                }
-
-                // Enregistre les résultats dans un fichier JSON
-                const resultsJSON = JSON.stringify(results, null, 2);
-                fs.writeFileSync('./data/testcommande/commandResults.json', resultsJSON);
-
-                console.log('Tests terminés. Résultats enregistrés dans commandResults.json.');
-                message.channel.send("Tests terminés. Résultats enregistrés dans commandResults.json.");
-            } catch (error) {
-                console.error('Erreur lors de l\'éxécution du test de commande:', error);
-                message.channel.send('Erreur lors de l\'éxécution du test de commande');
-            }
+    async function runCommandsSequentially() {
+      try {
+        const channel = client.channels.cache.get("1179755824344731728");
+        if (!channel) {
+          throw new Error(`Le canal n'a pas été trouvé.`);
         }
 
-        // Appeler la fonction pour exécuter les commandes séquentiellement
-        await runCommandsSequentially();
+        for (const commandName of commandNames) {
+          try {
+            if (
+              commandName !== "exit.js" &&
+              commandName !== "slashcommande"
+            ) {
+              const result = await channel.send(`*${commandName}`);
+              const commandFile = require(`./commande/${commandName}`);
+              const cmdResult = await commandFile.run(
+                client,
+                result,
+                "",
+                colors
+              );
+              await new Promise((resolve) => setTimeout(resolve, 750));
+              console.log(`Commande ${commandName} exécutée avec succès.`);
+              results.push({
+                command: commandName,
+                success: true,
+                result: cmdResult,
+              });
+            }
+          } catch (error) {
+            console.error(
+              `Erreur lors de l'exécution de la commande ${commandName}:`,
+              error
+            );
+            results.push({
+              command: commandName,
+              success: false,
+              error: error.message,
+            });
+          }
+        }
 
-    } // Fin testo
-
-
-}); // fin client msg
-
-
-
-/*
-client.on('messageCreate', async message => {
-    if (!client.application ? .owner) await client.application ? .fetch();
-
-    if (message.content === '!deploy' && message.author.id === client.application ? .owner.id) {
-        const data = {
-            name: 'playlist',
-            description: "Si tu cherches des banger pour bouger ta tête ou pleurer en boule c'est cette commande",
-            options: [{
-                name: 'humeur',
-                type: 'INT',
-                description: 'Choisi de quel humeur tu est !',
-                required: true,
-                choices: [{
-                        name: 'Joie',
-                        value: 1,
-                        description: "Joie - Une musique chill, un peu d'électro mais sans plus",
-                    },
-                    {
-                        name: 'Triste',
-                        value: 2,
-                        description: "Triste - Des musiques avec une ambiance triste, lente",
-                    },
-                    {
-                        name: 'Fatigué',
-                        value: 3,
-                        description: "Fatigué - Du Lofi, tout ce qu'il te faut pour te reposer en paix",
-                    },
-                    {
-                        name: 'Energétique',
-                        value: 4,
-                        description: "Energétique - Oh toi tu veux en découdre hein, du gros son énervé dans tes oreilles",
-                    },
-                    {
-                        name: 'Random',
-                        value: 5,
-                        description: "Random - Une personne qui fait des choix hasardeux",
-                    },
-                ],
-            }],
-        };
-
-        const command = await client.guilds.cache.get('413710882376515584') ? .commands.create(data);
-        console.log(command);
+        const resultsJSON = JSON.stringify(results, null, 2);
+        require("fs").writeFileSync(
+          "./data/testcommande/commandResults.json",
+          resultsJSON
+        );
+        console.log(
+          "Tests terminés. Résultats enregistrés dans commandResults.json."
+        );
+        message.channel.send(
+          "Tests terminés. Résultats enregistrés dans commandResults.json."
+        );
+      } catch (error) {
+        console.error("Erreur lors de l'éxécution du test de commande:", error);
+        message.channel.send("Erreur lors de l'éxécution du test de commande");
+      }
     }
+
+    await runCommandsSequentially();
+  }
 });
 
-client.on('messageCreate', async message => {
-    if (!client.application ? .owner) await client.application ? .fetch();
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isCommand()) return;
 
-    if (message.content === '!globaldeploy' && message.author.id === client.application ? .owner.id) {
-        const data = {
-            name: 'playlist',
-            description: "Si tu cherches des banger pour bouger ta tête ou pleurer en boule c'est cette commande",
-            options: [{
-                name: 'humeur',
-                type: 'STRING',
-                description: 'Choisi de quel humeur tu est !',
-                required: true,
-                choices: [{
-                        name: 'Joie',
-                        value: 'joie ',
-                        description: "Joie - Une musique chill, un peu d'électro mais sans plus",
-                    },
-                    {
-                        name: 'Triste',
-                        value: 'triste',
-                        description: "Triste - Des musiques avec une ambiance triste, lente",
-                    },
-                    {
-                        name: 'Fatigué',
-                        value: 'fatigue',
-                        description: "Fatigué - Du Lofi, tout ce qu'il te faut pour te reposer en paix",
-                    },
-                    {
-                        name: 'Energétique',
-                        value: 'energie',
-                        description: "Energétique - Oh toi tu veux en découdre hein, du gros son énervé dans tes oreilles",
-                    },
-                ],
-            }],
-        };
-
-        const command = await client.application ? .commands.create(data);
-        console.log(command);
-    }
-});
-*/
-
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-
-    let commandFile = require(`./commande/slashcommande/${interaction.commandName}.js`)
-
-    commandFile.run(client, interaction)
-
+  try {
+    const commandFile = require(`./commande/slashcommande/${interaction.commandName}.js`);
+    commandFile.run(client, interaction);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
-
-//Pour afficher les erreur ou les warning
-
-client.on("error", (e) => {
-    console.log("Error:\n" + e)
-})
-
+client.on("error", (error) => {
+  console.log("Error:\n" + error);
+});
